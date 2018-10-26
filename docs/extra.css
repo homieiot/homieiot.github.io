@@ -1,0 +1,70 @@
+label.md-nav__title {
+display: none !important;
+}
+
+ul.menu {
+    list-style: none;
+    padding-left: 0;
+    float:right;
+    margin: 0 !important;
+}
+
+ul.menu li{
+    display: block;
+    padding: 1rem;
+    position: relative;
+}
+
+ul.menu li ul li {
+    min-width: 220px;
+    background: #3f51b5;
+    display: block;
+    padding: 1rem;
+    position: relative;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+ul.menu > li:focus-within, ul.menu > li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+  
+ul.menu li ul a, ul.menu li ul a:hover {
+    color: #fff;
+}
+
+ul.menu li ul li:hover,
+ul.menu li ul li:focus-within {
+    background: red;
+    cursor: pointer;
+}
+
+.menu li:focus-within a {
+  outline: none;
+}
+
+ul.menu li ul {
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+}
+
+ul.menu li ul li {
+    margin: 0 !important;
+}
+
+ul.menu li:hover > ul,
+ul.menu li:focus-within > ul,
+ul.menu li ul:hover,
+ul.menu li ul:focus {
+   visibility: visible;
+   opacity: 1;
+   display: block;
+}
+
