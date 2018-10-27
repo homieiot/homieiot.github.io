@@ -7,7 +7,7 @@ branch and served by GitHub.
 
 The generator in use is [mkdocs](https://www.mkdocs.org/).
 
-## How to generate
+## Manually generate the webpage
 The generator requires python3. For a non-root environment,
 it is recommended to create a python virtual environment:
 
@@ -25,6 +25,25 @@ pip install -r requirements.txt
 ./grabrepos.py
 mkdocs build
 ```
+
+## Upload a manually generated webpage
+
+The webpage lives within the "gh-pages" branch. The generated "site" directory
+need to be pushed to that branch.
+
+```
+cd site
+git init
+git remote add origin git@github.com:homieiot/website-redesign.git
+git add .
+git commit -m "Manually generated webpage"
+git push origin -f HEAD:gh-pages
+```
+
+## Automatically trigger the webpage build
+
+Copy the ".travis.yml" file into the convention specification repository and
+add Travis in the repository service settings.
 
 ## Theme customisation
 The footer of the original mkdocs-material theme is cleared out. For the version

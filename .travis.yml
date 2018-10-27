@@ -1,0 +1,24 @@
+language: python
+python:
+  - "3.6"
+install:
+  - pip install -r requirements.txt
+env:
+  - WEBSITE_REPO=https://github.com/homieiot/website-redesign.git
+script:
+  - if [ ! -d docs ]; then; git clone $WEBSITE_REPO; cd website-redesign; fi;
+  - ./grabrepos.py
+  - mkdocs build
+branches:
+  only:
+  - master
+deploy:
+  repo: $WEBSITE_REPO
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: false
+  target-branch: gh-pages
+  local-dir: site
+  on:
+    branch: master
