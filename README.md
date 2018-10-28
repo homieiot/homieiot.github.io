@@ -8,6 +8,7 @@ branch and served by GitHub.
 The generator in use is [mkdocs](https://www.mkdocs.org/).
 
 ## Manually generate the webpage
+
 The generator requires python3. For a non-root environment,
 it is recommended to create a python virtual environment:
 
@@ -40,12 +41,8 @@ git commit -m "Manually generated webpage"
 git push origin -f HEAD:gh-pages
 ```
 
-## Automatically trigger the webpage build
-
-Copy the ".travis.yml" file into the convention specification repository and
-add Travis in the repository service settings.
-
 ## Theme customisation
+
 The footer of the original mkdocs-material theme is cleared out. For the version
 dropdown box, additional css is required. That can be found in `docs/extra.css`.
 
@@ -60,5 +57,6 @@ Therefore some directory and files within "docs" have an underscore or a letter 
 of the name for pure sorting reasons.
 
 ## Credit
-* [mkdocs](https://www.mkdocs.org/)
-* [mkdocs-material Theme](https://squidfunk.github.io/mkdocs-material)
+
+- [mkdocs](https://www.mkdocs.org/)
+- [mkdocs-material Theme](https://squidfunk.github.io/mkdocs-material)
