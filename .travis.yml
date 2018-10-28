@@ -10,7 +10,7 @@ branches:
     - master
 deploy:
   provider: pages
-  repo: https://github.com/homieiot/homieiot.github.io.git
+  repo: homieiot/homieiot.github.io
   target-branch: master
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
