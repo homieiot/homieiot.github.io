@@ -12,7 +12,7 @@ extra:
   repo_url_dest: 'https://github.com/homieiot/convention'
 extra_css: [extra.css]
 repo_url: 'https://github.com/homieiot/website-redesign'
-edit_uri: 'edit/master/'
+edit_uri: 'edit/master/docs/'
 repo_name: 'homieiot/convention'
 markdown_extensions:
   - admonition
