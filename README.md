@@ -1,6 +1,6 @@
 # Website builder
 
-This repository contains the static website generator for the Homie Website.
+This repository contains the static website generator for the [Homie Website](https://homieiot.github.io).
 The build is triggered by a change in any of the Homie specification respositories
 and performed by Travis CI. The resulting webpage is uploaded to the gh-pages
 branch and served by GitHub.
