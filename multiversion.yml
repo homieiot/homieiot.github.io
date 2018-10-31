@@ -7,7 +7,7 @@ updaterepos: false
 specifications:
    - name: Core
      repo: https://github.com/homieiot/convention.git
-     filepattern: 'README.md'
+     filepattern: 'README.md|convention.md'
      keepsections: ['Topology','Convention']
    - name: OTA
      repo: https://github.com/homieiot/convention.git
