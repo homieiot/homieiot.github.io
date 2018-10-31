@@ -18,13 +18,18 @@ For everyone familiar with MQTT, this is Homie in a nutshell. The complete and l
 
 Homies topic layout is "**homie/device/node/property**" eg "*homie/device123/thermostat/temperature*".
 
-* The topic itself contains the state.
-* The command topic is "*homie/device123/thermostat/temperature/set*".
-* The homie version is required: "homie/device/$version" → **3.0**
-* The device state is of interest: "homie/device/$state" → **ready** (can be init, ready, sleeping, lost and some more)
+* The homie version is required: "homie/device123/$version" → **3.0**
+* The device state is of interest: "homie/device123/$state" → **ready** (can be init, ready, sleeping, lost and some more)
+* A device name is helpful: "homie/device123/$name" → **My cool device**
+* We need an explit comma separated list of available nodes:
+  * "*homie/device123/$nodes" → **thermostat**
+* We need an explit comma separated list of available properties:
+  * "*homie/device123/thermostat/$properties" → **temperature**
 * Each property need a name and a type, eg:
-  * "homie/device123/thermostat/temperature/$name" = "Temperature"
-  * "homie/device123/thermostat/temperature/$type" = "integer" (can be integer, float, boolean, string, enum, color)
+  * "homie/device123/thermostat/temperature/$name" = **Temperature**
+  * "homie/device123/thermostat/temperature/$type" = **integer** (can be integer, float, boolean, string, enum, color)
+* The property topic itself contains the state.
+* The command topic is "*homie/device123/thermostat/temperature/set*".
 
 That's it!
 
