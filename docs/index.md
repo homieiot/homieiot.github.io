@@ -21,7 +21,7 @@ Homies topic layout is "**homie/device/node/property**" eg "*homie/device123/the
 * The topic itself contains the state.
 * The command topic is "*homie/device123/thermostat/temperature/set*".
 * The homie version is required: "homie/device/$version" → **3.0**
-* The device state is of interest: *homie/device/$state → **ready** (can be init, ready, sleeping, lost and some more)
+* The device state is of interest: "homie/device/$state" → **ready** (can be init, ready, sleeping, lost and some more)
 * Each property need a name and a type, eg:
   * "homie/device123/thermostat/temperature/$name" = "Temperature"
   * "homie/device123/thermostat/temperature/$type" = "integer" (can be integer, float, boolean, string, enum, color)
