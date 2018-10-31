@@ -12,6 +12,22 @@ An IoT device publishes data and provides interaction possibilities but a contro
 The Homie convention defines a **standardized way** of how IoT devices and services announce themselves and their data on the communication channel.
 The Homie convention is thereby a crucial aspect in the support of **automatic discovery, configuration and usage** of devices and services over the MQTT protocol.
 
+## In a nutshell
+
+For everyone familiar with MQTT, this is Homie in a nutshell. The complete and latest specification can be found [here](https://homieiot.github.io/spec-core-latest/).
+
+Homies topic layout is "**homie/device/node/property**" eg "*homie/device123/thermostat/temperature*".
+
+* The topic itself contains the state.
+* The command topic is "*homie/device123/thermostat/temperature/set*".
+* The homie version is required: "homie/device/$version" → **3.0**
+* The device state is of interest: *homie/device/$state → **ready** (can be init, ready, sleeping, lost and some more)
+* Each property need a name and a type, eg:
+  * "homie/device123/thermostat/temperature/$name" = "Temperature"
+  * "homie/device123/thermostat/temperature/$type" = "integer" (can be integer, float, boolean, string, enum, color)
+
+That's it!
+
 ## MQTT Restrictions
 
 Homie communicates through [MQTT](http://mqtt.org) and is hence based on the basic principles of MQTT topic publication and subscription.
