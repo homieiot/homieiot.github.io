@@ -25,6 +25,7 @@ homie/device123/$version → 3.0
 homie/device123/$name → My device
 homie/device123/$state → ready
 homie/device123/$nodes → thermostat
+homie/device123/thermostat/$name → My thermostat
 homie/device123/thermostat/$properties → temperature
 homie/device123/thermostat/temperature/$name → Temperature
 homie/device123/thermostat/temperature/$type → integer
