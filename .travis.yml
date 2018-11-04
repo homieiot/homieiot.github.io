@@ -4,7 +4,8 @@ python:
 install:
   - pip install -r requirements.txt
 script:
-  - ./build.sh
+  - ./grabrepos.py
+  - mkdocs build
 branches:
   only:
     - master

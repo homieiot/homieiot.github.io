@@ -57,55 +57,39 @@ def filter_by_headings(sections, keepsections):
     return newsections
 
 # Create a destination filename, given the repo name ("core","ota" etc),
-# the tag name ("master","v2.0") and the original filename ("README.md")
-def dest_filepath(reponame, refname, filename):
+# and the tag name ("master","v2.0").
+def dest_filepath(reponame, refname):
     reponame = reponame.replace(" ","-").lower()
-    suffix = "" if filename.upper() == "README.MD" else "-"+filename
-    return "spec-"+reponame+"-"+refname.replace(".","_")+suffix
+    return "spec-"+reponame+"-"+refname.replace(".","_")
 
 # Copy files to "docs/". Filter sections of file first. Add generated header to file.
-def copy_files(reponame, targetdir, srcdir, keepsections, repotags, index):
-    refname = repotags[index]['name']
-    filesContent = repotags[index]['files']
-    relurl = repotags[index]['relurl']
+def write_file(reponame, targetdir, srcdir, keepsections, repotag, versions):
+    sections = split_by_headings(repotag['data'])
+    sections = filter_by_headings(sections, keepsections)
 
-    for filename, data in filesContent.items():
-        sections = split_by_headings(data)
-        sections = filter_by_headings(sections, keepsections)
+    if len(sections)<=0:
+        return
 
-        # Generate version select box html code
-        # Hide page in the left nav panel if not the latest
-        header = "---\n"
-        if refname != "latest": header += "hidden: true\n"
-        header += "path: "+relurl+"\n"
-        header += "source: "+filename+"\n"
-        # Set page title
-        # Generate list of versions
-        versions = []
-        for repotag in repotags:
-            if filename in repotag['files']:
-                versions.append({
-                    "url":"/"+dest_filepath(reponame, repotag['name'],filename),
-                    "name": repotag['name'],
-                    "date": repotag['date'].strftime("%d. %B %Y")})
-        header += "versioned:\n"+yaml.dump(versions)+"\n"
-        header += "---\n# "+reponame+" Specification ("+refname+")\n"
+    # Generate version select box html code
+    # Hide page in the left nav panel if not the latest
+    header = "---\n"
+    if not repotag['latest']: header += "hidden: true\n"
+    header += "path: "+repotag['absurl']+"\n"
+    header += "source: "+repotag['filename']+"\n"
+    header += "versioned:\n"+yaml.dump(versions)+"\n"
+    header += "---\n# "+reponame+" Specification ("+repotag['name']+")\n"
 
-        # New file content
-        if len(sections)>0:
-            filecontent = header + "\n".join(sections)
-        else:
-            filecontent = header + data
+    # New file content and filename
+    filecontent = header + "\n".join(sections)
+    filepath = os.path.join(targetdir,dest_filepath(reponame, repotag['name'])+".md")
+    
+    with open(filepath, "w") as text_file:
+        text_file.write(filecontent)
+    print("Wrote file: "+filepath)
 
-        filepath = os.path.join(targetdir,dest_filepath(reponame, refname,filename)+".md")
-        with open(filepath, "w") as text_file:
-            text_file.write(filecontent)
-        print("Wrote file: "+filepath)
-    return []
-
-# Clone a repository url (or update repo), checkout all tags and master branch.
+# Clone a repository url (or update repo), checkout all tags.
 # Call copy_files for each checked out working directory
-def checkout_repo_copy_files(name, repourl, filepattern, checkoutdir, keepsections, update_repos):
+def checkout_repo(name, repourl, filepattern, checkoutdir, keepsections, update_repos):
     localpath = os.path.join(checkoutdir,name)
     if os.path.exists(localpath):
         repo = Repo(localpath)
@@ -117,30 +101,49 @@ def checkout_repo_copy_files(name, repourl, filepattern, checkoutdir, keepsectio
         repo = Repo.clone_from(repourl, localpath)
 
     refs = repo.tags
-    refs.append(repo.heads.master)
     refs = reversed(refs)
 
     repotags = []
     targetdir = os.path.abspath("docs")
 
+    latest = True
     for ref in refs:
         repo.head.reference = ref
         repo.head.reset(index=True, working_tree=True)
-        matchedFiles = {}
+        data = ""
+        mainfile = ""
         for filename in fnmatch.filter(os.listdir(localpath), filepattern):
             filepath = os.path.join(localpath,filename)
             with open(filepath, 'r') as myfile:
-                matchedFiles[filename] = myfile.read()
+                localdata = myfile.read() + "\n"
+                sections = split_by_headings(localdata)
+                sections = filter_by_headings(sections, keepsections)
+                if len(sections)<=0:
+                    continue
+                data += localdata
+                mainfile = filename
         tagname = ref.name
-        if tagname=="master": tagname = "latest"
         repotags.append({
-            "files": matchedFiles, "name": tagname,
+            "filename": mainfile,
+            "data": data,
+            "name": tagname,
             "date": ref.commit.committed_datetime,
-            "relurl": "tree/"+ref.name
+            "absurl": repourl.replace(".git","")+"/tree/"+ref.name,
+            "latest": latest
             })
+        if latest:
+            latest = False
 
-    for index, entry in enumerate(repotags):
-        copy_files(name, targetdir, localpath, keepsections, repotags, index)
+    # Generate list of versions
+    versions = []
+    for repotag in repotags:
+        versions.append({
+            "url":"/"+dest_filepath(name, repotag['name']),
+            "name": repotag['name'],
+            "date": repotag['date'].strftime("%d. %B %Y")})
+
+    for repotag in repotags:
+        write_file(name, targetdir, localpath, keepsections, repotag, versions)
 
 def recreate_dir(file_path, clean):
     directory = os.path.abspath(file_path)
@@ -156,4 +159,4 @@ checkoutdir = recreate_dir("temp", "clean" in controlfile and controlfile["clean
 update_repos = "updaterepos" in controlfile and controlfile["updaterepos"]
 for entry in controlfile['specifications']:
     if not 'disabled' in entry or not entry['disabled']:
-        checkout_repo_copy_files(entry['name'], entry['repo'], entry['filepattern'],checkoutdir, entry['keepsections'], update_repos)
+        checkout_repo(entry['name'], entry['repo'], entry['filepattern'],checkoutdir, entry['keepsections'], update_repos)
