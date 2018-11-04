@@ -14,20 +14,23 @@ The Homie convention is thereby a crucial aspect in the support of **automatic d
 
 ## In a nutshell
 
-For everyone familiar with MQTT, this is Homie in a nutshell. The complete and latest specification can be found [here](https://homieiot.github.io/spec-core-latest/).
+For everyone familiar with MQTT, this is Homie in a nutshell.
+See the navigation list on the left and have a look at the full specification.
 
-Homies topic layout is "**homie/device/node/property**" eg "*homie/device123/thermostat/temperature*".
+Homies topic layout is "**homie/device/node/property**" eg. "*homie/device123/thermostat/temperature*".
+The Homie version, device state, device name, published nodes, published properties per node, property name and type are required:
 
-* The homie version is required: "homie/device123/$version" → **3.0**
-* The device state is of interest: "homie/device123/$state" → **ready** (can be init, ready, sleeping, lost and some more)
-* A device name is helpful: "homie/device123/$name" → **My cool device**
-* We need an explit comma separated list of available nodes:
-  * "*homie/device123/$nodes" → **thermostat**
-* We need an explit comma separated list of available properties:
-  * "*homie/device123/thermostat/$properties" → **temperature**
-* Each property need a name and a type, eg:
-  * "homie/device123/thermostat/temperature/$name" = **Temperature**
-  * "homie/device123/thermostat/temperature/$type" = **integer** (can be integer, float, boolean, string, enum, color)
+<pre>
+homie/device123/$version → 3.0
+homie/device123/$name → My device
+homie/device123/$state → ready
+homie/device123/$nodes → thermostat
+homie/device123/thermostat/$properties → temperature
+homie/device123/thermostat/temperature/$name → Temperature
+homie/device123/thermostat/temperature/$type → integer
+</pre>
+
+* A property can be of type integer, float, boolean, string, enum, color.
 * The property topic itself contains the state.
 * The command topic is "*homie/device123/thermostat/temperature/set*".
 
