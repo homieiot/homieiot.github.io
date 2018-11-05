@@ -22,6 +22,7 @@ This is the list of active maintainers.
 A maintainer can remove/add himself at any time if workload/holiday will prevent him participating in a foreseeable future.
 
 * David Gräff
+* Dominik Thalhammer
 
 <style> nav.md-nav { display: none !important; } </style>
 
