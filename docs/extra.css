@@ -1,3 +1,7 @@
+.md-typeset {
+    line-height: 1.2 !important;
+}
+
 label.md-nav__title {
 display: none !important;
 }
