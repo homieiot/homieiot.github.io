@@ -1,6 +1,3 @@
----
-title: "This is a content file in HTML"
----
 # Homie
 ## An MQTT Convention for IoT/M2M
 
