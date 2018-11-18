@@ -20,9 +20,7 @@
             ret = ret.concat(Array.prototype.slice.call(elems));
         });
 
-        console.log(ret);
         ret = ret.filter(el => el.offsetParent !== null)
-        console.log(ret);
         return ret;
     };
 
