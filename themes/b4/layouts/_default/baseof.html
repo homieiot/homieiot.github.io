@@ -6,14 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/img/banner.png">
   <link rel="canonical" href="{{ .Permalink }}">
-  <title>{{ .Site.Title }}</title>
-  <link href="{{ .Site.BaseURL }}css/style.css" rel="stylesheet">
+  <title>{{- .Site.Title -}}</title>
+  {{ $options := (dict "targetPath" "/css/style.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
+  {{- $style := resources.Get "/scss/all.scss" | toCSS | minify -}}
+  <link href="{{- $style.Permalink -}}" rel="stylesheet">
 </head>
 
 <body>
   <header class="text-center" style="margin-top:20px">
-      <a href="{{ $.Site.Params.repourl }}" title="{{ $.Site.Params.repotitle }}"
-      class="md-source" data-md-source="github">
+    <a href="{{ $.Site.Params.repourl }}" title="{{ $.Site.Params.repotitle }}" class="md-source" data-md-source="github">
       <div class="md-source__icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
           <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
@@ -33,15 +34,16 @@
                 99.5z"></path>
         </svg>
       </div>
-    <div class="md-source__repository">
+      <div class="md-source__repository">
         {{ $.Site.Params.repotitle }}
         <div id="repofacts" class="md-source__facts"></div>
-    </div>
+      </div>
+    </a>
     <script>
       const el = document.getElementById("repofacts");
       var stargazers_count = sessionStorage.getItem('stargazers_count');
       var forks_count = sessionStorage.getItem('forks_count');
-      if (stargazers_count!==null) {
+      if (stargazers_count !== null) {
         el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
       } else {
         const url = "https://api.github.com/repos/{{ $.Site.Params.reposlug }}"
@@ -51,18 +53,17 @@
           sessionStorage.setItem('stargazers_count', data.stargazers_count);
           sessionStorage.setItem('forks_count', data.forks_count);
           el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
-        })  
+        })
       }
     </script>
-  </a>
 
     <nav class="btn-group" role="group" aria-label="Basic example">
       {{- $urle := $.URL -}}
-      {{ range .Site.Menus.main }}
-      {{ $menuURL := .URL | absLangURL }}
-      <a href="{{ $menuURL }}" role="button" class="btn btn-main {{if eq ($.URL|lower) (.URL|lower) }}active{{end}}"
+      {{- range .Site.Menus.main -}}
+      {{- $menuURL := .URL | absLangURL }}
+      <a href="{{ $menuURL }}" role="button" class="btn btn-main {{ if eq ($.URL|lower) (.URL|lower) -}}active{{- end -}}"
         title="{{ .Title }}">{{ .Name }}</a>
-      {{ end }}
+      {{- end }}
     </nav>
   </header>
   {{ block "main" . }}

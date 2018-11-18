@@ -1,11 +1,17 @@
+dist: xenial
 language: python
 python:
   - "3.6"
 install:
+  - pip install Pygments
   - pip install -r requirements.txt
+  - sudo snap install hugo --channel=extended
+
 script:
   - ./grabrepos.py
-  - mkdocs build
+  - hugo
+cache:
+  pip: true
 branches:
   only:
     - master
@@ -15,6 +21,6 @@ deploy:
   target-branch: master
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
-  local-dir: site
+  local-dir: public
   on:
     branch: master

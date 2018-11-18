@@ -12,7 +12,9 @@ and find the page in the output directory `site`.
 
 ## Manually generate the webpage
 
-The generator requires go, the git grab utility python3. For a non-root environment,
+You need Hugo in the extended version (with sass/scss support).
+
+The git grab utility requires python3. For a non-root environment,
 it is recommended to create a python virtual environment:
 
 ```sh
@@ -26,7 +28,7 @@ then run the git grab utility and and hugo last:
 ```
 pip install -r requirements.txt
 ./grabrepos.py
-hugo build
+hugo
 ```
 
 ## Upload a manually generated webpage

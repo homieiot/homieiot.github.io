@@ -27,6 +27,19 @@ html {
     color: #555;
     flex-grow: 1 !important;
     max-width: 200px;
+    min-width: 150px;
+}
+
+@media (max-width: 850px) {
+    .btn-main {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 650px) {
+    .btn-group {
+        flex-wrap: wrap;
+    }
 }
 
 .btn-group {
@@ -134,7 +147,7 @@ main p,
 main ul,
 main pre,
 main table {
-    margin-left: 40px;
+    padding-left: 40px;
 }
 
 main pre {

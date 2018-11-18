@@ -7,6 +7,6 @@ python3 -m venv dependencies
 source dependencies/bin/activate
 pip install -r requirements.txt
 ./grabrepos.py
-mkdocs build
+hugo
 
 echo "Webpage available at ./site"

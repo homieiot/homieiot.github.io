@@ -138,6 +138,7 @@ def checkout_repo(reponame, repourl, filepattern, checkoutdir, keepsections, upd
         header += "---\n"
         filecontent = header + "\n".join(sections)
         filepath = os.path.join(targetdir,"preface",dest_filepath(reponame, tagname)+".md")
+        os.makedirs(os.path.join(targetdir,"preface"))
         with open(filepath, "w") as text_file:
             text_file.write(filecontent)
             print("Wrote file: "+filepath)
