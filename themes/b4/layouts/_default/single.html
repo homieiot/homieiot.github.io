@@ -1,0 +1,21 @@
+{{ define "main" }}
+<style>
+h1 { text-align: center; margin-top:40px; font-size:4em;}
+h2 { text-align: center;}
+</style>
+
+<div class="container mt-2">
+<div class="row">
+<div class="col-12">
+{{ .Content }}
+</div>
+</div>
+</div>
+
+<footer class="page-footer font-small blue pt-4">
+    <div class="footer-copyright text-center py-3">© 2018 - 
+    Made by IoT enthusiasts for IoT enthusiasts. Help and improve.
+    <a href="{{ $.Site.Params.editurl }}{{ $.Page.File.Path }}">Edit this page on Github</a>.
+    </div>
+</footer>
+{{ end }}

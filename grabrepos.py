@@ -56,6 +56,19 @@ def filter_by_headings(sections, keepsections):
                 newsections.append(section.strip())
     return newsections
 
+def remaining_headings(sections, removesections):
+    newsections = []
+    if len(removesections)==0: return newsections
+    for section in sections:
+        found = False
+        for keep in removesections:
+            if section.startswith("\n## "+keep):
+                found = True
+        if not found:
+            newsections.append(section.strip())
+                
+    return newsections
+
 # Create a destination filename, given the repo name ("core","ota" etc),
 # and the tag name ("master","v2.0").
 def dest_filepath(reponame, refname):
@@ -63,8 +76,8 @@ def dest_filepath(reponame, refname):
     return "spec-"+reponame+"-"+refname.replace(".","_")
 
 # Copy files to "docs/". Filter sections of file first. Add generated header to file.
-def write_file(reponame, targetdir, srcdir, keepsections, repotag, versions):
-    sections = split_by_headings(repotag['data'])
+def write_file(reponame, targetdir, srcdir, keepsections, filename, data, tagname, date, absurl):
+    sections = split_by_headings(data)
     sections = filter_by_headings(sections, keepsections)
 
     if len(sections)<=0:
@@ -73,15 +86,16 @@ def write_file(reponame, targetdir, srcdir, keepsections, repotag, versions):
     # Generate version select box html code
     # Hide page in the left nav panel if not the latest
     header = "---\n"
-    if not repotag['latest']: header += "hidden: true\n"
-    header += "path: "+repotag['absurl']+"\n"
-    header += "source: "+repotag['filename']+"\n"
-    header += "versioned:\n"+yaml.dump(versions)+"\n"
-    header += "---\n# "+reponame+" Specification ("+repotag['name']+")\n"
+    header += "path: "+absurl+"\n"
+    header += "source: "+filename+"\n"
+    header += "version: "+tagname+"\n"
+    header += "releasedate: "+date.strftime("%d. %B %Y")+"\n"
+    header += "convention: "+reponame+"\n"
+    header += "---\n"
 
     # New file content and filename
     filecontent = header + "\n".join(sections)
-    filepath = os.path.join(targetdir,dest_filepath(reponame, repotag['name'])+".md")
+    filepath = os.path.join(targetdir,dest_filepath(reponame, tagname)+".md")
     
     with open(filepath, "w") as text_file:
         text_file.write(filecontent)
@@ -89,24 +103,45 @@ def write_file(reponame, targetdir, srcdir, keepsections, repotag, versions):
 
 # Clone a repository url (or update repo), checkout all tags.
 # Call copy_files for each checked out working directory
-def checkout_repo(name, repourl, filepattern, checkoutdir, keepsections, update_repos):
-    localpath = os.path.join(checkoutdir,name)
+def checkout_repo(reponame, repourl, filepattern, checkoutdir, keepsections, update_repos):
+    localpath = os.path.join(checkoutdir,reponame)
     if os.path.exists(localpath):
         repo = Repo(localpath)
         if update_repos:
-            print("Updating "+name)
+            print("Updating "+reponame)
             repo.remotes.origin.fetch()
     else:
-        print("Clone "+name+" to "+localpath)
+        print("Clone "+reponame+" to "+localpath)
         repo = Repo.clone_from(repourl, localpath)
 
-    refs = repo.tags
-    refs = reversed(refs)
+    refs = []
+    refs.append(repo.heads.develop)
+    refs.extend(reversed(repo.tags))
 
-    repotags = []
-    targetdir = os.path.abspath("docs")
+    targetdir = os.path.abspath("content/specification")
 
-    latest = True
+    # Get all preface sections from the latest develop version
+    repo.head.reference = repo.heads.develop
+    repo.head.reset(index=True, working_tree=True)
+    filepath = os.path.join(localpath,"convention.md")
+    with open(filepath, 'r') as myfile:
+        tagname = repo.head.reference.name
+        localdata = myfile.read() + "\n"
+        sections = split_by_headings(localdata)
+        sections = remaining_headings(sections, keepsections)
+        absurl = repourl.replace(".git","")+"/tree/" + tagname
+        header = "---\n"
+        header += "path: "+absurl+"\n"
+        header += "source: convention.md\n"
+        header += "convention: "+reponame+"\n"
+        header += "preface: true\n"
+        header += "---\n"
+        filecontent = header + "\n".join(sections)
+        filepath = os.path.join(targetdir,"preface",dest_filepath(reponame, tagname)+".md")
+        with open(filepath, "w") as text_file:
+            text_file.write(filecontent)
+            print("Wrote file: "+filepath)
+
     for ref in refs:
         repo.head.reference = ref
         repo.head.reset(index=True, working_tree=True)
@@ -116,6 +151,7 @@ def checkout_repo(name, repourl, filepattern, checkoutdir, keepsections, update_
             filepath = os.path.join(localpath,filename)
             with open(filepath, 'r') as myfile:
                 localdata = myfile.read() + "\n"
+                # Check if the file has relevant sections
                 sections = split_by_headings(localdata)
                 sections = filter_by_headings(sections, keepsections)
                 if len(sections)<=0:
@@ -123,27 +159,9 @@ def checkout_repo(name, repourl, filepattern, checkoutdir, keepsections, update_
                 data += localdata
                 mainfile = filename
         tagname = ref.name
-        repotags.append({
-            "filename": mainfile,
-            "data": data,
-            "name": tagname,
-            "date": ref.commit.committed_datetime,
-            "absurl": repourl.replace(".git","")+"/tree/"+ref.name,
-            "latest": latest
-            })
-        if latest:
-            latest = False
-
-    # Generate list of versions
-    versions = []
-    for repotag in repotags:
-        versions.append({
-            "url":"/"+dest_filepath(name, repotag['name']),
-            "name": repotag['name'],
-            "date": repotag['date'].strftime("%d. %B %Y")})
-
-    for repotag in repotags:
-        write_file(name, targetdir, localpath, keepsections, repotag, versions)
+        date = ref.commit.committed_datetime
+        absurl = repourl.replace(".git","")+"/tree/"+ref.name
+        write_file(reponame, targetdir, localpath, keepsections, mainfile, data, tagname, date, absurl)
 
 def recreate_dir(file_path, clean):
     directory = os.path.abspath(file_path)

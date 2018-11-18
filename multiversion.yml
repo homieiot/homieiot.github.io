@@ -1,6 +1,6 @@
 # Should the "temp" directory be cleaned before checking out repos?
 # Subsequent builds are faster with clean set to false
-clean: false
+clean: true
 # Set to true to update ("fetch") an already existing repo for this run
 updaterepos: false
 # Specify the repos from where to fetch different parts of the convention
@@ -8,7 +8,7 @@ specifications:
    - name: Core
      repo: https://github.com/homieiot/convention.git
      filepattern: '*.md'
-     keepsections: ['Topology','Convention']
+     keepsections: ['Topology','Convention','Arrays','Broadcast Channel']
    - name: OTA
      repo: https://github.com/homieiot/convention-ota.git
      filepattern: 'convention.md'

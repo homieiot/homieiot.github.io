@@ -1,0 +1,34 @@
+languageCode = "en-us"
+title = "The Homie convention"
+description = "An MQTT convention"
+theme = "b4"
+pygmentsUseClasses = true
+PygmentsCodeFences = true
+
+[params]
+  editurl = "https://github.com/homieiot/convention-website/edit/master/content/"
+  repourl = "https://github.com/homieiot/convention"
+  repotitle = "homieiot/convention"
+  reposlug = "homieiot/convention"
+
+[menu]
+
+  [[menu.main]]
+    name = "Overview"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Specification"
+    url = "/specification/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Implementations"
+    url = "/implementations/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Get involved"
+    url = "/get_involved/"
+    weight = 4

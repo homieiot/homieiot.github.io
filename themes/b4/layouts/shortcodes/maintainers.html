@@ -1,0 +1,3 @@
+{{ range $elem_key, $elem_val := $.Site.Data.maintainers.maintainers }}
+<a {{ if isset $elem_val "ref" }} href="{{ index $elem_val "ref" }}" {{ end }}>{{ index $elem_val "name" }}</a>, 
+{{ end }}

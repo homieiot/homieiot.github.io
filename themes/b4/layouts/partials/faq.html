@@ -1,0 +1,4 @@
+{{ range $elem_key, $elem_val := $.Site.Data.faq.faq }}
+<h3>{{ index $elem_val "question" }}</h3>
+{{ markdownify (index $elem_val "answer") }}
+{{ end }}
