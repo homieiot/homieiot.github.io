@@ -27,7 +27,8 @@
 </head>
 
 <body>
-  <header class="text-center" style="margin-top:20px">
+    <div class="progress"></div>
+    <header class="text-center" style="margin-top:20px">
     <a href="{{ $.Site.Params.repourl }}" title="{{ $.Site.Params.repotitle }}" class="md-source" data-md-source="github">
       <div class="md-source__icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
@@ -71,7 +72,7 @@
       }
     </script>
 
-    <nav class="btn-group" role="group" aria-label="Basic example">
+    <nav id="mainmenu" class="btn-group" role="group" aria-label="Basic example">
       {{- $urle := $.URL -}}
       {{- range .Site.Menus.main -}}
       {{- $menuURL := .URL | absLangURL }}

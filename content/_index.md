@@ -1,7 +1,9 @@
+   <div class="animated fadeIn">
 # Homie
 ## An MQTT Convention for IoT/M2M
 
 > "The Homie convention defines a standardized way of how IoT devices and services announce themselves and their data on the MQTT broker. The Homie convention is thereby a crucial aspect on top of the MQTT protocol for <b>automatic discovery</b>, <b>configuration</b> and <b>usage</b> of devices and services."
+</div>
 
 <hr>
 

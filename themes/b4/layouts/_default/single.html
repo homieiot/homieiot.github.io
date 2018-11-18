@@ -1,13 +1,12 @@
 {{ define "main" }}
-<style>
-h1 { text-align: center; margin-top:40px; font-size:4em;}
-h2 { text-align: center;}
-</style>
-
-<div class="container mt-2">
+<div class="container mt-2" id="mainContent">
 <div class="row">
 <div class="col-12">
-{{ .Content }}
+    <style>
+        h1 { text-align: center; margin-top:40px; font-size:4em;}
+        h2 { text-align: center;}
+    </style>
+    {{ .Content }}
 </div>
 </div>
 </div>
