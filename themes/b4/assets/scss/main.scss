@@ -267,3 +267,24 @@ a.md-source:hover {
     top: 0;
     z-index: 1;
   }
+
+@media print {
+    body {
+        display: table;
+    }
+    header {
+        display: table-header-group;
+      }
+      
+      #mainContent {
+        display: table-row-group;
+      }
+      
+      footer {
+        display: table-footer-group;
+      }
+
+    table, h2+p, h3+p, h4+p, h5+p, code {
+        page-break-inside: avoid;
+    }
+}

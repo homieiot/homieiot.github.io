@@ -1,30 +1,17 @@
-# Implementations
+---
+title: "Implementations"
+desc: "The Homie convention differentiates between **Devices** and **Controllers**."
+---
 
-<center>
-The Homie convention differentiates between **Devices** and **Controllers**.
-</center>
-
-<div style="display:flex;margin-bottom:40px;justify-content:center">
-
-<a href="#device" style="display:block;flex:1 0 10px;text-decoration:none">
-<table>
-<thead><tr><th>Device</th></tr></thead>
-<tr><td>
-An instance of a physical piece of hardware is called a device. For example, a car, an Arduino/ESP8266 or a coffee machine. It publishes <b>Nodes</b> and <b>Properties</b> to the MQTT broker.
-</td></tr>
-</table>
-</a>
-<div style="font-size:3em;flex:0 0 auto;"><i class="fas fa-arrows-alt-h"></i></div>
-<a href="#controller" style="display:block;flex:1 0 10px;text-decoration:none">
-<table style="margin-top:0">
-<thead><tr><th>Controller</th></tr></thead>
-<tr><td>
-A controller does not announce anything to the MQTT broker, but discovers and interacts with Devices. There can be more than one <b>Controller</b> interacting with the different devices on the same broker.
-</td></tr>
-</table>
-</a>
-
-</div>
+{{< lrtable >}}
+    {{< itable title="Device" link="#device" divider="true" >}}
+    An instance of a physical piece of hardware is called a device. For example, a car, an Arduino/ESP8266 or a coffee machine. It publishes <b>Nodes</b> and <b>Properties</b> to the MQTT broker.
+    {{< /itable >}}
+    
+    {{< itable title="Controller" link="#controller" >}}
+   A controller does not announce anything to the MQTT broker, but discovers and interacts with Devices. There can be more than one Controller interacting with the different devices on the same broker.
+    {{< /itable >}}
+{{< /lrtable >}}
 
 # Device
 Find software libraries and full firmware projects for **Devices** in this section.

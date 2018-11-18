@@ -1,0 +1,11 @@
+<div class="card mb-4">
+    <div class="card-header"> {{ .Get "title" }} </div>
+    <div class="card-body">
+        {{ .Get "text" | markdownify }}
+    </div>
+    <div class='card-footer {{ with $.Get "footerclass"}}{{.}}{{ end }}'>{{ .Inner }}
+    </div>
+</div>
+{{ with .Get "arrow"}}
+<center style="font-size:3em;"><i class="fas fa-arrow-down"></i></center>
+{{ end }}

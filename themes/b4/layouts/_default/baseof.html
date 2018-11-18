@@ -9,7 +9,7 @@
   <title>{{- .Site.Title -}}</title>
   {{ $options := (dict "targetPath" "/css/style.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
   {{- $style := resources.Get "/scss/all.scss" | toCSS | minify -}}
-  <link href="{{- $style.Permalink -}}" rel="stylesheet">
+  <link href="{{- $style.Permalink | safeHTMLAttr -}}" rel="stylesheet">
 
   <link rel="prefetch" href="/specification/">
   <link rel="prefetch" href="/implementations/">
@@ -27,9 +27,9 @@
 </head>
 
 <body>
-    <div class="progress"></div>
+    <div class="progress d-print-none"></div>
     <header class="text-center" style="margin-top:20px">
-    <a href="{{ $.Site.Params.repourl }}" title="{{ $.Site.Params.repotitle }}" class="md-source" data-md-source="github">
+    <a href="{{ $.Site.Params.repourl }}" title="{{ $.Site.Params.repotitle }}" class="md-source d-print-none" data-md-source="github">
       <div class="md-source__icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
           <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
@@ -72,7 +72,7 @@
       }
     </script>
 
-    <nav id="mainmenu" class="btn-group" role="group" aria-label="Basic example">
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
       {{- $urle := $.URL -}}
       {{- range .Site.Menus.main -}}
       {{- $menuURL := .URL | absLangURL }}
@@ -82,6 +82,14 @@
     </nav>
   </header>
   {{ block "main" . }}
+  {{ end }}
+
+  {{ block "footer" . }}
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018 - 
+      Made by IoT enthusiasts for IoT enthusiasts. Help and improve.
+      </div>
+  </footer>
   {{ end }}
 </body>
 

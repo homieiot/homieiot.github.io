@@ -1,19 +1,23 @@
 {{ define "main" }}
 <div class="container pt-5" id="mainContent">
-<div class="row">
-<div class="col-12">
-<style>
-h1 { text-align: center;}
-</style>                
-{{ .Content }}
+    <div class="row">
+        <div class="col-12">
+            <style>
+                h1 {
+                    text-align: center;
+                }
+            </style>
+            {{ .Content }}
+        </div>
+    </div>
 </div>
-</div>
-</div>
+{{ end }}
 
+{{ define "footer"}}
 <footer class="page-footer font-small blue pt-4">
-    <div class="footer-copyright text-center py-3">© 2018 - 
-    Made by IoT enthusiasts for IoT enthusiasts. Help and improve.
-    <a href="{{ $.Site.Params.editurl }}{{ $.Page.File.Path }}">Edit this page on Github</a>.
+    <div class="footer-copyright text-center py-3">© 2018 -
+        Made by IoT enthusiasts for IoT enthusiasts. Help and improve.
+        <a href="{{ $.Site.Params.editurl }}{{ $.Page.File.Path }}">Edit this page on Github</a>.
     </div>
 </footer>
 {{ end }}

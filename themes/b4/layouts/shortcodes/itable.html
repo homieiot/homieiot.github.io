@@ -1,0 +1,15 @@
+<a href='{{ .Get "link" }}' style="display:block;flex:1 0 10px;text-decoration:none">
+    <table>
+        <thead>
+            <tr>
+                <th>{{ .Get "title" }}</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>{{ .Inner }}</td>
+        </tr>
+    </table>
+</a>
+{{ with .Get "divider"}}
+<div style="font-size:3em;flex:0 0 auto;"><i class="fas fa-arrows-alt-h"></i></div>
+{{ end }}
