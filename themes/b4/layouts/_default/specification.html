@@ -41,7 +41,7 @@
     {{ end }}<br>
         {{ $diffFile := printf "%s%s%s" "/specification/spec-core-" (replace $page.Params.version "." "_") "-diff" }}
         {{ if (fileExists (printf "%s%s" $diffFile ".html")) -}}
-        Changes: [<a href='{{ $diffFile }}'>Diff to previous</a>]<br>
+        Changes: [<a href='{{ $diffFile }}/'>Diff to previous</a>]<br>
         {{ end }}
         Release date: {{ $page.Params.releasedate }}
     <hr>

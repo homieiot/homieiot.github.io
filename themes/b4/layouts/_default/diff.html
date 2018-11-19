@@ -6,8 +6,8 @@
         Changes
     </h1>
     <center class="animated fadeIn mb-4">Changes from
-        <a href="/specification/{{ $.Page.Params.oldfile }}">{{ $.Page.Params.oldversion }}</a> to
-        <a href="/specification/{{ $.Page.Params.newfile }}">{{ $.Page.Params.newversion }}</a></center>
+        <a href='/specification/{{ replace $.Page.Params.oldfile ".md" "" }}/'>{{ $.Page.Params.oldversion }}</a> to
+        <a href='/specification/{{ replace $.Page.Params.newfile ".md" "" }}/'>{{ $.Page.Params.newversion }}</a></center>
 
     <h2>Commits</h2>
 
