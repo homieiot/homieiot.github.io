@@ -153,6 +153,11 @@ main table {
     width: calc(100% - 40px);
 }
 
+table.diff td {
+    padding:0;
+    margin:0;
+}
+
 main pre {
     @extend .card;
     margin-left: 40px;

@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   });
             }).catch(function(error) {
                 console.log('Fetch failed: ', error.message);
+                window.location.href = "/404.html"
             });
             history.pushState(null /*stateObj*/, "" /*title*/, newUrl);
         }

@@ -1,6 +1,6 @@
 # Should the "temp" directory be cleaned before checking out repos?
 # Subsequent builds are faster with clean set to false
-clean: true
+clean: false
 # Set to true to update ("fetch") an already existing repo for this run
 updaterepos: false
 # Specify the repos from where to fetch different parts of the convention
