@@ -5,7 +5,7 @@
     <h1 class="animated fadeIn" style="text-align: center; margin-top:40px; font-size:4em;">
         {{ $.Page.Title }}
     </h1>
-    <center class="animated fadeIn mb-4">{{ $.Page.Params.desc }}</center>
+    <center class="animated fadeIn mb-4">{{ $.Page.Params.desc | markdownify }}</center>
     {{ .Content }}
 </div>
 </div>

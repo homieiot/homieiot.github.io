@@ -76,7 +76,7 @@ homie/device123/mythermostat/temperature/$type integer
                 continue;
             }
 
-            if (topicparts.length>1 && topicparts.length<6) {
+            if (topicparts.length>2 && topicparts.length<6) {
                 create(devices,topicparts,topicvalue);
             } else {
                 errors.push("Line "+line+" does not describe a device!");
