@@ -36,3 +36,8 @@ PygmentsCodeFences = true
     name = "Get involved"
     url = "/get_involved/"
     weight = 4
+
+  [[menu.main]]
+    name = "Tools"
+    url = "/tools/"
+    weight = 5

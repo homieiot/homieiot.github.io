@@ -26,23 +26,24 @@ html {
     text-align: center;
     color: #555;
     flex-grow: 1 !important;
-    max-width: 200px;
-    min-width: 150px;
+    max-width: 160px;
 }
 
 @media (max-width: 850px) {
     .btn-main {
-        max-width: 150px;
+        max-width: inherit;
     }
 }
 
 @media (max-width: 650px) {
     .btn-group {
-        flex-wrap: wrap;
+        flex-direction: column;
     }
 }
 
 .btn-group {
+    padding-left: 10px;
+    padding-right: 10px;
     width: 100%;
     justify-content: center;
 }
