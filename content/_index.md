@@ -34,9 +34,10 @@ is modelled as **node**, the temperature is a **property** of that node.
 The following topics are published as retained messages to the broker:
 
 <pre style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);padding:10px;">
-homie / device123 / $version → 3.0
+homie / device123 / $homie → 3.0
 homie / device123 / $name → My device
 homie / device123 / $state → ready
+homie / device123 / $extensions → ''
 homie / device123 / $nodes → my_thermostat
 
 homie / device123 / my_thermostat / $name → My thermostat
