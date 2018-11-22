@@ -8,7 +8,7 @@ desc: "An MQTT Convention for IoT/M2M"
   <div style="display:flex;justify-content:space-between;"><div style="min-width:400px;padding-right:10px">
 ## 
 | Feature                       | TCP    | MQTT   | Homie  |
-|––––––-------------------------|–––––-––|–-––––––|–-––––––|
+|-------------------------------|--------|--------|--------|
 | Stream based communication    |   ✓    |   –    |   –    |
 | Message based communication   |   –    |   ✓    |   ✓    |
 | Publish/Subscribe             |   –    |   ✓    |   ✓    |
