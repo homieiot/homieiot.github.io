@@ -1,6 +1,6 @@
 self.addEventListener('install', function (event) {
     event.waitUntil(
-        caches.open('v1').then(function (cache) {
+        caches.open('v2').then(function (cache) {
             return cache.addAll([
                 '/scss/all.min.css',
                 '/offline.html'
@@ -13,7 +13,7 @@ self.addEventListener('install', function (event) {
 self.addEventListener('fetch', function (event) {
     event.respondWith(
         // Try the cache
-        caches.open('v1').then(function (cache) {
+        caches.open('v2').then(function (cache) {
             return cache.match(event.request).then(function (response) {
                 if (!response)
                 // Fall back to network

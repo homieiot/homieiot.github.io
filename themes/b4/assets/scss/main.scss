@@ -170,6 +170,16 @@ main pre {
     }
 }
 
+.icon-hori-ver-arrow {
+    @extend .fa-arrows-alt-h;
+}
+
+@media (max-width: 490px) {
+    .icon-hori-ver-arrow:before {
+        content: "\f338" !important;
+    }
+}
+
 .md-grid {
     max-width: 900px;
     margin-right: auto;

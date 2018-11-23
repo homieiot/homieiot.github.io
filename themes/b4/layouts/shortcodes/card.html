@@ -1,5 +1,7 @@
 <div class="card mb-2">
-    <div class="card-header"> {{ .Get "title" }} </div>
+    {{ with .Get "title"}}
+    <div class="card-header"> {{ . }} </div>
+    {{ end }}
     <div class="card-body">
         {{ .Inner | markdownify }}
     </div>

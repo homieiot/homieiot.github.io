@@ -14,15 +14,33 @@ Instructions:
     <li>Paste the list into the textfield below</li>
 </ul>
 
+<style>
+#homieinput{
+    background-color: #edeff2;
+}
+#linenumbers {
+    background-color: #cecfd1;
+    display: block;
+    position: absolute;
+    left: -10px;
+    width: 30px;
+    padding-left: 5px;
+    margin-top: 15px;
+    z-index: -2;
+    white-space: pre;
+}
+</style>
 
-<div class="container">
-<div class="row">
-    <div class="col-sm-7">
-<textarea style="width: 100%;min-height:400px;overflow:scroll;white-space: pre;overflow-wrap: normal;" id="homieinput">
-homie/device123/$homie 3.0
+<div id="linenumbers">1<br>2</div>
+<div contenteditable="true"
+data-before="1&#13;&#10;2"
+class="w-100 p-3 mb-4"
+style="min-height:400px;overflow:scroll;white-space: pre;overflow-wrap: normal"
+id="homieinput"
+>homie/device123/$homie 3.0
 homie/device123/$name My device
 homie/device123/$state ready
-homie/device123/$nodes mythermostat
+<b>homie/device123/$nodes mythermostat</b>
 
 homie/device123/mythermostat/$name My thermostat
 homie/device123/mythermostat/$properties temperature
@@ -31,10 +49,10 @@ homie/device123/mythermostat/temperature 22
 homie/device123/mythermostat/temperature/$name Temperature
 homie/device123/mythermostat/temperature/$unit °C
 homie/device123/mythermostat/temperature/$datatype integer
-</textarea>
-    <button class="btn btn-primary" onclick="window.homieverificator()">Validate</button>
-    </div>
-    <div class="col-sm-4" id="homieoutput">
-    </div>
 </div>
+<div class="clearfix">
+    <span style="vertical-align: middle;">Validation result: <span id="validationresult">Not yet validated</span></span>
+    <button class="btn btn-primary float-right" onclick="window.homieverificator()">Validate</button></div>
+
+<div class="my-2" style="min-height:120px" id="homieoutput">
 </div>

@@ -1,5 +1,9 @@
-<a href='{{ .Get "link" }}' style="display:block;flex:1 0 10px;text-decoration:none">
+{{ with .Get "link" }}
+<a href='{{ . }}' style="display:block;flex:1 0 10px;text-decoration:none;margin:5px;max-width:430px;min-width:200px;">
     <table>
+{{ else }}
+    <table style="display:block;flex:1 0 10px;margin:5px;max-width:430px;min-width:200px;">
+{{ end }}
         <thead>
             <tr>
                 <th>{{ .Get "title" }}</th>
@@ -9,7 +13,9 @@
             <td>{{ .Inner }}</td>
         </tr>
     </table>
+    {{ with .Get "link" }}
 </a>
+{{ end }}
 {{ with .Get "divider"}}
-<div style="font-size:3em;flex:0 0 auto;"><i class="fas fa-arrows-alt-h"></i></div>
+<div style="font-size:3em;flex:0 0 auto;"><i class="fas icon-hori-ver-arrow"></i></div>
 {{ end }}
