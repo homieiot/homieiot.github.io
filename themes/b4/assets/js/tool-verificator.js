@@ -60,16 +60,16 @@ const propertyMeta = {
 }
 
 const valueRestrictions = new Map([
-    [ "$name", new RegExp(/^.+$/i) ], // \p{L}\d[[:blank:]]
+    [ "$name", new RegExp(/^.+$/) ], // \p{L}\d[[:blank:]]
     [ "$homie", new RegExp("^[0-9\.]+$","") ],
-    [ "$settable", new RegExp("^true|false$","") ],
-    [ "$state", new RegExp("^init|ready|disconnected|sleeping|lost|alert$","") ],
+    [ "$settable", /^true$|^false$/ ],
+    [ "$retained", /^true$|^false$/ ],
+    [ "$state", /^init$|^ready$|^disconnected$|^sleeping$|^lost$|^alert$/ ],
     [ "$nodes", new RegExp("^[a-z0-9_\\-,]+$","i") ],
     [ "$properties", new RegExp("^[a-z0-9_\\-,]+$","i") ],
     [ "$stats", new RegExp("^$/","") ],
-    [ "$datatype", new RegExp("^integer|float|boolean|string|enum|color$","") ],
+    [ "$datatype", /^\b(integer|float|boolean|string|enum|color)\b$/ ],
 ]);
-
 
 /**
  * Check all attributes of an "object". The type ("Device","Node","Property") must be given
@@ -90,7 +90,6 @@ function checkAttributes(type, objectid, object, meta, errors) {
             }
             // Check value
             const restriction = valueRestrictions.get(key);
-            console.log("restrict on",objectid,restriction)
             if (restriction && !value.match(restriction)) {
                 errors.push("The value '"+value+"' of '"+objectid+"/"+key+"' does not conform to the convention!");
                 continue;
@@ -142,6 +141,48 @@ window.homieverificator = () => {
                 }
 
                 checkAttributes("Property", propertyid, property, propertyMeta, errors);
+
+                if (property["$$value"]) {
+                    const value = property["$$value"];
+                    const format = property["$format"];
+                    switch(property["$datatype"]) {
+                        case "integer":
+                        if (!value.match(/^[\d]+$/)) {
+                            errors.push("Property '"+propertyid+"' value of type integer contains invalid data: '"+value+"'!");
+                        }
+                        break;
+                        case "float":
+                        if (!value.match(/^[\d\.]+$/)) {
+                            errors.push("Property '"+propertyid+"' value of type float contains invalid data: '"+value+"'!");
+                        }
+                        break;
+                        case "boolean":
+                        if (!value.match(/^\b(true|false)\b$/)) {
+                            errors.push("Property '"+propertyid+"' value of type float contains invalid data: '"+value+"'!");
+                        }
+                        case "enum":
+                        if (!format) {
+                            errors.push("Property '"+propertyid+"' is of type enum but $format is not set!");
+                            continue;
+                        }
+                        if (!value.match(new RegExp("^\b("+format.split(",").join("|")+")\b$"))) {
+                            errors.push("Property '"+propertyid+"' value of type enum contains invalid data: '"+value+"'. Must be one of "+format.split(",").join("|")+"!");
+                        }
+                        break;
+                        case "color":
+                        if (!format || !format.match(/^\b(rgb|hsv)\b/)) {
+                            errors.push("Property '"+propertyid+"' is of type color but $format is not 'rgb' or 'hsv'!");
+                            continue;
+                        }
+                        if (!value.match(/[\d]{3},[\d]{3},[\d]{3}/)) {
+                            errors.push("Property '"+propertyid+"' value of type color must be in the format xxx,xxx,xxx!");
+                        }
+                        break;
+                        default:
+                        case "string":
+                        break;
+                    }
+                }
             }
         }
     }
