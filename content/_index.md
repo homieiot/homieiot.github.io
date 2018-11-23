@@ -46,7 +46,7 @@ homie / device123 / my_thermostat / $properties → temperature
 homie / device123 / my_thermostat / temperature → 22 
 homie / device123 / my_thermostat / temperature / $name → Temperature
 homie / device123 / my_thermostat / temperature / $unit → °C
-homie / device123 / my_thermostat / temperature / $type → integer
+homie / device123 / my_thermostat / temperature / $datatype → integer
 </pre>
 
 Any Homie compliant controller can now find "My device" and will find out

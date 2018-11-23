@@ -43,6 +43,69 @@ function toObjectTree(value, errors) {
     return devices;
 }
 
+const deviceMeta = {
+    allowed: new Set(["$homie","$name","$state","$nodes","$stats","$implementation"]),
+    deprecated: new Set(["$mac","$localip","$fw/name","$fw/version"]),
+    required: new Set(["$homie","$name","$state","$nodes"])
+}
+const nodeMeta = {
+    allowed: new Set(["$name","$type","$properties","$array"]),
+    deprecated: new Set(),
+    required: new Set(["$name","$properties"])
+}
+const propertyMeta = {
+    allowed: new Set(["$name","$settable","$retained","$unit","$datatype","$format","$$value"]),
+    deprecated: new Set([]),
+    required: new Set(["$name"])
+}
+
+const valueRestrictions = new Map([
+    [ "$name", new RegExp(/^.+$/i) ], // \p{L}\d[[:blank:]]
+    [ "$homie", new RegExp("^[0-9\.]+$","") ],
+    [ "$settable", new RegExp("^true|false$","") ],
+    [ "$state", new RegExp("^init|ready|disconnected|sleeping|lost|alert$","") ],
+    [ "$nodes", new RegExp("^[a-z0-9_\\-,]+$","i") ],
+    [ "$properties", new RegExp("^[a-z0-9_\\-,]+$","i") ],
+    [ "$stats", new RegExp("^$/","") ],
+    [ "$datatype", new RegExp("^integer|float|boolean|string|enum|color$","") ],
+]);
+
+
+/**
+ * Check all attributes of an "object". The type ("Device","Node","Property") must be given
+ * and the meta information (deviceMeta, ...).
+ */
+function checkAttributes(type, objectid, object, meta, errors) {
+    for (let [key, value] of Object.entries(object)) {
+        if (key.startsWith("$")) {
+            // Check for deprecated
+            if (meta.deprecated.has(key)) {
+                errors.push(type+" '"+objectid+"' has the deprecated attribute '"+key+"' set! Please check with the newest version of the convention.");
+                continue;
+            }
+            // Check for allowed
+            else if (!meta.allowed.has(key)) {
+                errors.push(type+" '"+objectid+"' doesn't allow '"+key+"' to be set! Must be one of "+ Array.from(meta.allowed).join(', '));
+                continue;
+            }
+            // Check value
+            const restriction = valueRestrictions.get(key);
+            console.log("restrict on",objectid,restriction)
+            if (restriction && !value.match(restriction)) {
+                errors.push("The value '"+value+"' of '"+objectid+"/"+key+"' does not conform to the convention!");
+                continue;
+            }
+        }
+    }
+
+    const entries = new Set(Object.keys(object));
+    for (let required of meta.required) {
+        if (!entries.has(required)) {
+            errors.push(type+" '"+objectid+"' requires '"+required+"' to be set!");
+        }
+    }
+}
+
 window.homieverificator = () => {
     const value = document.getElementById('homieinput').value.split("\n");
     const out = document.getElementById("homieoutput");
@@ -58,9 +121,7 @@ window.homieverificator = () => {
             errors.push("Device ''"+deviceid+"' id does not conform to topic id restriction!");
         }
 
-        if (!device["$homie"] || !device["$name"] || !device["$state"] || !device["$nodes"]) {
-            errors.push("Device '"+deviceid+"' requires '$homie', '$name', '$state' and '$nodes' to be set!");
-        }
+        checkAttributes("Device", deviceid, device, deviceMeta, errors);
 
         // Validate nodes 
         for (let [nodeid, node] of Object.entries(device)) {
@@ -70,9 +131,7 @@ window.homieverificator = () => {
                 errors.push("Node '"+nodeid+"' id does not conform to topic id restriction!");
             }
 
-            if (!node["$name"] || !node["$properties"]) {
-                errors.push("Node '"+nodeid+"' requires '$name' and '$properties' to be set!");
-            }
+            checkAttributes("Node", nodeid, node, nodeMeta, errors);
 
             // Validate properties 
             for (let [propertyid, property] of Object.entries(node)) {
@@ -82,9 +141,7 @@ window.homieverificator = () => {
                     errors.push("Property '"+propertyid+"' id does not conform to topic id restriction!");
                 }
 
-                if (!property["$name"] || !property["$type"] || !property["$$value"]) {
-                    errors.push("Property '"+propertyid+"' requires '$name' and '$type' to be set!");
-                }
+                checkAttributes("Property", propertyid, property, propertyMeta, errors);
             }
         }
     }

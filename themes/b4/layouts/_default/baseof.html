@@ -10,7 +10,6 @@
   {{ $options := (dict "targetPath" "/css/style.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
   {{- $style := resources.Get "/scss/all.scss" | toCSS | minify -}}
   <link href="{{- $style.Permalink | safeHTMLAttr -}}" rel="stylesheet">
-<script src="/js/tool-verificator.js" type="text/javascript"></script>
 
 {{ $tocjs := resources.Get "/js/toc.js" -}}
 {{ $ajaxclicksjs := resources.Get "/js/main.js" -}}
