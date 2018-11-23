@@ -60,14 +60,14 @@ const propertyMeta = {
 }
 
 const valueRestrictions = new Map([
-    [ "$name", new RegExp(/^.+$/) ], // \p{L}\d[[:blank:]]
-    [ "$homie", new RegExp("^[0-9\.]+$","") ],
+    [ "$name", /^.+$/ ], // \p{L}\d[[:blank:]]
+    [ "$homie", /^[0-9\.]+$/ ],
     [ "$settable", /^true$|^false$/ ],
     [ "$retained", /^true$|^false$/ ],
     [ "$state", /^init$|^ready$|^disconnected$|^sleeping$|^lost$|^alert$/ ],
-    [ "$nodes", new RegExp("^[a-z0-9_\\-,]+$","i") ],
-    [ "$properties", new RegExp("^[a-z0-9_\\-,]+$","i") ],
-    [ "$stats", new RegExp("^$/","") ],
+    [ "$nodes", /^[a-z0-9_\-,]+$/i ],
+    [ "$properties", /^[a-z0-9_\-,]+$/i ],
+    [ "$stats", /^$/ ],
     [ "$datatype", /^\b(integer|float|boolean|string|enum|color)\b$/ ],
 ]);
 
@@ -158,15 +158,16 @@ window.homieverificator = () => {
                         break;
                         case "boolean":
                         if (!value.match(/^\b(true|false)\b$/)) {
-                            errors.push("Property '"+propertyid+"' value of type float contains invalid data: '"+value+"'!");
+                            errors.push("Property '"+propertyid+"' value of type boolean contains invalid data: '"+value+"'!");
                         }
+                        break;
                         case "enum":
                         if (!format) {
                             errors.push("Property '"+propertyid+"' is of type enum but $format is not set!");
                             continue;
                         }
-                        if (!value.match(new RegExp("^\b("+format.split(",").join("|")+")\b$"))) {
-                            errors.push("Property '"+propertyid+"' value of type enum contains invalid data: '"+value+"'. Must be one of "+format.split(",").join("|")+"!");
+                        if (!value.match(new RegExp("^\\b("+format.split(",").join("|")+")\\b$",""))) {
+                            errors.push("Property '"+propertyid+"' value of type enum contains invalid data: '"+value+"'. Must be one of '"+format+"'!");
                         }
                         break;
                         case "color":
