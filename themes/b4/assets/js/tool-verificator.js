@@ -149,6 +149,7 @@ function addLineNumbers() {
 
 document.addEventListener("MainContentChanged", () => {
     const input = document.getElementById('homieinput');
+    if (!input) return;
     // Remove all html markups
     input.addEventListener("focus", () => input.innerText = input.innerText);
     input.addEventListener("change", addLineNumbers);

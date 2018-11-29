@@ -115,16 +115,19 @@ h1.title {
 }
 
 main h2 {
+    page-break-after: avoid;
     font-size: 1.2em;
     counter-reset: h3counter;
 }
 
 main h3 {
+    page-break-after: avoid;
     font-size: 1.2em;
     counter-reset: h4counter;
 }
 
 main h4 {
+    page-break-after: avoid;
     font-size: 1.2em;
 }
 
@@ -146,10 +149,12 @@ main h4:before {
 main p,
 main ul,
 main pre{
+    page-break-inside: avoid;
     padding-left: 40px;
 }
 
 main table {
+    page-break-inside: avoid;
     margin-left: 40px;
     width: calc(100% - 40px);
 }

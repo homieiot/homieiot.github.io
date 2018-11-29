@@ -41,6 +41,26 @@ function loadUrl(newUrl) {
     });
 }
 
+function changeToURL(newUrl, event) {
+    // External links should instead open in a new tab
+    // var domain = window.location.origin;
+    if (newUrl.hostname !== window.location.hostname) {
+        // Other domain -> default behaviour
+    } else if (newUrl.pathname === window.location.pathname) {
+        // Only anchor changed -> default behaviour
+        if (newUrl.hash === window.location.hash)
+            if (event) event.preventDefault(); // Same url -> do nothing
+        else {
+            location.hash = newUrl.hash;
+            //location.reload();
+        }
+    } else {
+        if (event) event.preventDefault();
+        loadUrl(newUrl);
+        history.pushState({consider:true} /*stateObj*/, "" /*title*/, newUrl);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // document read progress bar
     var progress = document.querySelector('.progress')
@@ -56,10 +76,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".toc").forEach(e => e.appendChild(varlist.cloneNode(true)));
     });
 
-    window.addEventListener("popstate", () => {
-        loadUrl(new URL(document.location));
+    window.addEventListener("popstate", e => {
+        if (e.state && e.state.consider)
+            loadUrl(new URL(document.location));
     });
 
+    history.replaceState({consider:true} /*stateObj*/, "" /*title*/, document.location);
     document.dispatchEvent(new Event('MainContentChanged'));
     window.loaded = true;
 
@@ -69,23 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
             event.target.dataset["fullreload"]) return;
         if (history === null || event.target.href === "") return;
 
-        // External links should instead open in a new tab
-        var newUrl = new URL(event.target.href);
-        var domain = window.location.origin;
-        if (newUrl.hostname !== window.location.hostname) {
-            // Other domain -> default behaviour
-        } else if (newUrl.pathname === window.location.pathname) {
-            // Only anchor changed -> default behaviour
-            if (newUrl.hash === window.location.hash)
-                event.preventDefault(); // Same url -> do nothing
-            else {
-                location.hash = newUrl.hash;
-                location.reload();
-            }
-        } else {
-            event.preventDefault();
-            loadUrl(newUrl);
-            history.pushState(null /*stateObj*/, "" /*title*/, newUrl);
-        }
+        changeToURL(new URL(event.target.href), event);
     })
 }); 
