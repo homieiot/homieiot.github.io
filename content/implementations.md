@@ -27,7 +27,7 @@ A library can be included in your own project to act as a Homie device.
 | homie-micropython | µPython  | 2.0.1           | [GitHub](https://github.com/microhomie/micropython-homie) | WIP |
 | node-red-contrib-homie | Node-Red  | 2.1           | [GitHub](https://github.com/marvinroger/node-red-contrib-homie) | WIP |
 | homie-ESP32 | C++  | 2.0.1           | [GitHub](https://github.com/craftmetrics/esp32-homie) | An esp-idf component for the Homie convention. |
-| kotlin-homieiot | kotlin  | 3.0           | [GitHub](https://github.com/boc-tothefuture/kotlin-homieiot) | WIP Kotlin implementation for the Homie   |
+| kotlin-homieiot | kotlin  | 3.0           | [GitHub](https://github.com/boc-tothefuture/kotlin-homieiot) | Kotlin implementation for the Homie convention  |
 
 ## Firmware
 
