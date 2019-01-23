@@ -168,7 +168,7 @@ window.homieverificator = () => {
     var lineMap = {};
     toObjectTree(value, errors, devices, lineMap);
 
-    var topicID = /^[a-z0-9]+$/i;
+    var topicID = /^[a-z0-9]+[a-z0-9-]*$/i;
 
     // Validate device
     for (let [deviceid, device] of Object.entries(devices)) {
