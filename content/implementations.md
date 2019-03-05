@@ -35,8 +35,8 @@ A full featured firmware, ready to be flashed on a supported device type.
 
 | Name         | Language | Homie Version | Website/Download                                   | Description |
 |--------------|----------|---------------|--------------------------------------------|----|
-| homie-esp8266 | C++  | 2.0.1           | [GitHub](https://github.com/marvinroger/homie-esp8266) | Version 3.0 as PR |
-
+| homie-esp8266 | C++     | 2.0.1         | [GitHub](https://github.com/homieiot/homie-esp8266) | |
+| homie-esp8266 | C++     | 3.0.1         | [GitHub](https://github.com/homieiot/homie-esp8266/tree/develop-v3) | |
 
 ## Software projects
 
