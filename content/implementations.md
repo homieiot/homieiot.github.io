@@ -28,6 +28,7 @@ A library can be included in your own project to act as a Homie device.
 | homie-ESP32 | C++  | 2.0.1           | [GitHub](https://github.com/craftmetrics/esp32-homie) | An esp-idf component for the Homie convention. |
 | kotlin-homieiot | kotlin  | 3.0           | [GitHub](https://github.com/boc-tothefuture/kotlin-homieiot) | Kotlin implementation for the Homie convention  |
 | node-red-contrib-homie | Node-Red  | 2.1           | [GitHub](https://github.com/marvinroger/node-red-contrib-homie) | unmaintained |
+| HomieV3 | Python  | 3.0.1           | [GitHub](https://github.com/mjcumming/HomieV3) | Easily build Homie 3.0 devices |
 
 ## Firmware
 
@@ -46,6 +47,7 @@ A software application that speaks MQTT/Homie and acts as a Homie Device.
 |--------------|----------|---------------|--------------------------------------------|-----|
 |miflora-mqtt-daemon | Python  | 3.0           | [GitHub](https://github.com/ThomDietrich/miflora-mqtt-daemon) |A linux daemon to fetch and publish data from Mi Flora plant sensors|
 |GoSDM | Go  | 3.0           | [GitHub](https://github.com/gonium/gosdm630) |A linux daemon to fetch and publish data from ModBus devices like power meters and grid inverters|
+|Somecomfort-Home | Python  | 3.0           | [GitHub](https://github.com/mjcumming/Somecomfort-Homie) |Homie implementation for Honeywell Total Comfort Thermostats using somecompfort|
 
 # Controller
 
