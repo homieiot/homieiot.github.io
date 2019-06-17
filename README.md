@@ -1,4 +1,4 @@
-# Website builder
+# Website builder [![Build Status](https://travis-ci.com/homieiot/convention-website.svg?branch=master)](https://travis-ci.com/homieiot/convention-website)
 
 This repository contains the static website generator for the [Homie Website](https://homieiot.github.io).
 The build is triggered by a change in any of the Homie specification respositories
