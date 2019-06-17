@@ -33,7 +33,7 @@ hugo
 
 ## Upload a manually generated webpage
 
-The webpage lives within the "master" branch of https://github.com/homieiot/homieiot.github.io.
+The webpage lives within the "master" branch of https://github.com/homieiot/homieiot.github.io/tree/master.
 The generated "site" directory need to be pushed to that branch.
 
 ```
