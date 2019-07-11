@@ -63,6 +63,21 @@ Note, that as consequence of using the extension ID, this topics contain dots (`
 Using dots is normally not allowed for a topic ID according to [paragraph 2.1 of the Homie Convention](https://homieiot.github.io/specification/#topic-ids).
 The mandatory version attributes are the only exception.
 
+## Create your own extension
+
+To create an own extension,
+
+* fork the Homie repository,
+* create a new branch,
+* write your extension in `documents/extensions/your-extension-id.md` based on the [extension template](),
+* and create a pull request.
+
 # Homie Extensions
 
 <!--EXTENSIONS-->
+
+| Extension       | Extension Identifier      | Description                                                                                         | Document   |
+|-----------------|---------------------------|-----------------------------------------------------------------------------------------------------|------------|
+| Legacy Stats    | org.homie.legacy-stats    | This extension adds the stats functionality of Homie `3.0.1` to Homie `4.0`                         | [GitHub]() |
+| Legacy Firmware | org.homie.legacy-firmware | This extension adds the firmware, mac and localip device attributes of Homie `3.0.1` to Homie `4.0` | [GitHub]() |
+| Meta            | eu.epnw.meta              | This extension defines how to add metadata and tags to devices, nodes and properties                | [GitHub]() |
