@@ -1,4 +1,7 @@
-# Homie Extensions
+---
+title: "Homie Extensions"
+desc: "Homie can be extended"
+---
 
 The Homie convention defines a standardized way of how devices and services announce themselves and defines the structure and content of messages and their relation.
 
