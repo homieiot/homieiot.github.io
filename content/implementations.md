@@ -29,7 +29,8 @@ A library can be included in your own project to act as a Homie device.
 | kotlin-homieiot | kotlin     | 3.0.1 | [GitHub](https://github.com/boc-tothefuture/kotlin-homieiot) | Kotlin implementation for the Homie convention  |
 | node-red-homie  | Node-Red   | 2.1   | [GitHub](https://github.com/marvinroger/node-red-contrib-homie) | unmaintained |
 | HomieV3         | Python     | 3.0.1 | [GitHub](https://github.com/mjcumming/HomieV3) | Easily build Homie 3.0 devices |
-| homie-dart      | Dart | 3.0.1           | [Pub.dev](https://pub.dev/packages/homie_dart) | Implementation for dart (and flutter) |
+| homie-dart      | Dart       | 3.0.1 | [Pub.dev](https://pub.dev/packages/homie_dart) | Implementation for dart (and flutter) |
+| LeifHomieLib    | C++        | 3.0.1 | [GitHub](https://github.com/leifclaesson/leifhomielib) | For ESP8266/ESP32 with Arduino |
 ## Firmware
 
 A full featured firmware, ready to be flashed on a supported device type.
