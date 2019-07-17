@@ -16,7 +16,7 @@ The license can be chosen freely, even proprietary licenses are possible.
 The recommended license is the [CCA 4.0](https://homieiot.github.io/license), since this is the license Homie itself uses.
 
 ## Extension Identifier
-Every extension is identified by an unique ID and will be linked from this section.
+Every extension is identified by a unique ID and will be linked from this section.
 The ID consists of the reverse domain name and a freely chosen suffix.
 For example, an organization *example.org* wanting to add a feature *our-feature* would choose the extension ID *org.example.our-feature*.
 The proper term *homie* is reserved and must not be used as the suffix or as part of the domain name.
@@ -28,9 +28,9 @@ where *extension ID* is the extension ID and *extension version* the version of 
 An extension might be designed to support different versions of the Homie convention.
 This is reflected by the *homie versions* part, which is a semicolon (`;`) separated list of all supported Homie versions.
 
-For example the [Meta extension]() with the extension ID *eu.epnw.meta* and version *1.1.0* supports Homie `3.0.1` and `4.x`.
+For example the [Meta extension](https://github.com/homieiot/convention/blob/develop/extensions/documents/homie_meta_extension.md) with the extension ID *eu.epnw.meta* and version *1.1.0* supports Homie `3.0.1` and `4.x`.
 The resulting $extensions entry is *eu.epnw.meta:1.1.0:[3.0.1;4.x]*.
-The [Legacy Stats extension]() with the extension ID *org.homie.legacy-stats* and version *0.1.1* supports Homie `4.x`, so the $extensions entry is *org.homie.legacy-stats:0.1.1:[4.x]*.
+The [Legacy Stats extension](https://github.com/homieiot/convention/blob/develop/extensions/documents/homie_legacy_stats_extension.md) with the extension ID *org.homie.legacy-stats* and version *0.1.1* supports Homie `4.x`, so the $extensions entry is *org.homie.legacy-stats:0.1.1:[4.x]*.
 Now, if the device *super-car* implements both extensions it publishes
 ```java
 homie/super-car/$extensions → "eu.epnw.meta:1.1.0:[3.0.1;4.x],org.homie.legacy-stats:0.1.1:[4.x]"
@@ -60,7 +60,7 @@ To create an own extension,
 
 * fork the Homie repository,
 * create a new branch,
-* write your extension in `documents/extensions/your-extension-id.md` based on the [extension template](),
+* write your extension in `documents/extensions/your-extension-id.md` based on the [extension template](https://github.com/homieiot/convention/blob/develop/extensions/extension_template.md),
 * and create a pull request.
 
 # Homie Extensions
@@ -69,6 +69,6 @@ To create an own extension,
 
 | Extension       | Extension Identifier      | Description                                                                                         | Document   |
 |-----------------|---------------------------|-----------------------------------------------------------------------------------------------------|------------|
-| Legacy Stats    | org.homie.legacy-stats    | This extension adds the stats functionality of Homie `3.0.1` to Homie `4.0`                         | [GitHub]() |
-| Legacy Firmware | org.homie.legacy-firmware | This extension adds the firmware, mac and localip device attributes of Homie `3.0.1` to Homie `4.0` | [GitHub]() |
-| Meta            | eu.epnw.meta              | This extension defines how to add metadata and tags to devices, nodes and properties                | [GitHub]() |
+| Legacy Stats    | org.homie.legacy-stats    | This extension adds the stats functionality of Homie `3.0.1` to Homie `4.0`                         | [GitHub](https://github.com/homieiot/convention/blob/develop/extensions/documents/homie_legacy_stats_extension.md) |
+| Legacy Firmware | org.homie.legacy-firmware | This extension adds the firmware, mac and localip device attributes of Homie `3.0.1` to Homie `4.0` | [GitHub](https://github.com/homieiot/convention/blob/develop/extensions/documents/homie_legacy_firmware_extension.md) |
+| Meta            | eu.epnw.meta              | This extension defines how to add metadata and tags to devices, nodes and properties                | [GitHub](https://github.com/homieiot/convention/blob/develop/extensions/documents/homie_meta_extension.md) |
