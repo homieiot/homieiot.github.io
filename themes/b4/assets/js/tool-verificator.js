@@ -1,7 +1,7 @@
 
 const deviceMeta = {
-    allowed: new Set(["$homie", "$name", "$state", "$nodes", "$stats", "$implementation"]),
-    deprecated: new Set(["$mac", "$localip", "$fw/name", "$fw/version"]),
+    allowed: new Set(["$homie", "$name", "$state", "$nodes", "$extensions"]),
+    deprecated: new Set(["$mac", "$localip", "$fw/name", "$fw/version", "$stats", "$implementation"]),
     required: new Set(["$homie", "$name", "$state", "$nodes"])
 }
 const nodeMeta = {
@@ -23,76 +23,88 @@ const valueRestrictions = new Map([
     ["$state", /^init$|^ready$|^disconnected$|^sleeping$|^lost$|^alert$/],
     ["$nodes", /^[a-z0-9_\-,]+$/i],
     ["$properties", /^[a-z0-9_\-,]+$/i],
-    ["$stats", /^$/],
     ["$datatype", /^\b(integer|float|boolean|string|enum|color)\b$/],
 ]);
 
 /**
- * Converts a topic parts input ["homie","device123","node1",...]
- * into an object tree {"device123":{"node1":...}} without overriding.
- * @param {*} devices The object tree destination
- * @param {*} lineMap Outputs the same object tree but with line numbers instead of values
- * @param {*} topicparts Topic parts ["homie","device123","node1",...]
+ * Converts an input vector of topic parts ["homie", "device123", "node1", ...]
+ * into an object tree {"device123":{"node1":...}}.
+ *
+ * This method acts recursive but is implemented stack based.
+ *
+ * @param {*} devices_out The object tree destination
+ * @param {*} line_no_out Outputs the same object tree but with line numbers instead of values
+ * @param {*} topic_vec Topic parts vector ["homie", "device123", "node1",...]
  * @param {*} value The value ("22")
  * @param {*} lineNumber The line number
  */
-function create(devices, lineMap, topicparts, value, lineNumber) {
-    var parent = devices;
-    var parentLineMap = lineMap;
-    for (var t = 1; t < topicparts.length; t += 1) {
-        if (topicparts.length - 1 == t) {
-            parent[topicparts[t]] = value;
-            parentLineMap[topicparts[t]] = lineNumber;
+function topic_vec_to_object_tree(devices_out, line_no_out, topic_vec, value, line_no) {
+    // Recursive stack
+    var devices_out_stack = devices_out;
+    var line_no_out_stack = line_no_out;
+    
+    for (var t = 1; t < topic_vec.length; t += 1) {
+        if (topic_vec.length - 1 == t) {
+            devices_out_stack[topic_vec[t]] = value;
+            line_no_out_stack[topic_vec[t]] = line_no;
             continue;
         }
-        var newChild = parent[topicparts[t]];
+        var newChild = devices_out_stack[topic_vec[t]];
         if (!newChild) newChild = {};
         if (!(newChild instanceof Object)) {
             newChild = { "$$value": newChild };
         }
-        parent[topicparts[t]] = newChild;
-        parent = newChild;
+        devices_out_stack[topic_vec[t]] = newChild;
+        devices_out_stack = newChild;
 
-        newChild = parentLineMap[topicparts[t]];
+        newChild = line_no_out_stack[topic_vec[t]];
         if (!newChild) newChild = {};
         if (!(newChild instanceof Object)) {
             newChild = { "value": newChild };
         }
-        parentLineMap[topicparts[t]] = newChild;
-        parentLineMap = newChild;
-    }
-}
-
-function toObjectTree(value, errors, devices, lineMap) {
-    for (var line = 0; line < value.length; line += 1) {
-        const i = value[line].indexOf(" ");
-        if (i == -1) {
-            if (value[line].length)
-                errors.push({ line: line, text: "Not in the correct format. Syntax: topic_name topic_value" });
-            continue;
-        }
-
-        const topicname = value[line].substring(0, i);
-        const topicvalue = value[line].substring(i + 1).trim();
-        const topicparts = topicname.split("/");
-
-        if (!topicparts.length || topicparts[0] != "homie") {
-            errors.push({ line: line, text: "Must begin with homie/" });
-            continue;
-        }
-
-        if (topicparts.length > 2 && topicparts.length < 6) {
-            create(devices, lineMap, topicparts, topicvalue, line);
-        } else {
-            errors.push({ line: line, text: "Does not describe a device!" });
-            continue;
-        }
+        line_no_out_stack[topic_vec[t]] = newChild;
+        line_no_out_stack = newChild;
     }
 }
 
 /**
+ * Converts an input string like "homie/device123/node1/propA 123" or "homie/device123" etc
+ * into an object tree and merges it with the given `obj_out` object.
+ * 
+ * @param {*} input A string with zero or one whitespace as separator between a topic string and an optional value
+ * @param {*} line The current line number. Used for error messages
+ * @param {*} obj_out The destination object
+ * @param {*} line_no_out Outputs the same object tree but with line numbers instead of values
+ */
+function topic_value_string_to_object(input, line, obj_out, line_no_out) {
+    const i = input.indexOf(" ");
+    if (i == -1) {
+        if (input.length)
+            return { line, text: "Not in the correct format. Syntax: topic_name topic_value" };
+        else
+            return null;
+    }
+    
+    const topicname = input.substring(0, i);
+    const topicvalue = input.substring(i + 1).trim();
+    const topic_vec = topicname.split("/");
+
+    if (!topic_vec.length || topic_vec[0] != "homie") {
+        return { line, text: "Must begin with homie/" };
+    }
+
+    if (topic_vec.length > 2 && topic_vec.length < 6) {
+        topic_vec_to_object_tree(obj_out, line_no_out, topic_vec, topicvalue, line);
+    } else {
+        return { line, text: "Does not describe a device!" };
+    }
+    
+    return null;
+}
+
+/**
  * Check all attributes of an "object". The type ("Device","Node","Property") must be given
- * and the meta information (deviceMeta, ...).
+ * and the meta information (deviceMeta, nodeMeta or propertyMeta). "errors" is used as an output array.
  */
 function checkAttributes(type, objectid, object, meta, errors, lineObject) {
     for (let [key, value] of Object.entries(object)) {
@@ -159,15 +171,19 @@ document.addEventListener("MainContentChanged", () => {
 
 window.homieverificator = () => {
     const input = document.getElementById('homieinput');
-    const value = input.innerText.split("\n");
+    const input_vec = input.innerText.split("\n");
     const out = document.getElementById("homieoutput");
     const validationresult = document.getElementById("validationresult");
 
     var errors = [];
     var devices = {};
     var lineMap = {};
-    toObjectTree(value, errors, devices, lineMap);
-
+    
+    for (var line = 0; line < input_vec.length; line += 1) {
+        const r = topic_value_string_to_object(input_vec[line], line, devices, lineMap);
+        if (r) errors.push(r);
+    }
+    
     var topicID = /^[a-z0-9]+[a-z0-9-]*$/i;
 
     // Validate device
