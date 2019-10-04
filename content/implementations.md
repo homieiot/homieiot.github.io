@@ -47,7 +47,7 @@ A software application that speaks MQTT/Homie and acts as a Homie Device.
 | Name         | Language | Homie Version | Website/Download                                   | Description|
 |--------------|----------|---------------|--------------------------------------------|-----|
 |miflora-mqtt-daemon | Python  | 3.0           | [GitHub](https://github.com/ThomDietrich/miflora-mqtt-daemon) |A linux daemon to fetch and publish data from Mi Flora plant sensors|
-|GoSDM | Go  | 3.0           | [GitHub](https://github.com/gonium/gosdm630) |A linux daemon to fetch and publish data from ModBus devices like power meters and grid inverters|
+|MBMD | Go  | 4.0           | [GitHub](https://github.com/volkszaehler/mbmd) |A linux daemon to fetch and publish data from ModBus devices like power meters and grid inverters|
 |Somecomfort-Home | Python  | 3.0           | [GitHub](https://github.com/mjcumming/Somecomfort-Homie) |Homie implementation for Honeywell Total Comfort Thermostats using somecompfort|
 
 # Controller
