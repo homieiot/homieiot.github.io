@@ -46,7 +46,7 @@ The following topics are published as retained messages to the broker:
       homie / device123 / $state → ready
       homie / device123 / $nodes → mythermostat
 
-      homie / device123 / mythermostat / $name → Living room
+      homie / device123 / mythermostat / $name → My thermostat
       homie / device123 / mythermostat / $properties → temperature
 
       homie / device123 / mythermostat / temperature → 22 
