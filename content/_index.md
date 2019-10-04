@@ -44,16 +44,16 @@ The following topics are published as retained messages to the broker:
       homie / device123 / $homie → 3.0
       homie / device123 / $name → My device
       homie / device123 / $state → ready
-      homie / device123 / $extensions → ''
-      homie / device123 / $nodes → my_thermostat
+      homie / device123 / $nodes → mythermostat
 
-      homie / device123 / my_thermostat / $name → My thermostat
-      homie / device123 / my_thermostat / $properties → temperature
+      homie / device123 / mythermostat / $name → Living room
+      homie / device123 / mythermostat / $properties → temperature
 
-      homie / device123 / my_thermostat / temperature → 22 
-      homie / device123 / my_thermostat / temperature / $name → Temperature
-      homie / device123 / my_thermostat / temperature / $unit → °C
-      homie / device123 / my_thermostat / temperature / $datatype → integer
+      homie / device123 / mythermostat / temperature → 22 
+      homie / device123 / mythermostat / temperature / $name → Temperature
+      homie / device123 / mythermostat / temperature / $unit → °C
+      homie / device123 / mythermostat / temperature / $datatype → integer
+      homie / device123 / mythermostat / temperature / $settable → true
 {{< /card >}}
 
 Any Homie compliant controller can now find "My device" and will find out
