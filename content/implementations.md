@@ -31,6 +31,7 @@ A library can be included in your own project to act as a Homie device.
 | HomieV3         | Python     | 3.0.1 | [GitHub](https://github.com/mjcumming/HomieV3) | Easily build Homie 3.0 devices |
 | homie_dart      | Dart       | 4.0.0 | [Pub.dev](https://pub.dev/packages/homie_dart) | Implementation for dart (and flutter) |
 | LeifHomieLib    | C++        | 3.0.1 | [GitHub](https://github.com/leifclaesson/leifhomielib) | For ESP8266/ESP32 with Arduino |
+| node-red-contrib-homie-convention | Node-RED | 4.0.0 | [GitHub](https://flows.nodered.org/node/node-red-contrib-homie-convention)<br>[npm](https://www.npmjs.com/package/node-red-contrib-homie-convention)<br>[Node-RED](https://flows.nodered.org/node/node-red-contrib-homie-convention) | Homie node with auto discovery for node red [forum discussion](https://discourse.nodered.org/t/announce-node-red-contrib-homie-convention)
 ## Firmware
 
 A full featured firmware, ready to be flashed on a supported device type.
@@ -39,6 +40,7 @@ A full featured firmware, ready to be flashed on a supported device type.
 |--------------|----------|---------------|--------------------------------------------|----|
 | homie-esp8266 | C++     | 2.0.1         | [GitHub](https://github.com/homieiot/homie-esp8266) | |
 | homie-esp8266 | C++     | 3.0.1         | [GitHub](https://github.com/homieiot/homie-esp8266/tree/develop-v3) | |
+| ESPEasy | C++ | 4.0.0 | [GitHub](https://github.com/letscontrolit/ESPEasy) | Easy to use Firmware for ESP8266/ESP32. Choose dev builds like  `ESP_Easy_mega-yyyymmdd_dev_ESP8266_4M1M.bin` or build your own
 
 ## Software projects
 
@@ -83,5 +85,5 @@ and integrate them into your automation plan.
 |--------------|-------|-------|------------------------------------|-------------------|
 | openHAB      |  2.4+ | 3.0   | [Website](https://www.openhab.org) | No node instances |
 | HomeAssistant| WIP   | 2.0   | [Website](https://github.com/nerdfirefighter/HA_Homie/tree/dev) | Module need to be installed into HA installation |
-
+| Node-RED     | 0.20+ | 4.0.0 | [Node-RED](https://nodered.org)<br>[node-red-contrib-homie-convention](https://flows.nodered.org/node/node-red-contrib-homie-convention) | install node-red-contrib-homie-convention node with auto discovery [forum discussion](https://discourse.nodered.org/t/announce-node-red-contrib-homie-convention)
 
