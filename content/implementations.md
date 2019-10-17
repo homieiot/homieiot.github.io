@@ -74,6 +74,7 @@ Administrative tools usually allow you to detect, list and interact with Homie d
 |--------------|----------|---------------|--------------------------------------------|
 | Hodmin      | 2.0      | [Website](https://github.com/rttools/hodmin) |  |
 | Homie-ota    |3.0 + Custom OTA | [GitHub](https://github.com/jpmens/homie-ota) | OTA Server for devices running the homie-esp8266 firmware |
+| HoDD         | 3.0.1 / 4.0.0 | [GitHub](https://github.com/rroemhild/hodd) | Browser based device discovery |
 
 
 ## Home automation
