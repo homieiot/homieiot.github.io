@@ -29,6 +29,7 @@ A library can be included in your own project to act as a Homie device.
 | kotlin-homieiot | kotlin     | 3.0.1 | [GitHub](https://github.com/boc-tothefuture/kotlin-homieiot) | Kotlin implementation for the Homie convention  |
 | node-red-homie  | Node-Red   | 2.1   | [GitHub](https://github.com/marvinroger/node-red-contrib-homie) | unmaintained |
 | HomieV3         | Python     | 3.0.1 | [GitHub](https://github.com/mjcumming/HomieV3) | Easily build Homie 3.0 devices |
+| HomieV4         | Python     | 4.0.0 | [GitHub](https://github.com/mjcumming/homie4) | Easily build Homie 4.0 devices |
 | homie_dart      | Dart       | 4.0.0 | [Pub.dev](https://pub.dev/packages/homie_dart) | Implementation for dart (and flutter) |
 | LeifHomieLib    | C++        | 3.0.1 | [GitHub](https://github.com/leifclaesson/leifhomielib) | For ESP8266/ESP32 with Arduino |
 | node-red-contrib-homie-convention | Node-RED | 4.0.0 | [GitHub](https://flows.nodered.org/node/node-red-contrib-homie-convention)<br>[npm](https://www.npmjs.com/package/node-red-contrib-homie-convention)<br>[Node-RED](https://flows.nodered.org/node/node-red-contrib-homie-convention) | Homie node with auto discovery for node red [forum discussion](https://discourse.nodered.org/t/announce-node-red-contrib-homie-convention)
@@ -50,7 +51,8 @@ A software application that speaks MQTT/Homie and acts as a Homie Device.
 |--------------|----------|---------------|--------------------------------------------|-----|
 |miflora-mqtt-daemon | Python  | 3.0           | [GitHub](https://github.com/ThomDietrich/miflora-mqtt-daemon) |A linux daemon to fetch and publish data from Mi Flora plant sensors|
 |MBMD | Go  | 4.0           | [GitHub](https://github.com/volkszaehler/mbmd) |A linux daemon to fetch and publish data from ModBus devices like power meters and grid inverters|
-|Somecomfort-Home | Python  | 3.0           | [GitHub](https://github.com/mjcumming/Somecomfort-Homie) |Homie implementation for Honeywell Total Comfort Thermostats using somecompfort|
+|Somecomfort-Home | Python  | 4.0           | [GitHub](https://github.com/mjcumming/Somecomfort-Homie) |Homie implementation for Honeywell Total Comfort Thermostats using somecomefort|
+|ISY-Home-Brdige | Python  | 4.0           | [GitHub](https://github.com/mjcumming/ISY-Homie_Bridge) |Homie implementation for Universal Devices ISY994 controller|
 
 # Controller
 
