@@ -1,6 +1,8 @@
-# Website builder [![Build Status](https://travis-ci.com/homieiot/convention-website.svg?branch=master)](https://travis-ci.com/homieiot/convention-website)
+# Website [![Build Status](https://travis-ci.com/homieiot/convention-website.svg?branch=master)](https://travis-ci.com/homieiot/convention-website)
 
-This repository contains the static website generator for the [Homie Website](https://homieiot.github.io).
+This repository contains the website sources for the [Homie Website](https://homieiot.github.io)
+including the online validator javascript tool.
+
 The build is triggered by a change in any of the Homie specification respositories
 and performed by Travis CI. The resulting webpage is uploaded to 
 https://github.com/homieiot/homieiot.github.io/tree/master and is served by GitHub.
