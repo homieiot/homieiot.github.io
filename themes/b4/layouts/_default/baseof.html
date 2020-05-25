@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="shortcut icon" href="/img/banner.png">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
   <link rel="canonical" href="{{ .Permalink }}">
   <title>{{- .Site.Title -}}</title>
   {{ $options := (dict "targetPath" "/css/style.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
@@ -16,7 +16,7 @@
 {{ $tool := resources.Get "/js/tool-verificator.js" -}}
 {{- $js := slice $tocjs $ajaxclicksjs $tool | resources.Concat "js/main.js" | minify }}
     <script type='text/javascript' src="{{- $js.Permalink -}}"></script>
-    
+
   <link rel="prefetch" href="/specification/">
   <link rel="prefetch" href="/implementations/">
   <link rel="prefetch" href="/extensions/">
@@ -93,7 +93,7 @@
 
   {{ block "footer" . }}
   <footer class="page-footer font-small blue pt-4">
-      <div class="footer-copyright text-center py-3">© 2018-2019 - 
+      <div class="footer-copyright text-center py-3">© 2018-2020 -
       Made by IoT enthusiasts for IoT enthusiasts.
       </div>
   </footer>
