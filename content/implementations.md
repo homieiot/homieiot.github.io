@@ -34,6 +34,7 @@ A library can be included in your own project to act as a Homie device.
 | LeifHomieLib    | C++        | 3.0.1 | [GitHub](https://github.com/leifclaesson/leifhomielib) | For ESP8266/ESP32 with Arduino |
 | node-red-contrib-homie-convention | Node-RED | 4.0.0 | [GitHub](https://flows.nodered.org/node/node-red-contrib-homie-convention)<br>[npm](https://www.npmjs.com/package/node-red-contrib-homie-convention)<br>[Node-RED](https://flows.nodered.org/node/node-red-contrib-homie-convention) | Homie node with auto discovery for node red [forum discussion](https://discourse.nodered.org/t/announce-node-red-contrib-homie-convention)
 | homie-for-esp32    | C++        | 3.0.1 | [GitHub](https://github.com/Clon1998/homie-for-esp32) | For ESP32 with Arduino. Limitations: Broadcast is not supported. |
+
 ## Firmware
 
 A full featured firmware, ready to be flashed on a supported device type.
@@ -91,3 +92,41 @@ and integrate them into your automation plan.
 | HomeAssistant| WIP   | 2.0   | [Website](https://github.com/nerdfirefighter/HA_Homie/tree/dev) | Module need to be installed into HA installation |
 | Node-RED     | 0.20+ | 4.0.0 | [Node-RED](https://nodered.org)<br>[node-red-contrib-homie-convention](https://flows.nodered.org/node/node-red-contrib-homie-convention) | install node-red-contrib-homie-convention node with auto discovery [forum discussion](https://discourse.nodered.org/t/announce-node-red-contrib-homie-convention)
 
+# Works with Homie
+
+We recommendent all projects which are implementing Homie to refer to this convention using our label.
+Please refer on websites directly to these labels to use always current version.
+
+## SVG version
+
+[![works with MQTT Homie](/img/works-with-homie.svg "[works with MQTT Homie")](https://homieiot.github.io/)
+
+HTML snippet:
+
+{{< card >}}
+
+```html
+<a href="https://homieiot.github.io/">
+  <object type="image/svg+xml" data="https://homieiot.github.io/img/works-with-homie.png">
+    works with MQTT Homie
+  </object>
+</a>
+```
+
+{{< /card >}}
+
+## PNG version
+
+[![works with MQTT Homie](/img/works-with-homie.png "works with MQTT Homie")](https://homieiot.github.io/)
+
+HTML snippet:
+
+{{< card >}}
+
+```html
+<a href="https://homieiot.github.io/">
+  <img src="https://homieiot.github.io/img/works-with-homie.png" alt="works with MQTT Homie">
+</a>
+```
+
+{{< /card >}}
