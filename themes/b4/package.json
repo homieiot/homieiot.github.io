@@ -20,6 +20,6 @@
     "@fortawesome/fontawesome-free": "^5.5.0",
     "bootstrap": "4.3.1",
     "clean-css-cli": "^4.2.1",
-    "node-sass": "^4.9.3"
+    "node-sass": "^4.13.1"
   }
 }
