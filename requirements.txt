@@ -7,7 +7,7 @@ Markdown==3.0.1
 MarkupSafe==1.0
 Pygments==2.2.0
 pymdown-extensions==6.0
-PyYAML==3.13
+PyYAML==5.1
 six==1.11.0
 smmap2==2.0.5
 tornado==5.1.1
