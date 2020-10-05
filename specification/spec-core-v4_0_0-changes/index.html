@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/specification/spec-core-v4_0_0-changes/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="/specification/">
+  <link rel="prefetch" href="/implementations/">
+  <link rel="prefetch" href="/extensions/">
+  <link rel="prefetch" href="/get_involved/">
+  <link rel="prefetch" href="/license/">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/js/sw.js')
+      .catch(function(error) {
+        console.log('Registration failed with ' + error);
+      });
+    }
+  </script>
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main "
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main "
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div class="container mt-2" id="mainContent">
+<div class="row">
+<div class="col-12">
+    <h1 class="animated fadeIn" style="text-align: center; margin-top:40px; font-size:4em;">
+        
+    </h1>
+    <center class="animated fadeIn mb-4"></center>
+    <table>
+<thead>
+<tr>
+<th>Commit title</th>
+<th>Date</th>
+<th>Hash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Corections to meta extension (#173)</td>
+<td>2019-07-18 00:07:23 +0200</td>
+<td>2c1999e</td>
+</tr>
+<tr>
+<td>Fixed typos and broken links, removed whitespace in homie_legacy_stat… (#172)</td>
+<td>2019-07-17 21:13:33 +0200</td>
+<td>608541a</td>
+</tr>
+<tr>
+<td>Extension Convention (#171)</td>
+<td>2019-07-16 22:55:32 +0200</td>
+<td>eaf3edc</td>
+</tr>
+<tr>
+<td>remove references to deprecated arrays (#169)</td>
+<td>2019-07-03 19:56:14 +0800</td>
+<td>9ac3433</td>
+</tr>
+<tr>
+<td>Point Last Will section to <code>$state</code> (#157)</td>
+<td>2019-03-07 17:30:43 +0900</td>
+<td>a3ea000</td>
+</tr>
+<tr>
+<td>Remove timings paragraph. Rename behaviour to lifecycle. (#155)</td>
+<td>2019-01-21 09:57:06 +0100</td>
+<td>96dcc73</td>
+</tr>
+<tr>
+<td>Fix typos (#153)</td>
+<td>2019-01-10 20:50:15 -0700</td>
+<td>616f8af</td>
+</tr>
+<tr>
+<td>Fix extension suffix typo (#147)</td>
+<td>2018-12-05 16:20:32 +0100</td>
+<td>1c417dc</td>
+</tr>
+<tr>
+<td>Correct spelling and wording (#144)</td>
+<td>2018-11-29 19:15:19 +0100</td>
+<td>0c012f4</td>
+</tr>
+<tr>
+<td>Add subheading for &ldquo;Property command topic&rdquo; (#145)</td>
+<td>2018-11-29 19:13:30 +0100</td>
+<td>ecc7aa4</td>
+</tr>
+<tr>
+<td>Remove 3.x arrays</td>
+<td>2018-11-26 19:45:36 +0100</td>
+<td>bb58910</td>
+</tr>
+<tr>
+<td>$stats: Remove from device</td>
+<td>2018-11-26 21:53:13 +0100</td>
+<td>2827c1e</td>
+</tr>
+<tr>
+<td>Remove $stats</td>
+<td>2018-11-26 19:53:41 +0100</td>
+<td>3fa7acd</td>
+</tr>
+<tr>
+<td>Move property settable/retained explanation down</td>
+<td>2018-11-26 19:48:57 +0100</td>
+<td>98ae53d</td>
+</tr>
+<tr>
+<td>Fix wording in timing</td>
+<td>2018-11-26 19:44:48 +0100</td>
+<td>d976e02</td>
+</tr>
+<tr>
+<td>Fix formatting for the webpage markdown renderer</td>
+<td>2018-11-26 19:42:49 +0100</td>
+<td>80c5fdb</td>
+</tr>
+<tr>
+<td>Remove requirement for the homie/ base topic</td>
+<td>2018-11-26 14:35:33 +0100</td>
+<td>79a214d</td>
+</tr>
+<tr>
+<td>Fix travis-ci file</td>
+<td>2018-11-23 10:54:02 +0100</td>
+<td>cfe82b1</td>
+</tr>
+<tr>
+<td>Additional specificity on payload definitions (#133)</td>
+<td>2018-11-22 23:21:28 -0500</td>
+<td>e83bbc2</td>
+</tr>
+<tr>
+<td>Fix image link</td>
+<td>2018-11-21 09:28:32 +0100</td>
+<td>b0e33fd</td>
+</tr>
+<tr>
+<td>Last will limitation</td>
+<td>2018-11-20 12:13:44 +0100</td>
+<td>bcdd965</td>
+</tr>
+<tr>
+<td>Add travis-ci file to trigger webpage build</td>
+<td>2018-11-20 11:54:33 +0100</td>
+<td>e92702e</td>
+</tr>
+<tr>
+<td>Array, Broadcast Channel, Extensions are on heading level 2</td>
+<td>2018-11-18 13:46:21 +0100</td>
+<td>84b36f3</td>
+</tr>
+<tr>
+<td>Table clean up</td>
+<td>2018-11-18 13:29:28 +0100</td>
+<td>0678972</td>
+</tr>
+<tr>
+<td>Updates to</td>
+<td>2018-11-12 09:47:50 +0100</td>
+<td>dea1380</td>
+</tr>
+<tr>
+<td>Update extension section</td>
+<td>2018-11-08 08:16:07 +0100</td>
+<td>c2f1fcb</td>
+</tr>
+<tr>
+<td>Add $specs for extension specification.</td>
+<td>2018-11-07 14:54:40 +0100</td>
+<td>99dc487</td>
+</tr>
+<tr>
+<td>Update convention.md</td>
+<td>2018-11-07 00:22:18 +0100</td>
+<td>8b001ee</td>
+</tr>
+<tr>
+<td>FIX: Numeric payload decimal separator is a dot</td>
+<td>2018-11-04 23:48:54 +0100</td>
+<td>c056ccc</td>
+</tr>
+<tr>
+<td>Fix: Overflowing table</td>
+<td>2018-11-06 01:11:34 +0100</td>
+<td>5da9704</td>
+</tr>
+<tr>
+<td>$stats/interval fix</td>
+<td>2018-11-04 23:45:22 +0100</td>
+<td>98ce2a3</td>
+</tr>
+<tr>
+<td>BREAKING: Homie is about Lightweight topic discovery</td>
+<td>2018-10-31 14:43:10 +0100</td>
+<td>240f0bb</td>
+</tr>
+<tr>
+<td>Change values to payload</td>
+<td>2018-11-04 13:54:32 -0500</td>
+<td>f23e16c</td>
+</tr>
+<tr>
+<td>Remove parts that belong on a web page instead. License.</td>
+<td>2018-10-28 21:30:59 +0100</td>
+<td>84d2388</td>
+</tr>
+<tr>
+<td>Fixed wording on init state. (#116)</td>
+<td>2018-10-29 14:52:53 -0400</td>
+<td>910f936</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2020 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>

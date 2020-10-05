@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/extensions/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="/specification/">
+  <link rel="prefetch" href="/implementations/">
+  <link rel="prefetch" href="/extensions/">
+  <link rel="prefetch" href="/get_involved/">
+  <link rel="prefetch" href="/license/">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/js/sw.js')
+      .catch(function(error) {
+        console.log('Registration failed with ' + error);
+      });
+    }
+  </script>
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main active"
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main "
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div class="container mt-2" id="mainContent">
+<div class="row">
+<div class="col-12">
+    <h1 class="animated fadeIn" style="text-align: center; margin-top:40px; font-size:4em;">
+        Homie Extensions
+    </h1>
+    <center class="animated fadeIn mb-4">Homie can be extended</center>
+    <p>The Homie convention defines a standardized way of how devices and services announce themselves and defines the structure and content of messages and their relation.</p>
+<p>It does not define domain types, like a lightbulb and required properties for a Home Automation domain.
+It also not defines procedures like Over-The-Air updates and metrics like cpu usage or memory consumption.</p>
+<p>That is what extensions are for.</p>
+<h2 id="license">License</h2>
+<p>Every extension must be published using a license.
+The license can be chosen freely, even proprietary licenses are possible.
+The recommended license is the <a href="https://homieiot.github.io/license">CCA 4.0</a>, since this is the license Homie itself uses.</p>
+<h2 id="extension-identifier">Extension Identifier</h2>
+<p>Every extension is identified by a unique ID and will be linked from this section.
+The ID consists of the reverse domain name and a freely chosen suffix.
+For example, an organization <em>example.org</em> wanting to add a feature <em>our-feature</em> would choose the extension ID <em>org.example.our-feature</em>.
+The proper term <em>homie</em> is reserved and must not be used as the suffix or as part of the domain name.</p>
+<p>If a device decides to implement an extension, a new entry in the <code>$extensions</code> list of that device is required.
+The new <strong>extensions entry</strong> has to be formated in the following way:
+<em>extension ID</em>:<em>extension version</em>:[<em>homie versions</em>]
+where <em>extension ID</em> is the extension ID and <em>extension version</em> the version of the extension.
+An extension might be designed to support different versions of the Homie convention.
+This is reflected by the <em>homie versions</em> part, which is a semicolon (<code>;</code>) separated list of all supported Homie versions.</p>
+<p>For example the <a href="https://github.com/homieiot/convention/blob/develop/extensions/documents/homie_meta_extension.md">Meta extension</a> with the extension ID <em>eu.epnw.meta</em> and version <em>1.1.0</em> supports Homie <code>3.0.1</code> and <code>4.x</code>.
+The resulting $extensions entry is <em>eu.epnw.meta:1.1.0:[3.0.1;4.x]</em>.
+The <a href="https://github.com/homieiot/convention/blob/develop/extensions/documents/homie_legacy_stats_extension.md">Legacy Stats extension</a> with the extension ID <em>org.homie.legacy-stats</em> and version <em>0.1.1</em> supports Homie <code>4.x</code>, so the $extensions entry is <em>org.homie.legacy-stats:0.1.1:[4.x]</em>.
+Now, if the device <em>super-car</em> implements both extensions it publishes</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$extensions</span> <span class="err">→</span> <span class="s">&#34;eu.epnw.meta:1.1.0:[3.0.1;4.x],org.homie.legacy-stats:0.1.1:[4.x]&#34;</span>
+</code></pre></div><h2 id="extension-datatypes">Extension Datatypes</h2>
+<p>An extension may define new datatypes and formats for them.</p>
+<h2 id="new-attributes">New Attributes</h2>
+<p>An extension may add new attributes to devices, nodes and properties.
+The attributes MUST start with a <code>$</code>. Attributes are always <strong>retained</strong>.
+An attribute may have no value, but instead act as a root for more nested attributes.
+This is necessary to distinguish a nesting attribute from a node (if the nesting attribute is added to a device) or from a property (if its added to a node).
+In the following example <em>$certifications</em> is the <strong>nesting</strong> attribute, which serves as root for the <strong>nested</strong> <em>$european-union</em> and <em>$usa</em> attributes.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">$certifications</span><span class="o">/</span><span class="n">$european</span><span class="o">-</span><span class="n">union</span> <span class="err">→</span> <span class="s">&#34;Euro 6b&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">$certifications</span><span class="o">/</span><span class="n">$usa</span> <span class="err">→</span> <span class="s">&#34;Tier 3&#34;</span>
+</code></pre></div><p><strong>Nested</strong> attributes may start with <code>$</code> but don&rsquo;t have to.
+This means, that in the above example using <em>homie/super-car/engine/$certifications/usa</em> would have been a valid topic, too.
+An extension document may decide which extension attributes are <strong>required</strong> and which are <strong>optional</strong>.
+If they are optional, default values may be given. Additionally, given examples for each attribute are recommended.</p>
+<h2 id="create-your-own-extension">Create your own extension</h2>
+<p>To create an own extension,</p>
+<ul>
+<li>fork the Homie repository,</li>
+<li>create a new branch,</li>
+<li>write your extension in <code>documents/extensions/your-extension-id.md</code> based on the <a href="https://github.com/homieiot/convention/blob/develop/extensions/extension_template.md">extension template</a>,</li>
+<li>and create a pull request.</li>
+</ul>
+<h1 id="homie-extensions">Homie Extensions</h1>
+<!-- raw HTML omitted -->
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Extension Identifier</th>
+<th>Description</th>
+<th>Document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Legacy Stats</td>
+<td>org.homie.legacy-stats</td>
+<td>This extension adds the stats functionality of Homie <code>3.0.1</code> to Homie <code>4.0</code></td>
+<td><a href="https://github.com/homieiot/convention/blob/develop/extensions/documents/homie_legacy_stats_extension.md">GitHub</a></td>
+</tr>
+<tr>
+<td>Legacy Firmware</td>
+<td>org.homie.legacy-firmware</td>
+<td>This extension adds the firmware, mac and localip device attributes of Homie <code>3.0.1</code> to Homie <code>4.0</code></td>
+<td><a href="https://github.com/homieiot/convention/blob/develop/extensions/documents/homie_legacy_firmware_extension.md">GitHub</a></td>
+</tr>
+<tr>
+<td>Meta</td>
+<td>eu.epnw.meta</td>
+<td>This extension defines how to add metadata and tags to devices, nodes and properties</td>
+<td><a href="https://github.com/homieiot/convention/blob/develop/extensions/documents/homie_meta_extension.md">GitHub</a></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2020 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>

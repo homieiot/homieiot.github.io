@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/specification/spec-core-v2_0_0-diff/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="/specification/">
+  <link rel="prefetch" href="/implementations/">
+  <link rel="prefetch" href="/extensions/">
+  <link rel="prefetch" href="/get_involved/">
+  <link rel="prefetch" href="/license/">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/js/sw.js')
+      .catch(function(error) {
+        console.log('Registration failed with ' + error);
+      });
+    }
+  </script>
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main "
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main "
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div class="container mt-2" id="mainContent">
+<div class="row">
+<div class="col-12">
+    <h1 class="animated fadeIn" style="text-align: center; margin-top:40px; font-size:4em;">
+        Changes
+    </h1>
+    <center class="animated fadeIn mb-4">Changes from
+        <a href='/specification/spec-core-v1_5_0/'>v1.5.0</a> to
+        <a href='/specification/spec-core-v2_0_0/'>v2.0.0</a></center>
+
+    <h2>Commits</h2>
+
+    
+    
+    <!-- raw HTML omitted -->
+    
+
+    <h2>Differences</h2>
+
+    
+    <table class="diff" id="difflib_chg_to0__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">v1.5.0</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">v2.0.0</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__0"><a href="#difflib_chg_to0__1">n</a></td><td class="diff_header" id="from0_2">2</td><td >path: https://github.com/homieiot/convention/tree/v<span class="diff_chg">1.5</span>.0</td><td class="diff_next"><a href="#difflib_chg_to0__1">n</a></td><td class="diff_header" id="to0_2">2</td><td >path: https://github.com/homieiot/convention/tree/v<span class="diff_chg">2</span>.0<span class="diff_add">.0</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__1"><a href="#difflib_chg_to0__2">n</a></td><td class="diff_header" id="from0_4">4</td><td >version: v<span class="diff_chg">1.5</span>.0</td><td class="diff_next"><a href="#difflib_chg_to0__2">n</a></td><td class="diff_header" id="to0_4">4</td><td >version: v<span class="diff_chg">2</span>.0<span class="diff_add">.0</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_5">5</td><td ><span class="diff_sub">releasedate: 19. June 2016</span></td><td class="diff_next"></td><td class="diff_header" id="to0_5">5</td><td ><span class="diff_add">releasedate: 28. April 2017</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__2"><a href="#difflib_chg_to0__3">n</a></td><td class="diff_header" id="from0_11">11</td><td ><span class="diff_sub">Homie devices communicate through MQTT.</span></td><td class="diff_next"><a href="#difflib_chg_to0__3">n</a></td><td class="diff_header" id="to0_11">11</td><td ><span class="diff_add">To efficiently parse messages, Homie defines a few rules related to topic names. The base topic you will see in the following convention will be `homie/`. You can however choose whatever base topic you want.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__3"><a href="#difflib_chg_to0__4">n</a></td><td class="diff_header" id="from0_13">13</td><td ><span class="diff_sub">To efficiently parse messages, Homie defines a few rules related to topic names. The base topic you will see in the following lines will be `devices/`. You can customize this base topic if it fits better to your needs.</span></td><td class="diff_next"><a href="#difflib_chg_to0__4">n</a></td><td class="diff_header" id="to0_13">13</td><td ><span class="diff_add">* `homie` / **`device ID`**: this is the base topic of a device. Each device must have an unique device ID which adhere to the [ID format](#id-format).</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_14">14</td><td ><span class="diff_sub"> </span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_15">15</td><td ><span class="diff_sub">* `devices` / **`device ID`**: this is the base topic name. Each device must have a unique device ID. This ID MAY be composed of lowercase letters from `a` to `z`, numbers from `0` to `9`, and it MAY contain `-`, but MUST NOT start or end with a `-`.</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__4"><a href="#difflib_chg_to0__5">n</a></td><td class="diff_header" id="from0_19">19</td><td ><span class="diff_sub">* `devices` / **`device ID`** / `$` **`device property`**: a property starting with a `$` at the third level of the path is related to the device. The property MUST be one of these:</span></td><td class="diff_next"><a href="#difflib_chg_to0__5">n</a></td><td class="diff_header" id="to0_17">17</td><td ><span class="diff_add">* `homie` / **`device ID`** / `$` **`device property`**: a topic starting with a `$` after the base topic of a device represents a device property. A device property MUST be one of these:</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__5"><a href="#difflib_chg_to0__6">n</a></td><td class="diff_header"></td><td ></td><td class="diff_next"><a href="#difflib_chg_to0__6">n</a></td><td class="diff_header" id="to0_25">25</td><td ><span class="diff_add">    &lt;th&gt;Required&lt;/th&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_26">26</td><td ><span class="diff_add">  &lt;/tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_27">27</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_28">28</td><td ><span class="diff_add">    &lt;td&gt;$homie&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_29">29</td><td ><span class="diff_add">    &lt;td&gt;Device → Controller&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_30">30</td><td ><span class="diff_add">    &lt;td&gt;Version of the Homie convention the device conforms to&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_31">31</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_32">32</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__6"><a href="#difflib_chg_to0__7">n</a></td><td class="diff_header" id="from0_31">31</td><td ><span class="diff_sub">    &lt;td&gt;&lt;code&gt;true&lt;/code&gt; when the device is online, &lt;code&gt;false&lt;/code&gt; when the device is offline (through LWT)&lt;/td&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to0__7">n</a></td><td class="diff_header" id="to0_37">37</td><td ><span class="diff_add">    &lt;td&gt;&lt;code&gt;true&lt;/code&gt; when the device is online, &lt;code&gt;false&lt;/code&gt; when the device is offline (through LWT). When sending the device is online, this message must be sent last, to indicate every other required messages are sent and the device is ready&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_38">38</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__7"><a href="#difflib_chg_to0__8">n</a></td><td class="diff_header"></td><td ></td><td class="diff_next"><a href="#difflib_chg_to0__8">n</a></td><td class="diff_header" id="to0_46">46</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__8"><a href="#difflib_chg_to0__9">n</a></td><td class="diff_header" id="from0_45">45</td><td ><span class="diff_sub">  &lt;/tr&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to0__9">n</a></td><td class="diff_header" id="to0_53">53</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_46">46</td><td >  &lt;tr&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_54">54</td><td >  &lt;<span class="diff_add">/</span>tr&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_55">55</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_56">56</td><td ><span class="diff_add">    &lt;td&gt;$mac&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_57">57</td><td ><span class="diff_add">    &lt;td&gt;Device → Controller&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_58">58</td><td ><span class="diff_add">    &lt;td&gt;Mac address of the device network interface. The format MUST be of the type &lt;code&gt;A1:B2:C3:D4:E5:F6&lt;/code&gt;&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_59">59</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_60">60</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_61">61</td><td ><span class="diff_add">  &lt;/tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_62">62</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_47">47</td><td >    &lt;td&gt;$uptime&lt;/td&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_63">63</td><td >    &lt;td&gt;$<span class="diff_add">stats/</span>uptime&lt;/td&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__9"><a href="#difflib_chg_to0__10">n</a></td><td class="diff_header" id="from0_51">51</td><td ><span class="diff_sub">  &lt;/tr&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to0__10">n</a></td><td class="diff_header" id="to0_67">67</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_52">52</td><td >  &lt;tr&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_68">68</td><td >  &lt;<span class="diff_add">/</span>tr&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_69">69</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_53">53</td><td >    &lt;td&gt;$signal&lt;/td&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_70">70</td><td >    &lt;td&gt;$<span class="diff_add">stats/</span>signal&lt;/td&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__10"><a href="#difflib_chg_to0__11">n</a></td><td class="diff_header" id="from0_57">57</td><td ><span class="diff_sub">  &lt;/tr&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to0__11">n</a></td><td class="diff_header" id="to0_74">74</td><td ><span class="diff_add">    &lt;td&gt;No, this is not applicable to an Ethernet connected device for example&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_58">58</td><td >  &lt;tr&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_75">75</td><td >  &lt;<span class="diff_add">/</span>tr&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_76">76</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_77">77</td><td ><span class="diff_add">    &lt;td&gt;$stats/interval&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_78">78</td><td ><span class="diff_add">    &lt;td&gt;Device → Controller&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_79">79</td><td ><span class="diff_add">    &lt;td&gt;Interval in seconds at which the &lt;code&gt;$stats/uptime&lt;/code&gt; and &lt;code&gt;$stats/signal&lt;/code&gt; are refreshed&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_80">80</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_81">81</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_82">82</td><td ><span class="diff_add">  &lt;/tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_83">83</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_59">59</td><td >    &lt;td&gt;$fwname&lt;/td&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_84">84</td><td >    &lt;td&gt;$fw<span class="diff_add">/</span>name&lt;/td&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__11"><a href="#difflib_chg_to0__12">n</a></td><td class="diff_header" id="from0_61">61</td><td ><span class="diff_sub">    &lt;td&gt;Name of the firmware running on the device. This name MAY be composed of lowercase letters from &lt;code&gt;a&lt;/code&gt; to &lt;code&gt;z&lt;/code&gt;, numbers from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;9&lt;/code&gt;, and it MAY contain &lt;code&gt;-&lt;/code&gt;, but MUST NOT start or end with a &lt;code&gt;-&lt;/code&gt;&lt;/td&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to0__12">n</a></td><td class="diff_header" id="to0_86">86</td><td ><span class="diff_add">    &lt;td&gt;Name of the firmware running on the device. Allowed characters are the same as the device ID&lt;/td&gt;</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__12"><a href="#difflib_chg_to0__13">n</a></td><td class="diff_header" id="from0_63">63</td><td ><span class="diff_sub">  &lt;/tr&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to0__13">n</a></td><td class="diff_header" id="to0_88">88</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_64">64</td><td >  &lt;tr&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_89">89</td><td >  &lt;<span class="diff_add">/</span>tr&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_90">90</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_65">65</td><td >    &lt;td&gt;$fwversion&lt;/td&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_91">91</td><td >    &lt;td&gt;$fw<span class="diff_add">/</span>version&lt;/td&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__13"><a href="#difflib_chg_to0__14">n</a></td><td class="diff_header" id="from0_69">69</td><td ><span class="diff_sub">  &lt;/tr&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to0__14">n</a></td><td class="diff_header" id="to0_95">95</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_70">70</td><td >  &lt;tr&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_96">96</td><td >  &lt;<span class="diff_add">/</span>tr&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_71">71</td><td ><span class="diff_sub">    &lt;td&gt;$nodes&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_72">72</td><td ><span class="diff_sub">    &lt;td&gt;Device → Controller&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_73">73</td><td ><span class="diff_sub">    &lt;td&gt;Nodes the device has, with format &lt;code&gt;id:type&lt;/code&gt; separated by a &lt;code&gt;,&lt;/code&gt; if there are multiple nodes&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_74">74</td><td ><span class="diff_sub">    &lt;td&gt;Yes&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_75">75</td><td >  &lt;<span class="diff_sub">/</span>tr&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_97">97</td><td >  &lt;tr&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_98">98</td><td ><span class="diff_add">    &lt;td&gt;$fw/checksum&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_99">99</td><td ><span class="diff_add">    &lt;td&gt;Device → Controller&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_100">100</td><td ><span class="diff_add">    &lt;td&gt;MD5 checksum of the firmware running on the device&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_101">101</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_102">102</td><td ><span class="diff_add">    &lt;td&gt;No, depending of your implementation&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_76">76</td><td >  &lt;tr&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_103">103</td><td >  &lt;<span class="diff_add">/</span>tr&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_104">104</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_105">105</td><td ><span class="diff_add">    &lt;td&gt;$implementation&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_106">106</td><td ><span class="diff_add">    &lt;td&gt;Device → Controller&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_107">107</td><td ><span class="diff_add">    &lt;td&gt;An identifier for the Homie implementation (example &lt;code&gt;esp8266&lt;/code&gt;)&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_77">77</td><td >    &lt;td&gt;<span class="diff_chg">$ota</span>&lt;/td&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_108">108</td><td >    &lt;td&gt;<span class="diff_chg">Yes</span>&lt;/td&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_78">78</td><td ><span class="diff_sub">    &lt;td&gt;Controller → Device&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header" id="to0_109">109</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_79">79</td><td ><span class="diff_sub">    &lt;td&gt;Latest OTA version available for the device&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header" id="to0_110">110</td><td ><span class="diff_add">  &lt;/tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_111">111</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_112">112</td><td ><span class="diff_add">    &lt;td&gt;$implementation/#&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_113">113</td><td ><span class="diff_add">    &lt;td&gt;Controller → Device or Device → Controller&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_114">114</td><td ><span class="diff_add">    &lt;td&gt;You can use any subtopics of &lt;code&gt;$implementation&lt;/code&gt; for anything related to your specific Homie implementation.&lt;/td&gt;</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__14"><a href="#difflib_chg_to0__15">n</a></td><td class="diff_header" id="from0_81">81</td><td ><span class="diff_sub">  &lt;/tr&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to0__15">n</a></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_82">82</td><td ><span class="diff_sub">  &lt;tr&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_83">83</td><td ><span class="diff_sub">    &lt;td&gt;$ota/+&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_84">84</td><td ><span class="diff_sub">    &lt;td&gt;Controller → Device or Device → Controller&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_85">85</td><td ><span class="diff_sub">    &lt;td&gt;You can use any subtopics of `$ota` for anything related to your specific OTA implementation.&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_86">86</td><td ><span class="diff_sub">    &lt;td&gt;Yes or No, depending of your implementation&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_87">87</td><td ><span class="diff_sub">  &lt;/tr&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_88">88</td><td ><span class="diff_sub">  &lt;tr&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_89">89</td><td ><span class="diff_sub">    &lt;td&gt;$reset&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_90">90</td><td ><span class="diff_sub">    &lt;td&gt;Controller → Device&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_91">91</td><td ><span class="diff_sub">    &lt;td&gt;&lt;code&gt;true&lt;/code&gt; when the controller wants the device to reset its configuration. &lt;code&gt;false&lt;/code&gt; otherwise. When the device receives a &lt;code&gt;true&lt;/code&gt;, it should replace the retained message with a &lt;code&gt;false&lt;/code&gt; before resetting&lt;/td&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_92">92</td><td >    &lt;td&gt;<span class="diff_chg">Yes</span>&lt;/td&gt;</td><td class="diff_next"></td><td class="diff_header" id="to0_116">116</td><td >    &lt;td&gt;<span class="diff_chg">No</span>&lt;/td&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__15"><a href="#difflib_chg_to0__16">n</a></td><td class="diff_header" id="from0_99">99</td><td ><span class="diff_chg">d</span>e<span class="diff_sub">vices</span>/686f6d6965/$online → true</td><td class="diff_next"><a href="#difflib_chg_to0__16">n</a></td><td class="diff_header" id="to0_123">123</td><td ><span class="diff_chg">homi</span>e/686f6d6965/$online → true</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_100">100</td><td ><span class="diff_chg">d</span>e<span class="diff_sub">vices</span>/686f6d6965/$name → Bedroom temperature sensor</td><td class="diff_next"></td><td class="diff_header" id="to0_124">124</td><td ><span class="diff_chg">homi</span>e/686f6d6965/$name → Bedroom temperature sensor</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_101">101</td><td ><span class="diff_chg">d</span>e<span class="diff_sub">vices</span>/686f6d6965/$localip → 192.168.0.10</td><td class="diff_next"></td><td class="diff_header" id="to0_125">125</td><td ><span class="diff_chg">homi</span>e/686f6d6965/$localip → 192.168.0.10</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_102">102</td><td ><span class="diff_chg">d</span>e<span class="diff_sub">vices</span>/686f6d6965/$signal → 72</td><td class="diff_next"></td><td class="diff_header" id="to0_126">126</td><td ><span class="diff_chg">homi</span>e/686f6d6965/$signal → 72</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_103">103</td><td ><span class="diff_chg">d</span>e<span class="diff_sub">vices</span>/686f6d6965/$fwname → 1.0.0</td><td class="diff_next"></td><td class="diff_header" id="to0_127">127</td><td ><span class="diff_chg">homi</span>e/686f6d6965/$fw<span class="diff_add">/</span>name → 1.0.0</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_104">104</td><td ><span class="diff_chg">d</span>e<span class="diff_sub">vices</span>/686f6d6965/$fwversion → 1.0.0</td><td class="diff_next"></td><td class="diff_header" id="to0_128">128</td><td ><span class="diff_chg">homi</span>e/686f6d6965/$fw<span class="diff_add">/</span>version → 1.0.0</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_105">105</td><td ><span class="diff_sub">devices/686f6d6965/$nodes → temperature:temperature,humidity:humidity</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__16"><a href="#difflib_chg_to0__17">n</a></td><td class="diff_header" id="from0_107">107</td><td ><span class="diff_sub"> </span></td><td class="diff_next"><a href="#difflib_chg_to0__17">n</a></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_108">108</td><td ><span class="diff_sub">And it would receive:</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_109">109</td><td ><span class="diff_sub"> </span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_110">110</td><td ><span class="diff_sub">```</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_111">111</td><td ><span class="diff_sub">devices/686f6d6965/$ota ← 1.0.1</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_112">112</td><td ><span class="diff_sub">devices/686f6d6965/$reset ← false</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_113">113</td><td ><span class="diff_sub">```</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_114">114</td><td ><span class="diff_sub"> </span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_115">115</td><td ><span class="diff_sub">At this point, your device would understand there is an OTA update available, as `$ota` is different from `$version`.</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__17"><a href="#difflib_chg_to0__18">n</a></td><td class="diff_header" id="from0_119">119</td><td ><span class="diff_sub">* `devices` / **`device ID`** / **`node ID`** / **`property`**: `node ID` is the ID of the node, as defined in the `$nodes` device property. `property` is the property of the node that is getting updated.</span></td><td class="diff_next"><a href="#difflib_chg_to0__18">n</a></td><td class="diff_header" id="to0_133">133</td><td ><span class="diff_add">* `homie` / **`device ID`** / **`node ID`** / **`property`**: `node ID` is the ID of the node, which must be unique on a per-device basis, and which adhere to the [ID format](#id-format). `property` is the property of the node that is getting updated, which must be unique on a per-node basis, and which adhere to the [ID format](#id-format).</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_134">134</td><td ><span class="diff_add"> </span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_135">135</td><td ><span class="diff_add">Properties starting with a `$` are special properties. It must be one of the following:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_136">136</td><td ><span class="diff_add"> </span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_137">137</td><td ><span class="diff_add">&lt;table&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_138">138</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_139">139</td><td ><span class="diff_add">    &lt;th&gt;Property&lt;/th&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_140">140</td><td ><span class="diff_add">    &lt;th&gt;Direction&lt;/th&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_141">141</td><td ><span class="diff_add">    &lt;th&gt;Description&lt;/th&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_142">142</td><td ><span class="diff_add">    &lt;th&gt;Retained&lt;/th&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_143">143</td><td ><span class="diff_add">    &lt;th&gt;Required&lt;/th&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_144">144</td><td ><span class="diff_add">  &lt;/tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_145">145</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_146">146</td><td ><span class="diff_add">    &lt;td&gt;$type&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_147">147</td><td ><span class="diff_add">    &lt;td&gt;Device → Controller&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_148">148</td><td ><span class="diff_add">    &lt;td&gt;Type of the node&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_149">149</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_150">150</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_151">151</td><td ><span class="diff_add">  &lt;/tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_152">152</td><td ><span class="diff_add">  &lt;tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_153">153</td><td ><span class="diff_add">    &lt;td&gt;$properties&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_154">154</td><td ><span class="diff_add">    &lt;td&gt;Device → Controller&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_155">155</td><td ><span class="diff_add">    &lt;td&gt;Properties the node exposes, with format &lt;code&gt;id&lt;/code&gt; separated by a &lt;code&gt;,&lt;/code&gt; if there are multiple nodes. For ranges, define the range after the &lt;code&gt;id&lt;/code&gt;, within &lt;code&gt;[]&lt;/code&gt; and separated by a &lt;code&gt;-&lt;/code&gt;. For settable properties, add &lt;code&gt;:settable&lt;/code&gt; to the &lt;code&gt;id&lt;/code&gt;&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_156">156</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_157">157</td><td ><span class="diff_add">    &lt;td&gt;Yes&lt;/td&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_158">158</td><td ><span class="diff_add">  &lt;/tr&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_159">159</td><td ><span class="diff_add">&lt;/table&gt;</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__18"><a href="#difflib_chg_to0__19">n</a></td><td class="diff_header"></td><td ></td><td class="diff_next"><a href="#difflib_chg_to0__19">n</a></td><td class="diff_header" id="to0_164">164</td><td ><span class="diff_add">homie/686f6d6965/temperature/$type → temperature</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_165">165</td><td ><span class="diff_add">homie/686f6d6965/temperature/$properties → degrees,unit</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_166">166</td><td ><span class="diff_add">homie/686f6d6965/temperature/unit → c</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_124">124</td><td ><span class="diff_chg">d</span>e<span class="diff_sub">vices</span>/686f6d6965/temperature/<span class="diff_chg">t</span>e<span class="diff_chg">mperatu</span>re → 12.07</td><td class="diff_next"></td><td class="diff_header" id="to0_167">167</td><td ><span class="diff_chg">homi</span>e/686f6d6965/temperature/<span class="diff_chg">d</span>e<span class="diff_chg">g</span>re<span class="diff_add">es</span> → 12.07</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_125">125</td><td ><span class="diff_sub">devices/686f6d6965/humidity/humidity → 79</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_126">126</td><td ><span class="diff_sub">```</span></td><td class="diff_next"></td><td class="diff_header"></td><td ></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__19"><a href="#difflib_chg_to0__20">n</a></td><td class="diff_header"></td><td ></td><td class="diff_next"><a href="#difflib_chg_to0__20">n</a></td><td class="diff_header" id="to0_169">169</td><td ><span class="diff_add">homie/686f6d6965/humidity/$type → humidity</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_170">170</td><td ><span class="diff_add">homie/686f6d6965/humidity/$properties → percentage</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_171">171</td><td ><span class="diff_add">homie/686f6d6965/humidity/percentage → 79</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_172">172</td><td ><span class="diff_add">```</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_173">173</td><td ><span class="diff_add"> </span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_174">174</td><td ><span class="diff_add">A LED strip would look like this. Note that the topic for a range properties is the name of the property followed by a `_` and the index getting updated:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_175">175</td><td ><span class="diff_add"> </span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_176">176</td><td ><span class="diff_add">```</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_177">177</td><td ><span class="diff_add">homie/ledstrip-device/ledstrip/$type → ledstrip</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_178">178</td><td ><span class="diff_add">homie/ledstrip-device/ledstrip/$properties → led[1-3]:settable</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_179">179</td><td ><span class="diff_add">homie/ledstrip-device/ledstrip/led_1 → on</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_180">180</td><td ><span class="diff_add">homie/ledstrip-device/ledstrip/led_2 → off</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_181">181</td><td ><span class="diff_add">homie/ledstrip-device/ledstrip/led_3 → on</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_182">182</td><td ><span class="diff_add">```</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_183">183</td><td ><span class="diff_add"> </span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from0_128">128</td><td >* `<span class="diff_chg">d</span>e<span class="diff_sub">vices</span>` / **`device ID`** / **`node ID`** / **`property`** / `set`: the device can subscribe to this topic if the property is **settable** from the controller, in case of actuators.</td><td class="diff_next"></td><td class="diff_header" id="to0_184">184</td><td >* `<span class="diff_chg">homi</span>e` / **`device ID`** / **`node ID`** / **`property`** / `set`: the device can subscribe to this topic if the property is **settable** from the controller, in case of actuators.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__20"><a href="#difflib_chg_to0__21">n</a></td><td class="diff_header" id="from0_130">130</td><td >Homie is state-based. You don't tell your smarlight to turn on, but you tell it to put it's `on` state to `true`. This especially fits well with MQTT, because of retained message.</td><td class="diff_next"><a href="#difflib_chg_to0__21">n</a></td><td class="diff_header" id="to0_186">186</td><td >Homie is state-based. You don't tell your smar<span class="diff_add">t</span>light to <span class="diff_add">`</span>turn on<span class="diff_add">`</span>, but you tell it to put it's `on` state to `true`. This especially fits well with MQTT, because of retained message.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__21"><a href="#difflib_chg_to0__22">n</a></td><td class="diff_header" id="from0_132">132</td><td >For example, an<span class="diff_chg"> `homie</span>light` device exposing a `light` node would subscribe to `<span class="diff_sub">devices/</span>homielight/light/on/set` and it would receive:</td><td class="diff_next"><a href="#difflib_chg_to0__22">n</a></td><td class="diff_header" id="to0_188">188</td><td >For example, a<span class="diff_add"> `kitche</span>n<span class="diff_chg">-</span>light` device exposing a `light` node would subscribe to `homie<span class="diff_add">/kitchen-</span>light/light/on/set` and it would receive:</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__22"><a href="#difflib_chg_to0__23">n</a></td><td class="diff_header" id="from0_135">135</td><td ><span class="diff_sub">devices/</span>homielight/light/on/set ← true</td><td class="diff_next"><a href="#difflib_chg_to0__23">n</a></td><td class="diff_header" id="to0_191">191</td><td >homie<span class="diff_add">/kitchen-</span>light/light/on/set ← true</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to0__23"><a href="#difflib_chg_to0__top">t</a></td><td class="diff_header" id="from0_141">141</td><td ><span class="diff_sub">devices/</span>homielight/light/on → true</td><td class="diff_next"><a href="#difflib_chg_to0__top">t</a></td><td class="diff_header" id="to0_197">197</td><td >homie<span class="diff_add">/kitchen-</span>light/light/on → true</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_198">198</td><td ><span class="diff_add">```</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_199">199</td><td ><span class="diff_add"> </span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_200">200</td><td ><span class="diff_add">### Broadcast channel</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_201">201</td><td ><span class="diff_add"> </span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_202">202</td><td ><span class="diff_add">Homie defines a broadcast channel, so a controller is able to broadcast a message to every Homie devices:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_203">203</td><td ><span class="diff_add"> </span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_204">204</td><td ><span class="diff_add">* `homie` / `$broadcast` / **`level`**: `level` is an arbitrary broadcast identifier. It must adhere to the [ID format](#id-format).</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_205">205</td><td ><span class="diff_add"> </span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_206">206</td><td ><span class="diff_add">For example, you might want to broadcast an `alert` event with the alert reason as the payload. Devices are then free to react or not. In our case, every buzzer of your home automation system would start buzzing.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_207">207</td><td ><span class="diff_add"> </span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_208">208</td><td ><span class="diff_add">```</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td ></td><td class="diff_next"></td><td class="diff_header" id="to0_209">209</td><td ><span class="diff_add">homie/$broadcast/alert ← Intruder detected</span></td></tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2020 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>
