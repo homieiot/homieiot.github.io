@@ -56,6 +56,7 @@ A software application that speaks MQTT/Homie and acts as a Homie Device.
 | MBMD         | Go       | 4.0           | [GitHub](https://github.com/volkszaehler/mbmd)     | A Linux daemon to fetch and publish data from ModBus devices like power meters and grid inverters|
 |Somecomfort-Home | Python | 4.0          | [GitHub](https://github.com/mjcumming/Somecomfort-Homie) | Homie implementation for Honeywell Total Comfort Thermostats using somecomefort|
 |ISY-Home-Bridge | Python | 4.0           | [GitHub](https://github.com/mjcumming/ISY-Homie_Bridge) | Homie implementation for Universal Devices ISY994 controller|
+| mijia-homie  | Rust     | 4.0           | [GitHub](https://github.com/alsuren/mijia-homie)   | A Linux daemon to fetch and publish data from Xiaomi Mijia v2 Bluetooth temperature and humidity sensors. |
 
 # Controller
 
