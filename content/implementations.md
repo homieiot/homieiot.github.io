@@ -69,6 +69,7 @@ A library can be included in your own project to act as a Controller for Homie d
 |--------------|----------|---------------|-----------------------------------------------------|
 | Homie-Device | Node JS  | 3.0           | [npmjs](https://www.npmjs.com/package/homie-device) |
 | homie-cpp    | C++      | 3.0           | [GitHub](https://github.com/Thalhammer/homie-cpp)   |
+| homie-controller | Rust | 4.0.0         | [crates.io](https://crates.io/crates/homie-controller) |
 
 
 ## Administration
