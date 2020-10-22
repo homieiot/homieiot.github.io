@@ -20,21 +20,21 @@ Find software libraries and full firmware projects for **Devices** in this secti
 
 A library can be included in your own project to act as a Homie device.
 
-| Name         | Language | Homie Version | Website/Download                                   | Description |
-|--------------|----------|---------------|--------------------------------------------|----|
-| homie-cpp       | C++        | 3.0   | [GitHub](https://github.com/Thalhammer/homie-cpp) | Homie C++ header only library |
-| homie-python    | Python     | 2.1   | [GitHub](https://github.com/jalmeroth/homie-python) | Homie 3.0 as PR |
-| Microhomie | µPython   | 4.0.0 | [GitHub](https://github.com/microhomie/microhomie) | MicroPython implementation |
-| homie-ESP32     | C++        | 2.0.1 | [GitHub](https://github.com/craftmetrics/esp32-homie) | An esp-idf component for the Homie convention. |
-| kotlin-homieiot | kotlin     | 3.0.1 | [GitHub](https://github.com/boc-tothefuture/kotlin-homieiot) | Kotlin implementation for the Homie convention  |
-| node-red-homie  | Node-Red   | 2.1   | [GitHub](https://github.com/marvinroger/node-red-contrib-homie) | unmaintained |
-| HomieV3         | Python     | 3.0.1 | [GitHub](https://github.com/mjcumming/HomieV3) | Easily build Homie 3.0 devices |
-| HomieV4         | Python     | 4.0.0 | [GitHub](https://github.com/mjcumming/homie4) | Easily build Homie 4.0 devices |
-| homie_dart      | Dart       | 4.0.0 | [Pub.dev](https://pub.dev/packages/homie_dart) | Implementation for dart (and flutter) |
-| LeifHomieLib    | C++        | 3.0.1 | [GitHub](https://github.com/leifclaesson/leifhomielib) | For ESP8266/ESP32 with Arduino |
+| Name            | Language | Homie Version | Website/Download                                   | Description |
+|-----------------|----------|---------------|----------------------------------------------------|----|
+| homie-cpp       | C++      | 3.0           | [GitHub](https://github.com/Thalhammer/homie-cpp)  | Homie C++ header only library |
+| homie-python    | Python   | 2.1           | [GitHub](https://github.com/jalmeroth/homie-python) | Homie 3.0 as PR |
+| Microhomie      | µPython  | 4.0.0         | [GitHub](https://github.com/microhomie/microhomie) | MicroPython implementation |
+| homie-ESP32     | C++      | 2.0.1         | [GitHub](https://github.com/craftmetrics/esp32-homie) | An esp-idf component for the Homie convention. |
+| kotlin-homieiot | kotlin   | 3.0.1         | [GitHub](https://github.com/boc-tothefuture/kotlin-homieiot) | Kotlin implementation for the Homie convention  |
+| node-red-homie  | Node-Red | 2.1           | [GitHub](https://github.com/marvinroger/node-red-contrib-homie) | unmaintained |
+| HomieV3         | Python   | 3.0.1         | [GitHub](https://github.com/mjcumming/HomieV3)     | Easily build Homie 3.0 devices |
+| HomieV4         | Python   | 4.0.0         | [GitHub](https://github.com/mjcumming/homie4)      | Easily build Homie 4.0 devices |
+| homie_dart      | Dart     | 4.0.0         | [Pub.dev](https://pub.dev/packages/homie_dart)     | Implementation for dart (and flutter) |
+| LeifHomieLib    | C++      | 3.0.1         | [GitHub](https://github.com/leifclaesson/leifhomielib) | For ESP8266/ESP32 with Arduino |
 | node-red-contrib-homie-convention | Node-RED | 4.0.0 | [GitHub](https://flows.nodered.org/node/node-red-contrib-homie-convention)<br>[npm](https://www.npmjs.com/package/node-red-contrib-homie-convention)<br>[Node-RED](https://flows.nodered.org/node/node-red-contrib-homie-convention) | Homie node with auto discovery for node red [forum discussion](https://discourse.nodered.org/t/announce-node-red-contrib-homie-convention)
-| homie-for-esp32 | C++        | 3.0.1 | [GitHub](https://github.com/Clon1998/homie-for-esp32) | For ESP32 with Arduino. Limitations: Broadcast is not supported. |
-| homie-device    | Rust       | 4.0.0 | [crates.io](https://crates.io/crates/homie-device) | Rust library for building Homie 4.0 devices |
+| homie-for-esp32 | C++      | 3.0.1         | [GitHub](https://github.com/Clon1998/homie-for-esp32) | For ESP32 with Arduino. Limitations: Broadcast is not supported. |
+| homie-device    | Rust     | 4.0.0         | [crates.io](https://crates.io/crates/homie-device) | Rust library for building Homie 4.0 devices |
 
 ## Firmware
 
@@ -50,12 +50,12 @@ A full featured firmware, ready to be flashed on a supported device type.
 
 A software application that speaks MQTT/Homie and acts as a Homie Device.
 
-| Name         | Language | Homie Version | Website/Download                                   | Description|
-|--------------|----------|---------------|--------------------------------------------|-----|
-|miflora-mqtt-daemon | Python  | 3.0           | [GitHub](https://github.com/ThomDietrich/miflora-mqtt-daemon) |A linux daemon to fetch and publish data from Mi Flora plant sensors|
-|MBMD | Go  | 4.0           | [GitHub](https://github.com/volkszaehler/mbmd) |A linux daemon to fetch and publish data from ModBus devices like power meters and grid inverters|
-|Somecomfort-Home | Python  | 4.0           | [GitHub](https://github.com/mjcumming/Somecomfort-Homie) |Homie implementation for Honeywell Total Comfort Thermostats using somecomefort|
-|ISY-Home-Brdige | Python  | 4.0           | [GitHub](https://github.com/mjcumming/ISY-Homie_Bridge) |Homie implementation for Universal Devices ISY994 controller|
+| Name         | Language | Homie Version | Website/Download                                   | Description |
+|--------------|----------|---------------|----------------------------------------------------|-------------|
+|miflora-mqtt-daemon | Python | 3.0       | [GitHub](https://github.com/ThomDietrich/miflora-mqtt-daemon) | A Linux daemon to fetch and publish data from Mi Flora plant sensors|
+| MBMD         | Go       | 4.0           | [GitHub](https://github.com/volkszaehler/mbmd)     | A Linux daemon to fetch and publish data from ModBus devices like power meters and grid inverters|
+|Somecomfort-Home | Python | 4.0          | [GitHub](https://github.com/mjcumming/Somecomfort-Homie) | Homie implementation for Honeywell Total Comfort Thermostats using somecomefort|
+|ISY-Home-Bridge | Python | 4.0           | [GitHub](https://github.com/mjcumming/ISY-Homie_Bridge) | Homie implementation for Universal Devices ISY994 controller|
 
 # Controller
 
@@ -65,30 +65,30 @@ Find software libraries, administrative tools and home automation projects for *
 
 A library can be included in your own project to act as a Controller for Homie devices.
 
-| Name         | Language | Homie Version | Website/Download                                   |
-|--------------|----------|---------------|--------------------------------------------|
+| Name         | Language | Homie Version | Website/Download                                    |
+|--------------|----------|---------------|-----------------------------------------------------|
 | Homie-Device | Node JS  | 3.0           | [npmjs](https://www.npmjs.com/package/homie-device) |
-| homie-cpp | C++  | 3.0           | [GitHub](https://github.com/Thalhammer/homie-cpp) |
+| homie-cpp    | C++      | 3.0           | [GitHub](https://github.com/Thalhammer/homie-cpp)   |
 
 
 ## Administration
 
 Administrative tools usually allow you to detect, list and interact with Homie devices.
 
-| Name         | Homie | Download| Implementation notes   |
+| Name         | Homie    | Download      | Implementation notes                       |
 |--------------|----------|---------------|--------------------------------------------|
-| Hodmin      | 2.0      | [Website](https://github.com/rttools/hodmin) |  |
-| Homie-ota    |3.0 + Custom OTA | [GitHub](https://github.com/jpmens/homie-ota) | OTA Server for devices running the homie-esp8266 firmware |
+| Hodmin       | 2.0      | [Website](https://github.com/rttools/hodmin) |             |
+| Homie-ota    | 3.0 + Custom OTA | [GitHub](https://github.com/jpmens/homie-ota) | OTA Server for devices running the homie-esp8266 firmware |
 | HoDD         | 3.0.1 / 4.0.0 | [GitHub](https://github.com/rroemhild/hodd) | Browser based device discovery |
-| FlutterHomie | 3.0.1 | [GitHub](https://github.com/Clon1998/FlutterHomie) | A Flutter App used to discover and manage Homie devices. |
+| FlutterHomie | 3.0.1    | [GitHub](https://github.com/Clon1998/FlutterHomie) | A Flutter App used to discover and manage Homie devices. |
 
 ## Home automation
 
 Home automation software in this list allows you to detect and interact with Homie devices
 and integrate them into your automation plan.
 
-| Name         |Version| Homie | Download| Implementation notes   |
-|--------------|-------|-------|------------------------------------|-------------------|
+| Name         |Version| Homie | Download                           | Implementation notes |
+|--------------|-------|-------|------------------------------------|----------------------|
 | openHAB      |  2.4+ | 3.0   | [Website](https://www.openhab.org) | No node instances |
 | HomeAssistant| WIP   | 2.0   | [Website](https://github.com/nerdfirefighter/HA_Homie/tree/dev) | Module need to be installed into HA installation |
 | Node-RED     | 0.20+ | 4.0.0 | [Node-RED](https://nodered.org)<br>[node-red-contrib-homie-convention](https://flows.nodered.org/node/node-red-contrib-homie-convention) | install node-red-contrib-homie-convention node with auto discovery [forum discussion](https://discourse.nodered.org/t/announce-node-red-contrib-homie-convention)
