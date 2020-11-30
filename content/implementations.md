@@ -72,8 +72,7 @@ A library can be included in your own project to act as a Controller for Homie d
 | homie-cpp    | C++      | 3.0           | [GitHub](https://github.com/Thalhammer/homie-cpp)   |
 | homie-controller | Rust | 4.0.0         | [crates.io](https://crates.io/crates/homie-controller) |
 
-
-## Administration
+## Administration and utilities
 
 Administrative tools usually allow you to detect, list and interact with Homie devices.
 
@@ -83,6 +82,7 @@ Administrative tools usually allow you to detect, list and interact with Homie d
 | Homie-ota    | 3.0 + Custom OTA | [GitHub](https://github.com/jpmens/homie-ota) | OTA Server for devices running the homie-esp8266 firmware |
 | HoDD         | 3.0.1 / 4.0.0 | [GitHub](https://github.com/rroemhild/hodd) | Browser based device discovery |
 | FlutterHomie | 3.0.1    | [GitHub](https://github.com/Clon1998/FlutterHomie) | A Flutter App used to discover and manage Homie devices. |
+| homie-influx | 4.0.0    | [GitHub](https://github.com/alsuren/mijia-homie/blob/master/homie-influx/README.md) | A service to record property value changes to an InfluxDB database, with Homie metadata. |
 
 ## Home automation
 
