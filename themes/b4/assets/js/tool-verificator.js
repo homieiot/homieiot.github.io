@@ -237,7 +237,7 @@ window.homieverificator = () => {
                             }
                             break;
                         case "float":
-                            if (!value.match(/^[\d\.]+$/)) {
+                            if (!value.match(/^[+-]?([0-9]*[.])?[0-9]+$/)) {
                                 errors.push({
                                     line: line,
                                     text: "Property '" + propertyid + "' value of type float contains invalid data: '" + value + "'!"
