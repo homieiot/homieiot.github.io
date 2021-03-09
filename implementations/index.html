@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/implementations/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="/specification/">
+  <link rel="prefetch" href="/implementations/">
+  <link rel="prefetch" href="/extensions/">
+  <link rel="prefetch" href="/get_involved/">
+  <link rel="prefetch" href="/license/">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/js/sw.js')
+      .catch(function(error) {
+        console.log('Registration failed with ' + error);
+      });
+    }
+  </script>
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main "
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main active"
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div class="container mt-2" id="mainContent">
+<div class="row">
+<div class="col-12">
+    <h1 class="animated fadeIn" style="text-align: center; margin-top:40px; font-size:4em;">
+        Implementations
+    </h1>
+    <center class="animated fadeIn mb-4">The Homie convention differentiates between <strong>Devices</strong> and <strong>Controllers</strong>.</center>
+    <div style="display:flex;margin-bottom:40px;justify-content:center;flex-wrap:wrap">
+
+    
+<a href='#device' style="display:block;flex:1 0 10px;text-decoration:none;margin:5px;max-width:430px;min-width:200px;">
+    <table>
+
+        <thead>
+            <tr>
+                <th>Device</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+    An instance of a physical piece of hardware is called a device. For example, a car, an Arduino/ESP8266 or a coffee machine. It publishes <b>Nodes</b> and <b>Properties</b> to the MQTT broker.
+    </td>
+        </tr>
+    </table>
+    
+</a>
+
+
+<div style="font-size:3em;flex:0 0 auto;"><i class="fas icon-hori-ver-arrow"></i></div>
+
+
+    
+<a href='#controller' style="display:block;flex:1 0 10px;text-decoration:none;margin:5px;max-width:430px;min-width:200px;">
+    <table>
+
+        <thead>
+            <tr>
+                <th>Controller</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+   A controller does not announce anything to the MQTT broker, but discovers and interacts with Devices. There can be more than one Controller interacting with the different devices on the same broker.
+    </td>
+        </tr>
+    </table>
+    
+</a>
+
+
+
+</div>
+<h1 id="device">Device</h1>
+<p>Find software libraries and full firmware projects for <strong>Devices</strong> in this section.</p>
+<h2 id="libraries">Libraries</h2>
+<p>A library can be included in your own project to act as a Homie device.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Language</th>
+<th>Homie Version</th>
+<th>Website/Download</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>homie-cpp</td>
+<td>C++</td>
+<td>3.0</td>
+<td><a href="https://github.com/Thalhammer/homie-cpp">GitHub</a></td>
+<td>Homie C++ header only library</td>
+</tr>
+<tr>
+<td>homie-python</td>
+<td>Python</td>
+<td>2.1</td>
+<td><a href="https://github.com/jalmeroth/homie-python">GitHub</a></td>
+<td>Homie 3.0 as PR</td>
+</tr>
+<tr>
+<td>Microhomie</td>
+<td>µPython</td>
+<td>4.0.0</td>
+<td><a href="https://github.com/microhomie/microhomie">GitHub</a></td>
+<td>MicroPython implementation</td>
+</tr>
+<tr>
+<td>homie-ESP32</td>
+<td>C++</td>
+<td>2.0.1</td>
+<td><a href="https://github.com/craftmetrics/esp32-homie">GitHub</a></td>
+<td>An esp-idf component for the Homie convention.</td>
+</tr>
+<tr>
+<td>kotlin-homieiot</td>
+<td>kotlin</td>
+<td>3.0.1</td>
+<td><a href="https://github.com/boc-tothefuture/kotlin-homieiot">GitHub</a></td>
+<td>Kotlin implementation for the Homie convention</td>
+</tr>
+<tr>
+<td>node-red-homie</td>
+<td>Node-Red</td>
+<td>2.1</td>
+<td><a href="https://github.com/marvinroger/node-red-contrib-homie">GitHub</a></td>
+<td>unmaintained</td>
+</tr>
+<tr>
+<td>HomieV3</td>
+<td>Python</td>
+<td>3.0.1</td>
+<td><a href="https://github.com/mjcumming/HomieV3">GitHub</a></td>
+<td>Easily build Homie 3.0 devices</td>
+</tr>
+<tr>
+<td>HomieV4</td>
+<td>Python</td>
+<td>4.0.0</td>
+<td><a href="https://github.com/mjcumming/homie4">GitHub</a></td>
+<td>Easily build Homie 4.0 devices</td>
+</tr>
+<tr>
+<td>homie_dart</td>
+<td>Dart</td>
+<td>4.0.0</td>
+<td><a href="https://pub.dev/packages/homie_dart">Pub.dev</a></td>
+<td>Implementation for dart (and flutter)</td>
+</tr>
+<tr>
+<td>LeifHomieLib</td>
+<td>C++</td>
+<td>3.0.1</td>
+<td><a href="https://github.com/leifclaesson/leifhomielib">GitHub</a></td>
+<td>For ESP8266/ESP32 with Arduino</td>
+</tr>
+<tr>
+<td>node-red-contrib-homie-convention</td>
+<td>Node-RED</td>
+<td>4.0.0</td>
+<td><a href="https://flows.nodered.org/node/node-red-contrib-homie-convention">GitHub</a><!-- raw HTML omitted --><a href="https://www.npmjs.com/package/node-red-contrib-homie-convention">npm</a><!-- raw HTML omitted --><a href="https://flows.nodered.org/node/node-red-contrib-homie-convention">Node-RED</a></td>
+<td>Homie node with auto discovery for node red <a href="https://discourse.nodered.org/t/announce-node-red-contrib-homie-convention">forum discussion</a></td>
+</tr>
+<tr>
+<td>homie-for-esp32</td>
+<td>C++</td>
+<td>3.0.1</td>
+<td><a href="https://github.com/Clon1998/homie-for-esp32">GitHub</a></td>
+<td>For ESP32 with Arduino. Limitations: Broadcast is not supported.</td>
+</tr>
+<tr>
+<td>homie-device</td>
+<td>Rust</td>
+<td>4.0.0</td>
+<td><a href="https://crates.io/crates/homie-device">crates.io</a></td>
+<td>Rust library for building Homie 4.0 devices</td>
+</tr>
+</tbody>
+</table>
+<h2 id="firmware">Firmware</h2>
+<p>A full featured firmware, ready to be flashed on a supported device type.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Language</th>
+<th>Homie Version</th>
+<th>Website/Download</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>homie-esp8266</td>
+<td>C++</td>
+<td>2.0.1</td>
+<td><a href="https://github.com/homieiot/homie-esp8266">GitHub</a></td>
+<td></td>
+</tr>
+<tr>
+<td>homie-esp8266</td>
+<td>C++</td>
+<td>3.0.1</td>
+<td><a href="https://github.com/homieiot/homie-esp8266/tree/develop-v3">GitHub</a></td>
+<td></td>
+</tr>
+<tr>
+<td>ESPEasy</td>
+<td>C++</td>
+<td>4.0.0</td>
+<td><a href="https://github.com/letscontrolit/ESPEasy">GitHub</a></td>
+<td>Easy to use Firmware for ESP8266/ESP32. Choose dev builds like  <code>ESP_Easy_mega-yyyymmdd_dev_ESP8266_4M1M.bin</code> or build your own</td>
+</tr>
+</tbody>
+</table>
+<h2 id="software-projects">Software projects</h2>
+<p>A software application that speaks MQTT/Homie and acts as a Homie Device.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Language</th>
+<th>Homie Version</th>
+<th>Website/Download</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>miflora-mqtt-daemon</td>
+<td>Python</td>
+<td>3.0</td>
+<td><a href="https://github.com/ThomDietrich/miflora-mqtt-daemon">GitHub</a></td>
+<td>A Linux daemon to fetch and publish data from Mi Flora plant sensors</td>
+</tr>
+<tr>
+<td>MBMD</td>
+<td>Go</td>
+<td>4.0</td>
+<td><a href="https://github.com/volkszaehler/mbmd">GitHub</a></td>
+<td>A Linux daemon to fetch and publish data from ModBus devices like power meters and grid inverters</td>
+</tr>
+<tr>
+<td>Somecomfort-Home</td>
+<td>Python</td>
+<td>4.0</td>
+<td><a href="https://github.com/mjcumming/Somecomfort-Homie">GitHub</a></td>
+<td>Homie implementation for Honeywell Total Comfort Thermostats using somecomefort</td>
+</tr>
+<tr>
+<td>ISY-Home-Bridge</td>
+<td>Python</td>
+<td>4.0</td>
+<td><a href="https://github.com/mjcumming/ISY-Homie_Bridge">GitHub</a></td>
+<td>Homie implementation for Universal Devices ISY994 controller</td>
+</tr>
+<tr>
+<td>mijia-homie</td>
+<td>Rust</td>
+<td>4.0</td>
+<td><a href="https://github.com/alsuren/mijia-homie">GitHub</a></td>
+<td>A Linux daemon to fetch and publish data from Xiaomi Mijia v2 Bluetooth temperature and humidity sensors.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="controller">Controller</h1>
+<p>Find software libraries, administrative tools and home automation projects for <strong>Controllers</strong> in this section.</p>
+<h2 id="libraries-1">Libraries</h2>
+<p>A library can be included in your own project to act as a Controller for Homie devices.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Language</th>
+<th>Homie Version</th>
+<th>Website/Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Homie-Device</td>
+<td>Node JS</td>
+<td>3.0</td>
+<td><a href="https://www.npmjs.com/package/homie-device">npmjs</a></td>
+</tr>
+<tr>
+<td>homie-cpp</td>
+<td>C++</td>
+<td>3.0</td>
+<td><a href="https://github.com/Thalhammer/homie-cpp">GitHub</a></td>
+</tr>
+<tr>
+<td>homie-controller</td>
+<td>Rust</td>
+<td>4.0.0</td>
+<td><a href="https://crates.io/crates/homie-controller">crates.io</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="administration-and-utilities">Administration and utilities</h2>
+<p>Administrative tools usually allow you to detect, list and interact with Homie devices.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Homie</th>
+<th>Download</th>
+<th>Implementation notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hodmin</td>
+<td>2.0</td>
+<td><a href="https://github.com/rttools/hodmin">Website</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Homie-ota</td>
+<td>3.0 + Custom OTA</td>
+<td><a href="https://github.com/jpmens/homie-ota">GitHub</a></td>
+<td>OTA Server for devices running the homie-esp8266 firmware</td>
+</tr>
+<tr>
+<td>HoDD</td>
+<td>3.0.1 / 4.0.0</td>
+<td><a href="https://github.com/rroemhild/hodd">GitHub</a></td>
+<td>Browser based device discovery</td>
+</tr>
+<tr>
+<td>FlutterHomie</td>
+<td>3.0.1</td>
+<td><a href="https://github.com/Clon1998/FlutterHomie">GitHub</a></td>
+<td>A Flutter App used to discover and manage Homie devices.</td>
+</tr>
+<tr>
+<td>homie-influx</td>
+<td>4.0.0</td>
+<td><a href="https://github.com/alsuren/mijia-homie/blob/master/homie-influx/README.md">GitHub</a></td>
+<td>A service to record property value changes to an InfluxDB database, with Homie metadata.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="home-automation">Home automation</h2>
+<p>Home automation software in this list allows you to detect and interact with Homie devices
+and integrate them into your automation plan.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Version</th>
+<th>Homie</th>
+<th>Download</th>
+<th>Implementation notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>openHAB</td>
+<td>2.4+</td>
+<td>3.0</td>
+<td><a href="https://www.openhab.org">Website</a></td>
+<td>No node instances</td>
+</tr>
+<tr>
+<td>HomeAssistant</td>
+<td>WIP</td>
+<td>2.0</td>
+<td><a href="https://github.com/nerdfirefighter/HA_Homie/tree/dev">Website</a></td>
+<td>Module need to be installed into HA installation</td>
+</tr>
+<tr>
+<td>Node-RED</td>
+<td>0.20+</td>
+<td>4.0.0</td>
+<td><a href="https://nodered.org">Node-RED</a><!-- raw HTML omitted --><a href="https://flows.nodered.org/node/node-red-contrib-homie-convention">node-red-contrib-homie-convention</a></td>
+<td>install node-red-contrib-homie-convention node with auto discovery <a href="https://discourse.nodered.org/t/announce-node-red-contrib-homie-convention">forum discussion</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="works-with-homie">Works with Homie</h1>
+<p>We recommendent all projects which are implementing Homie to refer to this convention using our label.
+Please refer on websites directly to these labels to use always current version.</p>
+<h2 id="svg-version">SVG version</h2>
+<p><a href="https://homieiot.github.io/"><img src="/img/works-with-homie.svg" alt="works with MQTT Homie" title="[works with MQTT Homie"></a></p>
+<p>HTML snippet:</p>
+<div class="card mb-2">
+    
+    <div class="card-body">
+        <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://homieiot.github.io/&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">object</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;image/svg+xml&#34;</span> <span class="na">data</span><span class="o">=</span><span class="s">&#34;https://homieiot.github.io/img/works-with-homie.png&#34;</span><span class="p">&gt;</span>
+    works with MQTT Homie
+  <span class="p">&lt;/</span><span class="nt">object</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></div>
+    </div>
+    
+</div>
+
+<h2 id="png-version">PNG version</h2>
+<p><a href="https://homieiot.github.io/"><img src="/img/works-with-homie.png" alt="works with MQTT Homie" title="works with MQTT Homie"></a></p>
+<p>HTML snippet:</p>
+<div class="card mb-2">
+    
+    <div class="card-body">
+        <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://homieiot.github.io/&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://homieiot.github.io/img/works-with-homie.png&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;works with MQTT Homie&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></div>
+    </div>
+    
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2020 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>

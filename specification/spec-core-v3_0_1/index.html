@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/specification/spec-core-v3_0_1/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="/specification/">
+  <link rel="prefetch" href="/implementations/">
+  <link rel="prefetch" href="/extensions/">
+  <link rel="prefetch" href="/get_involved/">
+  <link rel="prefetch" href="/license/">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/js/sw.js')
+      .catch(function(error) {
+        console.log('Registration failed with ' + error);
+      });
+    }
+  </script>
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main "
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main "
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div id="mainContent">
+
+
+
+    
+
+
+
+    
+
+
+<div class="container pt-5">
+<div class="row">
+<div class="col-12">      
+<h1 class="animated fadeIn" style="text-align: center">Homie: An MQTT Convention for IoT/M2M</h1>
+</div>
+</div>
+</div>
+
+<div class="md-grid">
+    
+<aside class="toc animated faster zoomIn md-sidebar md-sidebar--secondary d-print-none"
+    data-md-state="lock">
+</aside>
+
+<main class="md-content">
+    <tt class="d-print-none">
+        License: <a title="Creative Commons Attribution 4.0 International Public License" href="/license">CCA 4.0</a><br>
+        Version:
+    
+    
+        
+        [<a title="Released 25. January 2021"
+            href="/specification/spec-core-develop/">develop</a>]
+        
+    
+        
+        [<a title="Released 19. June 2016"
+            href="/specification/spec-core-v1_5_0/">v1.5.0</a>]
+        
+    
+        
+        [<a title="Released 28. April 2017"
+            href="/specification/spec-core-v2_0_0/">v2.0.0</a>]
+        
+    
+        
+        [<a title="Released 24. March 2018"
+            href="/specification/spec-core-v2_0_1/">v2.0.1</a>]
+        
+    
+        
+        [<a title="Released 25. March 2018"
+            href="/specification/spec-core-v3_0_0/">v3.0.0</a>]
+        
+    
+        
+        [v3.0.1]
+        
+    
+        
+        [<a title="Released 18. July 2019"
+            href="/specification/spec-core-v4_0_0/">v4.0.0</a>]
+        
+    <br>
+        
+        Changes: [<a href='/specification/spec-core-v3_0_1-diff/'>Diff to previous</a>]<br>
+        
+        Release date: 27. October 2018
+    <hr>
+    </tt>
+
+    <details class="d-print-none mb-4">
+        <summary>Frequently asked questions</summary>
+        
+<h3>How do I query/request a property?</h3>
+<p>You don&rsquo;t.
+The MQTT protocol does not implement the request-reply but rather the publish-subscribe messaging pattern.
+The Homie convention follows the publish-subscribe principle by publishing data as retained messages on a regular basis.
+You might want to rethink the design of your application - in most scenarios a regularly updated information is sufficient.</p>
+<p><em>Workaround:</em> You are free to implement your own ideas on top of the basic structure of the Homie convention.
+You could either implement a <code>get</code> getter topic and its logic to trigger a value update, or you may exploit the concept of Homie properties and define a settable property to trigger a value update.</p>
+
+
+    </details>
+
+    <h2>Abstract</h2>
+    <p>The Homie convention defines a standardized way of how IoT devices and services announce themselves and their data on the MQTT broker. The Homie convention is thereby a crucial aspect on top of the MQTT protocol for <b>automatic discovery</b>, <b>configuration</b> and <b>usage</b> of devices and services."</p>
+
+    <div class="d-none d-print-block">
+        <h2>License</h2>
+        <p>By exercising the Licensed Rights (defined on https://creativecommons.org/licenses/by/4.0/), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution 4.0 International Public License ("Public License"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.</p>
+    </div>
+    
+    <div class="toc d-lg-none d-print-block">
+        <h2>Table of Contents</h2>
+    </div>
+    
+        <h2 id="mqtt-restrictions">MQTT Restrictions</h2>
+<p>Homie communicates through <a href="http://mqtt.org">MQTT</a> and is hence based on the basic principles of MQTT topic publication and subscription.</p>
+<h3 id="topic-ids">Topic IDs</h3>
+<p>An MQTT topic consists of one or more topic levels, separated by the slash character (<code>/</code>).
+A topic level ID MAY ONLY contain lowercase letters from <code>a</code> to <code>z</code>, numbers from <code>0</code> to <code>9</code> as well as the hyphen character (<code>-</code>).</p>
+<p>A topic level ID MUST NOT start or end with a hyphen (<code>-</code>).
+The special character <code>$</code> is used and reserved for Homie <em>attributes</em>.</p>
+<h3 id="payload">Payload</h3>
+<ul>
+<li>Every MQTT message payload MUST be sent as a UTF-8 encoded string</li>
+<li>The value published as payload MUST be valid for the respective property/attribute type as per the list below</li>
+</ul>
+<h4 id="string">String</h4>
+<ul>
+<li>String types are limited to 268,435,456 characters</li>
+<li>An empty string (&quot;&quot;) is a valid payload</li>
+</ul>
+<h4 id="integer">Integer</h4>
+<ul>
+<li>Integer types are UTF-8 encoded string literal representations of 64-bit signed whole numbers</li>
+<li>Integers range from -9,223,372,036,854,775,808 (-2<!-- raw HTML omitted -->63<!-- raw HTML omitted -->) to 9,223,372,036,854,775,807 (2<!-- raw HTML omitted -->63<!-- raw HTML omitted -->-1)</li>
+<li>The payload may only contain whole numbers and the negation character &ldquo;-&rdquo;. No other characters including spaces (&quot; &ldquo;) are permitted</li>
+<li>A string with just a negation sign (&quot;-&quot;) is not a valid payload</li>
+<li>An empty string (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h4 id="float">Float</h4>
+<ul>
+<li>Float types are UTF-8 encoded string literal representations of 64-bit signed floating point numbers</li>
+<li>Floats range from +/-(2^-1074) to +/-((2 - 2^-52) * 2^1023)</li>
+<li>The payload may only contain whole numbers, the negation character &ldquo;-&rdquo;, the exponent character &ldquo;e&rdquo; or &ldquo;E&rdquo; and the decimal separator &ldquo;.&rdquo;, no other characters, including spaces (&rdquo; &ldquo;) are permitted</li>
+<li>The dot character (&rdquo;.&quot;) is the decimal separator (used if necessary) and may only have a single instance present in the payload</li>
+<li>Representations of numeric concepts such as &ldquo;NaN&rdquo; (Not a Number) and &ldquo;Infinity&rdquo; are not a valid payload</li>
+<li>A string with just a negation sign (&quot;-&quot;) is not a valid payload</li>
+<li>An empty string (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h4 id="percent">Percent</h4>
+<ul>
+<li>Percent properties are set when the <code>$unit</code> attribute is set to <code>%</code></li>
+<li>Percentage values maybe <a href="#integer">Integer</a> or <a href="#float">Float</a></li>
+<li>Percentage values are not restricted to 0-100</li>
+</ul>
+<h4 id="boolean">Boolean</h4>
+<ul>
+<li>Booleans must be converted to the string literals &ldquo;true&rdquo; or &ldquo;false&rdquo;</li>
+<li>Representation is case sensitive, e.g. &ldquo;TRUE&rdquo; or &ldquo;FALSE&rdquo; are not valid payloads.</li>
+<li>An empty string (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h4 id="enum">Enum</h4>
+<ul>
+<li>Enum payloads must be one of the values specified in the format definition of the property</li>
+<li>Enum payloads are case sensitive, e.g. &ldquo;Car&rdquo; will not match a format definition of &ldquo;car&rdquo;</li>
+<li>Payloads should have leading and trailing whitespace removed</li>
+<li>An empty string (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h4 id="color">Color</h4>
+<ul>
+<li>Color payload validity varies depending on the property format definition of either &ldquo;rgb&rdquo; or &ldquo;hsv&rdquo;</li>
+<li>Both payload types contain comma separated whole numbers of differing restricted ranges</li>
+<li>The encoded string may only contain whole numbers and the comma character &ldquo;,&rdquo;, no other characters are permitted, including spaces (&quot; &ldquo;)</li>
+<li>Payloads for type &ldquo;rgb&rdquo; contains 3 comma separated values of numbers with a valid range between 0 and 255. e.g. 100,100,100</li>
+<li>Payloads for type &ldquo;hsv&rdquo; contains 3 comma separated values of numbers. The first number has a range of 0 to 360, the second and third numbers have a range of 0 to 100.  e.g. 300,50,75</li>
+<li>An empty string (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h4 id="datetime">DateTime</h4>
+<ul>
+<li>DateTime payloads must use the ISO <a href="https://en.wikipedia.org/wiki/ISO_8601">8601 format</a>.</li>
+<li>An empty string (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h4 id="duration">Duration</h4>
+<ul>
+<li>Duration payloads must use the <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 duration format</a></li>
+<li>The format is PTHHMMSSS, where:
+P: Required and indicates a duration.
+T: Required and indicates a time.
+H: Indicates hour and is preceded by the number of hours, if hours are specified.
+M: Indicates minutes, and is preceded by the number of minutes, if minutes are specified.
+S: Indicates seconds, preceded by the number of seconds, if seconds are specified.</li>
+<li>An empty string (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h3 id="qos-and-retained-messages">QoS and retained messages</h3>
+<p>The nature of the Homie convention makes it safe about duplicate messages, so the recommended QoS for reliability is <strong>At least once (1)</strong>.
+All messages MUST be sent as <strong>retained</strong>, UNLESS stated otherwise.</p>
+<h3 id="last-will">Last will</h3>
+<p>MQTT only allows one last will message per connection.
+Homie requires the last will (LWT) to set the <code>homie</code> / <code>device ID</code> / <code>$state</code> attribute to the value <strong><code>lost</code></strong>, see <a href="#device-lifecycle">Device Lifecycle</a>.
+As a consequence a new MQTT connection to the broker is required per published device.</p>
+<h2 id="base-topic">Base Topic</h2>
+<p>The root topic in this document is <code>homie/</code>.
+If this root topic does not suit your needs (in case of, e.g., a public broker or because of branding),
+you can choose another.</p>
+<p>Homie controllers must by default perform auto-discovery on the wildcard topic &ldquo;+/+/$homie&rdquo;.
+Controllers are free to restrict discovery to a specific root topic, configurable by the user.</p>
+<h2 id="broadcast-topic">Broadcast Topic</h2>
+<p>Homie defines a broadcast topic, so a controller is able to broadcast a message to all Homie devices:</p>
+<ul>
+<li><code>homie</code> / <code>$broadcast</code> / <strong><code>subtopic</code></strong>: <code>subtopic</code> can be any topic with single or multiple levels.
+It must adhere to the <a href="#topic-ids">ID format</a>.</li>
+</ul>
+<p>For example, you might want to broadcast an <code>alert</code> event with the alert reason as the payload.
+Devices are then free to react or not.
+In our case, every buzzer of your home automation system would start buzzing.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="n">$broadcast</span><span class="o">/</span><span class="n">alert</span> <span class="err">←</span> <span class="s">&#34;Intruder detected&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="n">$broadcast</span><span class="o">/</span><span class="n">security</span><span class="o">/</span><span class="n">alert</span> <span class="err">←</span> <span class="s">&#34;Intruder detected&#34;</span>
+</code></pre></div><p>Any other topic is not part of the Homie convention.</p>
+<h2 id="extensions">Extensions</h2>
+<p>This convention only covers discoverability of devices and its capabilities.
+The aim is to have standardized MQTT topics for all kind of complex scenarios.
+A Homie device may therefore support extensions, defined in separate documents.
+Every extension is identified by a unique ID.</p>
+<p>The ID consists of the reverse domain name and a freely chosen suffix.
+The proper term <code>homie</code> is reserved and must not be used as the suffix or as part of the domain name.</p>
+<p>For example, an organization <code>example.org</code> wanting to add a feature <code>our-feature</code> would choose the extension ID <code>org.example.our-feature</code>.</p>
+<p>Every extension must be published using a license.
+The license can be chosen freely, even proprietary licenses are possible.
+The recommended license is the <a href="https://homieiot.github.io/license">CCA 4.0</a>, since this is the license Homie itself uses.</p>
+<h2 id="implementation-notes">Implementation notes</h2>
+<h3 id="device-initialization">Device initialization</h3>
+<p>Some devices require knowledge of their settable retained properties to function properly.
+The homie convention does not specify how to initialize/recover them e.g. after a power cycle.
+A few common approaches are:</p>
+<ul>
+<li>A device can simply load default values from some configuration file.</li>
+<li>A device can restore its previous state from some local storage. This is the recommended way.</li>
+<li>A device may try to restore its state using MQTT. This can be done by subcribing to the respective channels.
+The controller could set all properties of a device once it becomes <code>ready</code>.
+An alternative way is to recover the state from other MQTT channels that are external to the Homie specification.</li>
+<li>If a property is not critical for correct function, there is no need to recover it.</li>
+</ul>
+<h3 id="device-reconfiguration">Device reconfiguration</h3>
+<p>If a device wishes to modify any of its nodes or properties, it can</p>
+<ul>
+<li>disconnect and reconnect with other values, or</li>
+<li>set <code>$state=init</code> and then modify any of the attributes.</li>
+</ul>
+<p>Devices can remove old properties and nodes by publishing a zero-length payload on the respective topics.</p>
+
+    
+
+    <h2 id="topology">Topology</h2>
+<p><strong>Devices:</strong>
+An instance of a physical piece of hardware is called a <em>device</em>.
+For example, a car, an Arduino/ESP8266 or a coffee machine.</p>
+<p><strong>Nodes:</strong>
+A <em>device</em> can expose multiple <em>nodes</em>.
+Nodes are independent or logically separable parts of a device.
+For example, a car might expose a <code>wheels</code> node, an <code>engine</code> node and a <code>lights</code> node.</p>
+<p>Nodes can be <strong>arrays</strong>.
+For example, instead of creating two <code>lights</code> node to control front lights and back lights independently, we can set the <code>lights</code> node to be an array with two elements.</p>
+<p><strong>Properties:</strong>
+A <em>node</em> can have multiple <em>properties</em>.
+Properties represent basic characteristics of the node/device, often given as numbers or finite states.
+For example the <code>wheels</code> node might expose an <code>angle</code> property.
+The <code>engine</code> node might expose a <code>speed</code>, <code>direction</code> and <code>temperature</code> property.
+The <code>lights</code> node might expose an <code>intensity</code> and a <code>color</code> property.</p>
+<p>Properties can be <strong>settable</strong>.
+For example, you don&rsquo;t want your <code>temperature</code> property to be settable in case of a temperature sensor (like the car example), but to be settable in case of a thermostat.</p>
+<p>Properties can be <strong>retained</strong>.
+A property is retained by default. A non-retained property would be useful for momentary events (door bell pressed).</p>
+<p>A combination of those flags compiles into this list:</p>
+<ul>
+<li><strong>retained + non-settable</strong>: The node publishes a property state (temperature sensor)</li>
+<li><strong>retained + settable</strong>: The node publishes a property state, and can receive commands for the property (by controller or other party) (lamp power)</li>
+<li><strong>non-retained + non-settable</strong>: The node publishes momentary events (door bell pressed)</li>
+<li><strong>non-retained + settable</strong>: The node publishes momentary events, and can receive commands for the property (by controller or other party) (brew coffee)</li>
+</ul>
+<p><strong>Attributes:</strong>
+<em>Devices, nodes and properties</em> have specific <em>attributes</em> characterizing them.
+Attributes are represented by topic identifier starting with <code>$</code>.
+The precise definition of attributes is important for the automatic discovery of devices following the Homie convention.</p>
+<p>Examples: A device might have an <code>IP</code> attribute, a node will have a <code>name</code> attribute, and a property will have a <code>unit</code> attribute.</p>
+<hr>
+<h3 id="base-topic">Base Topic</h3>
+<p>The base topic you will see in the following convention will be <code>homie/</code>.
+If this base topic does not suit your needs (in case of, e.g., a public broker), you can choose another.</p>
+<p>Be aware, that only the default base topic <code>homie/</code> is eligible for automatic discovery by third party controllers.</p>
+<hr>
+<h3 id="devices">Devices</h3>
+<ul>
+<li><code>homie</code> / <strong><code>device ID</code></strong>: this is the base topic of a device.
+Each device must have a unique device ID which adhere to the <a href="#topic-ids">ID format</a>.</li>
+</ul>
+<h4 id="device-attributes">Device Attributes</h4>
+<ul>
+<li><code>homie</code> / <code>device ID</code> / <strong><code>$device-attribute</code></strong>:
+When the MQTT connection to the broker is established or re-established, the device MUST send its attributes to the broker immediately.</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>For example, a device with an ID of <code>super-car</code> that comprises off a <code>wheels</code>, <code>engine</code> and a <code>lights</code> node would send:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$homie</span> <span class="err">→</span> <span class="s">&#34;2.1.0&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$name</span> <span class="err">→</span> <span class="s">&#34;Super car&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$localip</span> <span class="err">→</span> <span class="s">&#34;192.168.0.10&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$mac</span> <span class="err">→</span> <span class="s">&#34;DE:AD:BE:EF:FE:ED&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$fw</span><span class="o">/</span><span class="n">name</span> <span class="err">→</span> <span class="s">&#34;weatherstation-firmware&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$fw</span><span class="o">/</span><span class="n">version</span> <span class="err">→</span> <span class="s">&#34;1.0.0&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$nodes</span> <span class="err">→</span> <span class="s">&#34;wheels,engine,lights[]&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$implementation</span> <span class="err">→</span> <span class="s">&#34;esp8266&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$stats</span><span class="o">/</span><span class="n">interval</span> <span class="err">→</span> <span class="s">&#34;60&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$state</span> <span class="err">→</span> <span class="s">&#34;ready&#34;</span>
+</code></pre></div><h4 id="device-behavior">Device Behavior</h4>
+<p>The <code>$state</code> device attribute represents, as the name suggests, the current state of the device.
+There are 6 different states:</p>
+<ul>
+<li><strong><code>init</code></strong>: this is the state the device is in when it is connected to the MQTT broker, but has not yet sent all Homie messages and is not yet ready to operate.
+This is the first message that must that must be sent.</li>
+<li><strong><code>ready</code></strong>: this is the state the device is in when it is connected to the MQTT broker, has sent all Homie messages and is ready to operate.
+You have to send this message after all other announcements message have been sent.</li>
+<li><strong><code>disconnected</code></strong>: this is the state the device is in when it is cleanly disconnected from the MQTT broker.
+You must send this message before cleanly disconnecting.</li>
+<li><strong><code>sleeping</code></strong>: this is the state the device is in when the device is sleeping.
+You have to send this message before sleeping.</li>
+<li><strong><code>lost</code></strong>: this is the state the device is in when the device has been &ldquo;badly&rdquo; disconnected.
+You must define this message as LWT.</li>
+<li><strong><code>alert</code></strong>: this is the state the device is when connected to the MQTT broker, but something wrong is happening. E.g. a sensor is not providing data and needs human intervention.
+You have to send this message when something is wrong.</li>
+</ul>
+<h4 id="device-statistics">Device Statistics</h4>
+<ul>
+<li><code>homie</code> / <code>device ID</code> / <code>$stats</code>/ <strong><code>$device-statistic-attribute</code></strong>:
+The <code>$stats/</code> hierarchy allows to send device attributes that change over time. The device MUST send them every <code>$stats/interval</code> seconds.</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>For example, our <code>super-car</code> device with <code>$stats/interval</code> value &ldquo;60&rdquo; is supposed to send its current values every 60 seconds:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$stats</span> <span class="err">→</span> <span class="s">&#34;uptime,cputemp,signal,battery&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$stats</span><span class="o">/</span><span class="n">uptime</span> <span class="err">→</span> <span class="s">&#34;120&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$stats</span><span class="o">/</span><span class="n">cputemp</span> <span class="err">→</span> <span class="s">&#34;48&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$stats</span><span class="o">/</span><span class="n">signal</span> <span class="err">→</span> <span class="s">&#34;24&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$stats</span><span class="o">/</span><span class="n">battery</span> <span class="err">→</span> <span class="s">&#34;80&#34;</span>
+</code></pre></div><hr>
+<h3 id="nodes">Nodes</h3>
+<ul>
+<li><code>homie</code> / <code>device ID</code> / <strong><code>node ID</code></strong>: this is the base topic of a node.
+Each node must have a unique node ID on a per-device basis which adhere to the <a href="#topic-ids">ID format</a>.</li>
+</ul>
+<h4 id="node-attributes">Node Attributes</h4>
+<ul>
+<li><code>homie</code> / <code>device ID</code> / <code>node ID</code> / <strong><code>$node-attribute</code></strong>:
+A node attribute MUST be one of these:</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>For example, our <code>engine</code> node would send:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">$name</span> <span class="err">→</span> <span class="s">&#34;Car engine&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">$type</span> <span class="err">→</span> <span class="s">&#34;V8&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">$properties</span> <span class="err">→</span> <span class="s">&#34;speed,direction,temperature&#34;</span>
+</code></pre></div><hr>
+<h3 id="properties">Properties</h3>
+<ul>
+<li>
+<p><code>homie</code> / <code>device ID</code> / <code>node ID</code> / <strong><code>property ID</code></strong>: this is the base topic of a property.
+Each property must have a unique property ID on a per-node basis which adhere to the <a href="#topic-ids">ID format</a>.</p>
+</li>
+<li>
+<p>A property value (e.g. a sensor reading) is directly published to the property topic, e.g.:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">temperature</span> <span class="err">→</span> <span class="s">&#34;21.5&#34;</span>
+</code></pre></div></li>
+</ul>
+<h4 id="property-attributes">Property Attributes</h4>
+<ul>
+<li><code>homie</code> / <code>device ID</code> / <code>node ID</code> / <code>property ID</code> / <strong><code>$property-attribute</code></strong>:
+A property attribute MUST be one of these:</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>For example, our <code>temperature</code> property would send:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">temperature</span><span class="o">/</span><span class="n">$name</span> <span class="err">→</span> <span class="s">&#34;Engine temperature&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">temperature</span><span class="o">/</span><span class="n">$settable</span> <span class="err">→</span> <span class="s">&#34;false&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">temperature</span><span class="o">/</span><span class="n">$unit</span> <span class="err">→</span> <span class="s">&#34;°C&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">temperature</span><span class="o">/</span><span class="n">$datatype</span> <span class="err">→</span> <span class="s">&#34;float&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">temperature</span><span class="o">/</span><span class="n">$format</span> <span class="err">→</span> <span class="s">&#34;-20:120&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">temperature</span> <span class="err">→</span> <span class="s">&#34;21.5&#34;</span>
+</code></pre></div><ul>
+<li><code>homie</code> / <code>device ID</code> / <code>node ID</code> / <code>property ID</code> / <strong><code>set</code></strong>: the device can subscribe to this topic if the property is <strong>settable</strong> from the controller, in case of actuators.</li>
+</ul>
+<p>Homie is state-based.
+You don&rsquo;t tell your smartlight to <code>turn on</code>, but you tell it to put its <code>power</code> state to <code>on</code>.
+This especially fits well with MQTT, because of retained message.</p>
+<p>For example, a <code>kitchen-light</code> device exposing a <code>light</code> node would subscribe to <code>homie/kitchen-light/light/power/set</code> and it would receive:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">power</span><span class="o">/</span><span class="n">set</span> <span class="err">←</span> <span class="s">&#34;true&#34;</span>
+</code></pre></div><p>The device would then turn on the light, and update its <code>power</code> state.
+This provides pessimistic feedback, which is important for home automation.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">power</span> <span class="err">→</span> <span class="s">&#34;true&#34;</span>
+</code></pre></div><h3 id="arrays">Arrays</h3>
+<p>A node can be an array if you&rsquo;ve added <code>[]</code> to its ID in the <code>$nodes</code> device attribute, and if its <code>$array</code> attribute is set to the range of the array.
+Let&rsquo;s consider we want to control independently the front lights and back lights of our <code>super-car</code>. Our <code>lights</code> node array would look like this. Note that the topic for an element of the array node is the name of the node followed by a <code>_</code> and the index getting updated:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$nodes</span> <span class="err">→</span> <span class="s">&#34;lights[]&#34;</span>
+
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights</span><span class="o">/</span><span class="n">$name</span> <span class="err">→</span> <span class="s">&#34;Lights&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights</span><span class="o">/</span><span class="n">$properties</span> <span class="err">→</span> <span class="s">&#34;intensity&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights</span><span class="o">/</span><span class="n">$array</span> <span class="err">→</span> <span class="s">&#34;0-1&#34;</span>
+
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights</span><span class="o">/</span><span class="n">intensity</span><span class="o">/</span><span class="n">$name</span> <span class="err">→</span> <span class="s">&#34;Intensity&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights</span><span class="o">/</span><span class="n">intensity</span><span class="o">/</span><span class="n">$settable</span> <span class="err">→</span> <span class="s">&#34;true&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights</span><span class="o">/</span><span class="n">intensity</span><span class="o">/</span><span class="n">$unit</span> <span class="err">→</span> <span class="s">&#34;%&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights</span><span class="o">/</span><span class="n">intensity</span><span class="o">/</span><span class="n">$datatype</span> <span class="err">→</span> <span class="s">&#34;integer&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights</span><span class="o">/</span><span class="n">intensity</span><span class="o">/</span><span class="n">$format</span> <span class="err">→</span> <span class="s">&#34;0:100&#34;</span>
+
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights_0</span><span class="o">/</span><span class="n">$name</span> <span class="err">→</span> <span class="s">&#34;Back lights&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights_0</span><span class="o">/</span><span class="n">intensity</span> <span class="err">→</span> <span class="s">&#34;0&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights_1</span><span class="o">/</span><span class="n">$name</span> <span class="err">→</span> <span class="s">&#34;Front lights&#34;</span>
+<span class="n">homie</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">lights_1</span><span class="o">/</span><span class="n">intensity</span> <span class="err">→</span> <span class="s">&#34;100&#34;</span>
+</code></pre></div><p>Note that you can name each element in your array individually (&ldquo;Back lights&rdquo;, etc.).</p>
+<hr>
+<h3 id="broadcast-channel">Broadcast Channel</h3>
+<p>Homie defines a broadcast channel, so a controller is able to broadcast a message to every Homie devices:</p>
+<ul>
+<li><code>homie</code> / <code>$broadcast</code> / <strong><code>level</code></strong>: <code>level</code> is an arbitrary broadcast identifier.
+It must adhere to the <a href="#topic-ids">ID format</a>.</li>
+</ul>
+<p>For example, you might want to broadcast an <code>alert</code> event with the alert reason as the payload.
+Devices are then free to react or not.
+In our case, every buzzer of your home automation system would start buzzing.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">homie</span><span class="o">/</span><span class="n">$broadcast</span><span class="o">/</span><span class="n">alert</span> <span class="err">←</span> <span class="s">&#34;Intruder detected&#34;</span>
+</code></pre></div><p>Any other topic is not part of the Homie convention.</p>
+<hr>
+<hr>
+
+</main>
+
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2020 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>

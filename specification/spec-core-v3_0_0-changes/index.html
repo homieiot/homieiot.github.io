@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/specification/spec-core-v3_0_0-changes/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="/specification/">
+  <link rel="prefetch" href="/implementations/">
+  <link rel="prefetch" href="/extensions/">
+  <link rel="prefetch" href="/get_involved/">
+  <link rel="prefetch" href="/license/">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/js/sw.js')
+      .catch(function(error) {
+        console.log('Registration failed with ' + error);
+      });
+    }
+  </script>
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main "
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main "
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div class="container mt-2" id="mainContent">
+<div class="row">
+<div class="col-12">
+    <h1 class="animated fadeIn" style="text-align: center; margin-top:40px; font-size:4em;">
+        
+    </h1>
+    <center class="animated fadeIn mb-4"></center>
+    <table>
+<thead>
+<tr>
+<th>Commit title</th>
+<th>Date</th>
+<th>Hash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Merge pull request #71 from homieiot/rolling-releases</td>
+<td>2018-03-25 08:55:18 +1100</td>
+<td>96c3086</td>
+</tr>
+<tr>
+<td>Add info regarding rolling releases</td>
+<td>2018-03-24 15:18:37 +0100</td>
+<td>c5ad0b2</td>
+</tr>
+<tr>
+<td>Add NodeJS implementation</td>
+<td>2018-03-24 11:25:36 +1100</td>
+<td>110b68f</td>
+</tr>
+<tr>
+<td>Small Readme version fix</td>
+<td>2018-03-21 09:00:35 +1100</td>
+<td>508f6ae</td>
+</tr>
+<tr>
+<td>Fix Versioning.</td>
+<td>2018-03-16 07:55:10 +1100</td>
+<td>09c84e4</td>
+</tr>
+<tr>
+<td>Merge pull request #67 from marvinroger/v2</td>
+<td>2018-03-12 12:01:13 +1100</td>
+<td>0b90e74</td>
+</tr>
+<tr>
+<td>Update Version</td>
+<td>2018-03-12 12:00:15 +1100</td>
+<td>be4d750</td>
+</tr>
+<tr>
+<td>Merge branch &lsquo;redesign&rsquo; into v2</td>
+<td>2018-03-12 11:59:28 +1100</td>
+<td>e25c5dc</td>
+</tr>
+<tr>
+<td>added micropython-homie</td>
+<td>2018-03-12 11:54:43 +1100</td>
+<td>00285cb</td>
+</tr>
+<tr>
+<td>Merge pull request #64 from microhomie/v2</td>
+<td>2018-02-17 21:12:45 +1100</td>
+<td>0a9e88b</td>
+</tr>
+<tr>
+<td>Remove WIP state</td>
+<td>2018-02-12 10:49:02 +0100</td>
+<td>85d6a1f</td>
+</tr>
+<tr>
+<td>Add MicroPython implementation</td>
+<td>2018-02-10 11:56:40 +0100</td>
+<td>d7392c0</td>
+</tr>
+<tr>
+<td>Merge pull request #63 from nerdfirefighter/redesign</td>
+<td>2018-02-03 18:44:59 +1100</td>
+<td>b071d29</td>
+</tr>
+<tr>
+<td>Typo Fix</td>
+<td>2018-02-02 20:46:05 +1100</td>
+<td>25b727f</td>
+</tr>
+<tr>
+<td>Merge pull request #1 from marvinroger/redesign</td>
+<td>2018-02-02 20:43:27 +1100</td>
+<td>71b15b9</td>
+</tr>
+<tr>
+<td>Update Branch</td>
+<td>2018-01-24 12:08:45 +1100</td>
+<td>755b994</td>
+</tr>
+<tr>
+<td>Merge pull request #60 from nerdfirefighter/v2</td>
+<td>2018-01-24 11:50:03 +1100</td>
+<td>0482588</td>
+</tr>
+<tr>
+<td>Update README.md</td>
+<td>2018-01-17 22:10:47 +1100</td>
+<td>97e5ec9</td>
+</tr>
+<tr>
+<td>:bug: Fix typos (#55)</td>
+<td>2018-01-02 15:25:25 +0100</td>
+<td>2247839</td>
+</tr>
+<tr>
+<td>:art: Update ToC</td>
+<td>2017-11-13 16:34:15 +0100</td>
+<td>8d33c76</td>
+</tr>
+<tr>
+<td>:art: Clean up MQTT restrictions (#47)</td>
+<td>2017-11-13 16:30:32 +0100</td>
+<td>3e51c9e</td>
+</tr>
+<tr>
+<td>:art: Cosmetic change</td>
+<td>2017-11-13 16:22:54 +0100</td>
+<td>d977ceb</td>
+</tr>
+<tr>
+<td>:fire: Make properties optional with default (#48)</td>
+<td>2017-11-10 12:12:22 +0100</td>
+<td>a19b81a</td>
+</tr>
+<tr>
+<td>:art: Add TOC</td>
+<td>2017-11-06 15:39:44 +0100</td>
+<td>1b60390</td>
+</tr>
+<tr>
+<td>:sparkles: Add $state topic (#50)</td>
+<td>2017-11-06 15:11:13 +0100</td>
+<td>e355f4e</td>
+</tr>
+<tr>
+<td>:art: Small comestic change</td>
+<td>2017-09-25 22:00:16 +0200</td>
+<td>ddbe9c9</td>
+</tr>
+<tr>
+<td>:sparkles: Add a link to the tags</td>
+<td>2017-09-25 21:57:58 +0200</td>
+<td>e0e3bad</td>
+</tr>
+<tr>
+<td>:memo: Add Node.js implementation (#42)</td>
+<td>2017-09-21 03:22:32 -0700</td>
+<td>e5dcd7e</td>
+</tr>
+<tr>
+<td>:sparkles: Allow possibility to know when a device is fully discovered</td>
+<td>2017-08-11 20:02:20 +0200</td>
+<td>0003daa</td>
+</tr>
+<tr>
+<td>:bug: Fix node attributes array</td>
+<td>2017-08-11 12:55:26 +0200</td>
+<td>90f94c6</td>
+</tr>
+<tr>
+<td>:memo: Make clear all values are string</td>
+<td>2017-08-11 12:40:44 +0200</td>
+<td>11cd9ff</td>
+</tr>
+<tr>
+<td>:sparkles: Add color datatype</td>
+<td>2017-08-11 12:34:47 +0200</td>
+<td>a17b8b3</td>
+</tr>
+<tr>
+<td>:fire: Replace property arrays to node arrays</td>
+<td>2017-08-11 12:14:11 +0200</td>
+<td>460e547</td>
+</tr>
+<tr>
+<td>:memo: Change to a car example</td>
+<td>2017-08-11 11:46:49 +0200</td>
+<td>949ad7d</td>
+</tr>
+<tr>
+<td>:art: Moved statistics to seperate section and made some clarifications, when to send device attributes. (#40)</td>
+<td>2017-08-10 17:43:27 +0200</td>
+<td>7ab2e87</td>
+</tr>
+<tr>
+<td>:fire: $unit should not be mandatory (#39)</td>
+<td>2017-08-08 11:14:43 +0200</td>
+<td>1a5d314</td>
+</tr>
+<tr>
+<td>:art: Improve example presentation with strings and java syntax (#36)</td>
+<td>2017-08-07 18:39:11 +0200</td>
+<td>d81a00a</td>
+</tr>
+<tr>
+<td>:memo: Add example for implementation (#37)</td>
+<td>2017-08-07 17:35:18 +0200</td>
+<td>2be405c</td>
+</tr>
+<tr>
+<td>:fire: $unit should not be mandatory (#35)</td>
+<td>2017-08-07 15:43:33 +0200</td>
+<td>04441dc</td>
+</tr>
+<tr>
+<td>:sparkles: Add optional stats properties</td>
+<td>2017-08-06 14:29:31 +0200</td>
+<td>08666c3</td>
+</tr>
+<tr>
+<td>:art: Rearrange and clarify topology (#31)</td>
+<td>2017-08-06 14:17:35 +0200</td>
+<td>15e8df0</td>
+</tr>
+<tr>
+<td>:memo: Add Motivation chapter (#29)</td>
+<td>2017-08-05 19:16:02 +0200</td>
+<td>1e33ab8</td>
+</tr>
+<tr>
+<td>:memo: Add implementations file</td>
+<td>2017-08-04 16:38:43 +0200</td>
+<td>e87738f</td>
+</tr>
+<tr>
+<td>:fire: Move implementations on another page</td>
+<td>2017-08-04 16:38:00 +0200</td>
+<td>cf92268</td>
+</tr>
+<tr>
+<td>:bug: Fix all examples</td>
+<td>2017-08-04 16:30:26 +0200</td>
+<td>65a91f9</td>
+</tr>
+<tr>
+<td>:bug: Use more adequate examples for nodes</td>
+<td>2017-08-04 16:05:25 +0200</td>
+<td>d10e380</td>
+</tr>
+<tr>
+<td>:sparkles: Add shared array attributes</td>
+<td>2017-08-04 15:58:41 +0200</td>
+<td>b7e1b6b</td>
+</tr>
+<tr>
+<td>:art: Make the $format regex simple</td>
+<td>2017-08-04 15:43:33 +0200</td>
+<td>20c0c13</td>
+</tr>
+<tr>
+<td>:fire: Remove $signal and</td>
+<td>2017-08-04 15:39:59 +0200</td>
+<td>081c5af</td>
+</tr>
+<tr>
+<td>:art: Make the structure more consistent</td>
+<td>2017-08-04 15:33:49 +0200</td>
+<td>4d49797</td>
+</tr>
+<tr>
+<td>:art: Clarify background</td>
+<td>2017-08-04 15:17:09 +0200</td>
+<td>c8a270a</td>
+</tr>
+<tr>
+<td>:art: Make each paragraph line on a newline</td>
+<td>2017-08-04 15:10:11 +0200</td>
+<td>cae1fa5</td>
+</tr>
+<tr>
+<td>:sparkles: Make properties discoverable (#27)</td>
+<td>2017-08-04 13:56:14 +0200</td>
+<td>779093a</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2020 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>

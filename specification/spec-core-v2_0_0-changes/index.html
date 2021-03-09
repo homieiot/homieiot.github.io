@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/specification/spec-core-v2_0_0-changes/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="/specification/">
+  <link rel="prefetch" href="/implementations/">
+  <link rel="prefetch" href="/extensions/">
+  <link rel="prefetch" href="/get_involved/">
+  <link rel="prefetch" href="/license/">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/js/sw.js')
+      .catch(function(error) {
+        console.log('Registration failed with ' + error);
+      });
+    }
+  </script>
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main "
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main "
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div class="container mt-2" id="mainContent">
+<div class="row">
+<div class="col-12">
+    <h1 class="animated fadeIn" style="text-align: center; margin-top:40px; font-size:4em;">
+        
+    </h1>
+    <center class="animated fadeIn mb-4"></center>
+    <table>
+<thead>
+<tr>
+<th>Commit title</th>
+<th>Date</th>
+<th>Hash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add MIT LICENSE - closes #21</td>
+<td>2017-04-28 10:06:43 +0200</td>
+<td>3bcbb01</td>
+</tr>
+<tr>
+<td>:memo: Add link to hodmin cli-client (#19)</td>
+<td>2017-04-17 22:15:19 +0200</td>
+<td>f137694</td>
+</tr>
+<tr>
+<td>:memo: Fix typo in README.md (#20)</td>
+<td>2017-04-17 22:14:44 +0200</td>
+<td>ec0b666</td>
+</tr>
+<tr>
+<td>:memo: Add note that the v2 might still change before final release</td>
+<td>2017-02-13 10:12:11 +0100</td>
+<td>279f55d</td>
+</tr>
+<tr>
+<td>:art: Fix backticks inside table</td>
+<td>2016-11-16 19:52:15 +0100</td>
+<td>bff4047</td>
+</tr>
+<tr>
+<td>:sparkles: Add format of $mac</td>
+<td>2016-11-16 19:51:26 +0100</td>
+<td>c9b402c</td>
+</tr>
+<tr>
+<td>:sparkles: Say <code>$online</code> must be sent last</td>
+<td>2016-11-16 12:33:46 +0100</td>
+<td>23f4f8f</td>
+</tr>
+<tr>
+<td>:sparkles: Add MAC address</td>
+<td>2016-11-16 12:25:31 +0100</td>
+<td>b4ce39d</td>
+</tr>
+<tr>
+<td>:bug: Remove old <code>$ota</code> left-over</td>
+<td>2016-11-16 12:21:42 +0100</td>
+<td>724dfc5</td>
+</tr>
+<tr>
+<td>:sparkles: Add firmware checksum</td>
+<td>2016-11-16 12:19:50 +0100</td>
+<td>284a1f9</td>
+</tr>
+<tr>
+<td>:art: Create a stats device property - fix #8</td>
+<td>2016-10-26 16:40:44 +0200</td>
+<td>2e28318</td>
+</tr>
+<tr>
+<td>:fire: Remove $ota - now implementation specific</td>
+<td>2016-10-24 16:46:27 +0200</td>
+<td>9f8a584</td>
+</tr>
+<tr>
+<td>:sparkles: Make $signal specify an interval too - fix #8</td>
+<td>2016-10-24 15:58:56 +0200</td>
+<td>b5f27f0</td>
+</tr>
+<tr>
+<td>:docs: Add reference to homie-python (#9)</td>
+<td>2016-10-17 22:37:35 +0200</td>
+<td>c181ec0</td>
+</tr>
+<tr>
+<td>Center title</td>
+<td>2016-10-12 19:46:47 +0200</td>
+<td>860b26a</td>
+</tr>
+<tr>
+<td>Add ID format section and cosmetic tweaks</td>
+<td>2016-10-11 13:13:07 +0200</td>
+<td>7f5e582</td>
+</tr>
+<tr>
+<td>Make banner transparent</td>
+<td>2016-10-10 10:23:02 +0200</td>
+<td>b2a1931</td>
+</tr>
+<tr>
+<td>Replace <code>devices</code> base topic by <code>homie</code></td>
+<td>2016-10-03 09:59:09 +0200</td>
+<td>b0ec78f</td>
+</tr>
+<tr>
+<td>Add broadcast channel</td>
+<td>2016-09-07 19:36:51 +0200</td>
+<td>cd84f93</td>
+</tr>
+<tr>
+<td>Add range properties</td>
+<td>2016-08-27 11:17:48 +0200</td>
+<td>2d5e7fe</td>
+</tr>
+<tr>
+<td>Remove useless $nodes</td>
+<td>2016-08-19 14:52:04 +0200</td>
+<td>3bba8d3</td>
+</tr>
+<tr>
+<td>Add $type and $properties to node</td>
+<td>2016-08-19 14:48:23 +0200</td>
+<td>d92ceb9</td>
+</tr>
+<tr>
+<td>Remove old $reset property</td>
+<td>2016-08-16 18:47:49 +0200</td>
+<td>675f0aa</td>
+</tr>
+<tr>
+<td>Cosmetic changes and typo fixes</td>
+<td>2016-08-16 00:31:00 +0200</td>
+<td>d5f4ad1</td>
+</tr>
+<tr>
+<td>Allow implementation-specific properties</td>
+<td>2016-08-15 00:39:32 +0200</td>
+<td>62bc55d</td>
+</tr>
+<tr>
+<td>Fix typos</td>
+<td>2016-08-13 11:31:40 +0200</td>
+<td>14f9d81</td>
+</tr>
+<tr>
+<td>First v2 changes</td>
+<td>2016-08-13 11:26:27 +0200</td>
+<td>658f2b3</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2020 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>
