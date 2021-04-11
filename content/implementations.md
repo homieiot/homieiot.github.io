@@ -110,7 +110,7 @@ HTML snippet:
 
 ```html
 <a href="https://homieiot.github.io/">
-  <object type="image/svg+xml" data="https://homieiot.github.io/img/works-with-homie.png">
+  <object type="image/svg+xml" data="https://homieiot.github.io/img/works-with-homie.svg">
     works with MQTT Homie
   </object>
 </a>
