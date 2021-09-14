@@ -35,6 +35,7 @@ A library can be included in your own project to act as a Homie device.
 | node-red-contrib-homie-convention | Node-RED | 4.0.0 | [GitHub](https://flows.nodered.org/node/node-red-contrib-homie-convention)<br>[npm](https://www.npmjs.com/package/node-red-contrib-homie-convention)<br>[Node-RED](https://flows.nodered.org/node/node-red-contrib-homie-convention) | Homie node with auto discovery for node red [forum discussion](https://discourse.nodered.org/t/announce-node-red-contrib-homie-convention)
 | homie-for-esp32 | C++      | 3.0.1         | [GitHub](https://github.com/Clon1998/homie-for-esp32) | For ESP32 with Arduino. Limitations: Broadcast is not supported. |
 | homie-device    | Rust     | 4.0.0         | [crates.io](https://crates.io/crates/homie-device) | Rust library for building Homie 4.0 devices |
+| homie-mqtt      | Ruby     | 4.0.0         | [GitHub](https://github.com/ccutrer/homie-mqtt) | Ruby library for building Homie 4.0 devices |
 
 ## Firmware
 
