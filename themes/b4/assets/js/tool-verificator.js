@@ -45,8 +45,13 @@ function topic_vec_to_object_tree(devices_out, line_no_out, topic_vec, value, li
     
     for (var t = 1; t < topic_vec.length; t += 1) {
         if (topic_vec.length - 1 == t) {
-            devices_out_stack[topic_vec[t]] = value;
-            line_no_out_stack[topic_vec[t]] = line_no;
+            if(devices_out_stack[topic_vec[t]]) {
+                devices_out_stack[topic_vec[t]]["$$value"] = value;
+                line_no_out_stack[topic_vec[t]]["value"] = line_no;
+            } else {
+                devices_out_stack[topic_vec[t]] = value;
+                line_no_out_stack[topic_vec[t]] = line_no;
+            }
             continue;
         }
         var newChild = devices_out_stack[topic_vec[t]];
@@ -148,7 +153,7 @@ function checkAttributes(type, objectid, object, meta, errors, lineObject) {
     for (let required of meta.required) {
         if (!entries.has(required)) {
             errors.push({
-                line: "n/a",
+                line: -1,
                 text: type + " '" + objectid + "' requires '" + required + "' to be set!"
             });
         }
@@ -201,7 +206,7 @@ window.homieverificator = () => {
     for (let [deviceid, device] of Object.entries(devices)) {
         if (!topicID.test(deviceid)) {
             errors.push({
-                line: "n/a",
+                line: -1,
                 text: "Device ''" + deviceid + "' id does not conform to topic id restriction!"
             });
         }
@@ -308,8 +313,8 @@ window.homieverificator = () => {
         errors.forEach(e => {
             const lines = Number.isInteger(e.line) ? [e.line] : Object.values(e.line);
             for(const l of lines) {
-                v += "<tr><td>" + (l+1) +"</td><td>" + e.text + "</td></tr>";
-                input_vec[l] = "<b style='color:red'>"+input_vec[l]+"</b>";
+                v += "<tr><td>" + (l < 0 ? "n/a" : (l+1)) +"</td><td>" + e.text + "</td></tr>";
+                if(l >= 0) input_vec[l] = "<b style='color:red'>"+input_vec[l]+"</b>";
             }
         });
         out.innerHTML = v + "</tbody></table>";
