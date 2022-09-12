@@ -11,6 +11,7 @@ PygmentsCodeFences = true
   repourl = "https://github.com/homieiot/convention"
   repotitle = "homieiot/convention"
   reposlug = "homieiot/convention"
+  enableGitInfo = true
 
 [permalinks]
 	offline = ":filename"

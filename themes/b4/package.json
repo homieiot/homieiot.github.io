@@ -17,9 +17,9 @@
   "author": "Alan Orth",
   "license": "CC-BY-3.0",
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.5.0",
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "bootstrap": "4.3.1",
-    "clean-css-cli": "^4.2.1",
-    "node-sass": "^4.13.1"
+    "clean-css-cli": "^4.3.0",
+    "node-sass": "^7.0.3"
   }
 }
