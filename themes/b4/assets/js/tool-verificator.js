@@ -125,6 +125,12 @@ function checkAttributes(type, objectid, object, meta, errors, lineObject) {
                     text: type + " '" + objectid + "' doesn't allow '" + key + "' to be set! Must be one of " + Array.from(meta.allowed).join(', ')
                 });
                 continue;
+            } else if(typeof value !== "string") {
+                errors.push({
+                    line: lineObject[key],
+                    text: "The key '" + objectid + "/" + key + "' should not contain children and does not conform to the convention!"
+                });
+                continue;
             }
             // Check value
             const restriction = valueRestrictions.get(key);
@@ -170,7 +176,7 @@ document.addEventListener("MainContentChanged", () => {
     input.addEventListener("change", addLineNumbers);
     addLineNumbers();
     input.innerText = input.innerText;
-    inputbasetopic.addEventListener("focus", () => input.innerText = input.innerText);
+    inputbasetopic.addEventListener("change", () => input.innerText = input.innerText);
 });
 
 window.homieverificator = () => {
@@ -297,11 +303,16 @@ window.homieverificator = () => {
     }
 
     if (errors.length) {
-        var v = "<table><thead><tr><th>Line</th><th>Error message</th></tr></thead><tbody>";
-        errors.forEach(e => v += "<tr><td>" + (e.line+1) +"</td><td>"+e.text + "</td></tr>")
-        out.innerHTML = v + "</tbody></table>";
         validationresult.innerHTML = "<b style='color:red'>Validation failed</b>";
-        errors.filter(e => Number.isInteger(e.line)).forEach(e => input_vec[e.line] = "<b style='color:red'>"+input_vec[e.line]+"</b>");
+        var v = "<table><thead><tr><th>Line</th><th>Error message</th></tr></thead><tbody>";
+        errors.forEach(e => {
+            const lines = Number.isInteger(e.line) ? [e.line] : Object.values(e.line);
+            for(const l of lines) {
+                v += "<tr><td>" + (l+1) +"</td><td>" + e.text + "</td></tr>";
+                input_vec[l] = "<b style='color:red'>"+input_vec[l]+"</b>";
+            }
+        });
+        out.innerHTML = v + "</tbody></table>";
         input.innerHTML = input_vec.join("\n");
     } else {
         var v = "<div class='card'>Devices:<ul>";
