@@ -1,0 +1,29 @@
+name: Website CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install requirements
+        run: |
+            pip install -r requirements.txt
+            wget https://github.com/gohugoio/hugo/releases/download/v0.102.3/hugo_extended_0.102.3_Linux-64bit.deb -O /tmp/hugo.deb
+            sudo dpkg -i /tmp/hugo.deb
+      - name: Build Website
+        run: |
+            ./grabrepos.py
+            hugo
+      - if: github.event_name == 'push' && always()
+        name: Deploy website
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true

@@ -5,3 +5,4 @@ docs/spec-*
 content/specification/
 public/
 resources/
+.hugo_build.lock

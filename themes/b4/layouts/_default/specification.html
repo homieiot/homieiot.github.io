@@ -34,7 +34,7 @@
         [{{ $vpage.Params.version }}]
         {{ else }}
         [<a title="Released {{ $vpage.Params.releasedate }}"
-            href="{{ .URL }}">{{ $vpage.Params.version }}</a>]
+            href="{{ .Permalink }}">{{ $vpage.Params.version }}</a>]
         {{ end }}
     {{ end }}<br>
         {{ $diffFile := printf "%s%s%s" "/specification/spec-core-" (replace $page.Params.version "." "_") "-diff" }}
