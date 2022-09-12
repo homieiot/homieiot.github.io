@@ -15,8 +15,9 @@ Instructions:
 </ul>
 
 <style>
-#homieinput{
+.homieinput{
     background-color: #edeff2;
+    border:none;
 }
 #linenumbers {
     background-color: #cecfd1;
@@ -31,17 +32,15 @@ Instructions:
 }
 </style>
 
+<input type="text" class="w-100 p-3 mb-4 homieinput" id="homiebasetopic" placeholder="Homie basetopic (defaults to homie/)"></input>
 <div id="linenumbers">1<br>2</div>
-<div contenteditable="true"
-data-before="1&#13;&#10;2"
-class="w-100 p-3 mb-4"
-style="min-height:400px;overflow:scroll;white-space: pre;overflow-wrap: normal"
-id="homieinput"
->homie/device123/$homie 4.0
+<div contenteditable="true" data-before="1&#13;&#10;2" class="w-100 p-3 mb-4 homieinput"
+    style="min-height:400px;overflow:scroll;white-space: pre;overflow-wrap: normal"
+    id="homieinput">homie/device123/$homie 4.0
 homie/device123/$name My device
 homie/device123/$state ready
 homie/device123/$extensions 
-<b>homie/device123/$nodes mythermostat</b>
+homie/device123/$nodes mythermostat
 
 homie/device123/mythermostat/$name My thermostat
 homie/device123/mythermostat/$properties temperature

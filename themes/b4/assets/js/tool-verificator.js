@@ -72,11 +72,12 @@ function topic_vec_to_object_tree(devices_out, line_no_out, topic_vec, value, li
  * into an object tree and merges it with the given `obj_out` object.
  * 
  * @param {*} input A string with zero or one whitespace as separator between a topic string and an optional value
+ * @param {*} basetopic The basetopic to use for verification
  * @param {*} line The current line number. Used for error messages
  * @param {*} obj_out The destination object
  * @param {*} line_no_out Outputs the same object tree but with line numbers instead of values
  */
-function topic_value_string_to_object(input, line, obj_out, line_no_out) {
+function topic_value_string_to_object(input, basetopic, line, obj_out, line_no_out) {
     const i = input.indexOf(" ");
     if (i == -1) {
         if (input.length)
@@ -89,8 +90,8 @@ function topic_value_string_to_object(input, line, obj_out, line_no_out) {
     const topicvalue = input.substring(i + 1).trim();
     const topic_vec = topicname.split("/");
 
-    if (!topic_vec.length || topic_vec[0] != "homie") {
-        return { line, text: "Must begin with homie/" };
+    if (!topic_vec.length || (topic_vec[0] != basetopic && topic_vec[0] != basetopic+"/")) {
+        return { line, text: "Must begin with " + basetopic };
     }
 
     if (topic_vec.length > 2 && topic_vec.length < 6) {
@@ -162,14 +163,18 @@ function addLineNumbers() {
 document.addEventListener("MainContentChanged", () => {
     const input = document.getElementById('homieinput');
     if (!input) return;
+    const inputbasetopic = document.getElementById('homiebasetopic');
+    if (!inputbasetopic) return;
     // Remove all html markups
     input.addEventListener("focus", () => input.innerText = input.innerText);
     input.addEventListener("change", addLineNumbers);
     addLineNumbers();
     input.innerText = input.innerText;
+    inputbasetopic.addEventListener("focus", () => input.innerText = input.innerText);
 });
 
 window.homieverificator = () => {
+    const basetopic = document.getElementById('homiebasetopic').value.split("/")[0];
     const input = document.getElementById('homieinput');
     const input_vec = input.innerText.split("\n");
     const out = document.getElementById("homieoutput");
@@ -180,7 +185,7 @@ window.homieverificator = () => {
     var lineMap = {};
     
     for (var line = 0; line < input_vec.length; line += 1) {
-        const r = topic_value_string_to_object(input_vec[line], line, devices, lineMap);
+        const r = topic_value_string_to_object(input_vec[line], (basetopic.length > 0 ? basetopic : "homie"), line, devices, lineMap);
         if (r) errors.push(r);
     }
     
@@ -296,8 +301,8 @@ window.homieverificator = () => {
         errors.forEach(e => v += "<tr><td>" + (e.line+1) +"</td><td>"+e.text + "</td></tr>")
         out.innerHTML = v + "</tbody></table>";
         validationresult.innerHTML = "<b style='color:red'>Validation failed</b>";
-        errors.filter(e => Number.isInteger(e.line)).forEach(e => value[e.line] = "<b style='color:red'>"+value[e.line]+"</b>");
-        input.innerHTML = value.join("\n");
+        errors.filter(e => Number.isInteger(e.line)).forEach(e => input_vec[e.line] = "<b style='color:red'>"+input_vec[e.line]+"</b>");
+        input.innerHTML = input_vec.join("\n");
     } else {
         var v = "<div class='card'>Devices:<ul>";
         for (let [deviceid, device] of Object.entries(devices)) {
