@@ -3,6 +3,8 @@ name: Website CI
 on:
   push:
     branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
   build:
@@ -11,13 +13,14 @@ jobs:
       - name: Install requirements
         run: |
             pip install -r requirements.txt
-            wget https://github.com/gohugoio/hugo/releases/download/v0.102.3/hugo_extended_0.102.3_Linux-64bit.deb -O hugo.deb
-            dpkg -i hugo.deb
+            wget https://github.com/gohugoio/hugo/releases/download/v0.102.3/hugo_extended_0.102.3_Linux-64bit.deb -O /tmp/hugo.deb
+            dpkg -i /tmp/hugo.deb
       - name: Build Website
         run: |
             ./grabrepos.py
             hugo
-      - name: deploy
+      - if: github.event_name == 'push' && always()
+        name: Deploy website
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
