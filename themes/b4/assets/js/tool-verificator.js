@@ -271,7 +271,7 @@ window.homieverificator = () => {
                                 });
                                 continue;
                             }
-                            if (!value.match(new RegExp("^\\b(" + format.split(",").join("|") + ")\\b$", ""))) {
+                            if (format.split(",").indexOf(value) == -1) {
                                 errors.push({
                                     line: line,
                                     text: "Property '" + propertyid + "' value of type enum contains invalid data: '" + value + "'. Must be one of '" + format + "'!"
