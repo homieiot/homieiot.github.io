@@ -15,7 +15,7 @@ jobs:
         run: |
             pip install -r requirements.txt
             wget https://github.com/gohugoio/hugo/releases/download/v0.102.3/hugo_extended_0.102.3_Linux-64bit.deb -O /tmp/hugo.deb
-            dpkg -i /tmp/hugo.deb
+            sudo dpkg -i /tmp/hugo.deb
       - name: Build Website
         run: |
             ./grabrepos.py
