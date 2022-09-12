@@ -80,10 +80,10 @@
     </script>
 
     <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
-      {{- $urle := $.URL -}}
+      {{- $urle := $.Permalink -}}
       {{- range .Site.Menus.main -}}
       {{- $menuURL := .URL | absLangURL }}
-      <a href="{{ $menuURL }}" role="button" class="btn btn-main {{ if eq ($.URL|lower) (.URL|lower) -}}active{{- end -}}"
+      <a href="{{ $menuURL }}" role="button" class="btn btn-main {{ if eq ($.Permalink|lower) (.URL|lower) -}}active{{- end -}}"
         title="{{ .Title }}">{{ .Name }}</a>
       {{- end }}
     </nav>
