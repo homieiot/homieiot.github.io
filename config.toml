@@ -12,6 +12,8 @@ PygmentsCodeFences = true
   repotitle = "homieiot/convention"
   reposlug = "homieiot/convention"
   enableGitInfo = true
+[markup.goldmark.renderer]
+  unsafe = true
 
 [permalinks]
 	offline = ":filename"
