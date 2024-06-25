@@ -1,4 +1,4 @@
-baseURL = "https://homieiot.github.io"
+baseURL = "http://127.0.0.1:3000/homieiot.github.io/public/"
 languageCode = "en-us"
 title = "The Homie convention"
 description = "An MQTT convention"
@@ -12,6 +12,8 @@ PygmentsCodeFences = true
   repotitle = "homieiot/convention"
   reposlug = "homieiot/convention"
   enableGitInfo = true
+[markup.goldmark.renderer]
+  unsafe = true
 
 [permalinks]
 	offline = ":filename"
