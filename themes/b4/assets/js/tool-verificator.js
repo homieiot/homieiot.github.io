@@ -112,12 +112,12 @@ function topic_value_string_to_object(input, basetopic, line, obj_out, line_no_o
  * Check all attributes of an "object". The type ("Device","Node","Property") must be given
  * and the meta information (deviceMeta, nodeMeta or propertyMeta). "errors" is used as an output array.
  */
-function checkAttributes(type, objectid, object, meta, errors, lineObject) {
+function checkAttributes(type, objectid, object, meta, errors, warnings, lineObject) {
     for (let [key, value] of Object.entries(object)) {
         if (key.startsWith("$")) {
             // Check for deprecated
             if (meta.deprecated.has(key)) {
-                errors.push({
+                warnings.push({
                     line: lineObject[key],
                     text: type + " '" + objectid + "' has the deprecated attribute '" + key + "' set! Please check with the newest version of the convention."
                 });
@@ -178,6 +178,7 @@ document.addEventListener("MainContentChanged", () => {
     if (!inputbasetopic) return;
     // Remove all html markups
     input.addEventListener("focus", () => input.innerText = input.innerText);
+    input.addEventListener("blur", () => input.innerText = input.innerText);
     input.addEventListener("change", addLineNumbers);
     addLineNumbers();
     input.innerText = input.innerText;
@@ -192,6 +193,7 @@ window.homieverificator = () => {
     const validationresult = document.getElementById("validationresult");
 
     var errors = [];
+    var warnings = [];
     var devices = {};
     var lineMap = {};
     
@@ -211,7 +213,16 @@ window.homieverificator = () => {
             });
         }
 
-        checkAttributes("Device", deviceid, device, deviceMeta, errors, lineMap[deviceid]);
+        checkAttributes("Device", deviceid, device, deviceMeta, errors, warnings, lineMap[deviceid]);
+
+        if((device["$extensions"] || "").trim().length != 0) {
+            warnings.push({
+                line: lineMap[deviceid]["$extensions"],
+                text: "Device ''" + deviceid + "' has extensions enabled, validation might be inaccurate."
+            });
+        }
+
+        let valid_nodes = new Set((device["$nodes"]||"").split(",").map(v=>v.trim()));
 
         // Validate nodes 
         for (let [nodeid, node] of Object.entries(device)) {
@@ -219,12 +230,21 @@ window.homieverificator = () => {
 
             if (!topicID.test(nodeid)) {
                 errors.push({
-                    line: 0,
+                    line: -1,
                     text: "Node '" + nodeid + "' id does not conform to topic id restriction!"
                 });
             }
+            if(!valid_nodes.has(nodeid)) {
+                errors.push({
+                    line: -1,
+                    text: "Node '" + nodeid + "' is not published by its device!"
+                });
+            }
+            valid_nodes.delete(nodeid);
 
-            checkAttributes("Node", nodeid, node, nodeMeta, errors, lineMap[deviceid][nodeid]);
+            checkAttributes("Node", nodeid, node, nodeMeta, errors, warnings, lineMap[deviceid][nodeid]);
+
+            let valid_properties = new Set((node["$properties"]||"").split(",").map(v=>v.trim()));
 
             // Validate properties 
             for (let [propertyid, property] of Object.entries(node)) {
@@ -232,12 +252,19 @@ window.homieverificator = () => {
 
                 if (!topicID.test(propertyid)) {
                     errors.push({
-                        line: 0,
-                        text: "Property '" + propertyid + "' id does not conform to topic id restriction!"
+                        line: -1,
+                        text: "Property '" + propertyid + "' of node '" + deviceid + "/" + nodeid + "' id does not conform to topic id restriction!"
                     });
                 }
+                if(!valid_properties.has(propertyid)) {
+                    errors.push({
+                        line: -1,
+                        text: "Property '" + propertyid + "' of node '" + deviceid + "/" + nodeid + "' is not published by node!"
+                    });
+                }
+                valid_properties.delete(propertyid);
 
-                checkAttributes("Property", propertyid, property, propertyMeta, errors, lineMap[deviceid][nodeid][propertyid]);
+                checkAttributes("Property", propertyid, property, propertyMeta, errors, warnings, lineMap[deviceid][nodeid][propertyid]);
 
                 if (property["$$value"]) {
                     const line = lineMap[deviceid][nodeid][propertyid].value;
@@ -304,11 +331,40 @@ window.homieverificator = () => {
                     }
                 }
             }
+
+            for(let id of valid_properties) {
+                errors.push({
+                    line: -1,
+                    text: "Property '" + id + "' of node '" + deviceid + "/" + nodeid + "' is not defined!"
+                });
+            }
+        }
+
+        for(let id of valid_nodes) {
+            errors.push({
+                line: -1,
+                text: "Node '" + id + "' of device '" + deviceid + "' is not defined!"
+            });
         }
     }
 
+    out.innerHTML = "";
+
+    if (warnings.length) {
+        var v = "<table><thead><tr><th>Line</th><th>Warning message</th></tr></thead><tbody>";
+        warnings.forEach(e => {
+            const lines = Number.isInteger(e.line) ? [e.line] : Object.values(e.line);
+            for(const l of lines) {
+                v += "<tr><td>" + (l < 0 ? "n/a" : (l+1)) +"</td><td>" + e.text + "</td></tr>";
+                if(l >= 0) input_vec[l] = "<b style='color:orange'>"+input_vec[l]+"</b>";
+            }
+        });
+        v += "</tbody></table>";
+        out.innerHTML = out.innerHTML + v;
+        input.innerHTML = input_vec.join("\n");
+    }
+
     if (errors.length) {
-        validationresult.innerHTML = "<b style='color:red'>Validation failed</b>";
         var v = "<table><thead><tr><th>Line</th><th>Error message</th></tr></thead><tbody>";
         errors.forEach(e => {
             const lines = Number.isInteger(e.line) ? [e.line] : Object.values(e.line);
@@ -317,7 +373,8 @@ window.homieverificator = () => {
                 if(l >= 0) input_vec[l] = "<b style='color:red'>"+input_vec[l]+"</b>";
             }
         });
-        out.innerHTML = v + "</tbody></table>";
+        v += "</tbody></table>";
+        out.innerHTML = out.innerHTML + v;
         input.innerHTML = input_vec.join("\n");
     } else {
         var v = "<div class='card'>Devices:<ul>";
@@ -336,7 +393,9 @@ window.homieverificator = () => {
             v += "</ul></li>";
         }
         v += "</ul></div>";
-        out.innerHTML = v;
-        validationresult.innerHTML = "<b style='color:green'>Validation successful</b>";
+        out.innerHTML = out.innerHTML + v;
     }
+    if(errors.length != 0 ) validationresult.innerHTML = "<b style='color:red'>Validation failed</b>";
+    else if(warnings.length != 0 ) validationresult.innerHTML = "<b style='color:orange'>Validation successful with warnings</b>";
+    else validationresult.innerHTML = "<b style='color:green'>Validation successful</b>";
 }
