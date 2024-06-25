@@ -1,4 +1,4 @@
-baseURL = "http://127.0.0.1:3000/homieiot.github.io/public/"
+baseURL = "https://homieiot.github.io"
 languageCode = "en-us"
 title = "The Homie convention"
 description = "An MQTT convention"
