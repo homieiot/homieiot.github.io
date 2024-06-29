@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Lang }}">
-
-<head>
+  <head>
+  <base href="{{ .Site.BaseURL }}">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/img/homie-logo.png">
@@ -11,26 +11,16 @@
   {{- $style := resources.Get "/scss/all.scss" | toCSS | minify -}}
   <link href="{{- $style.Permalink | safeHTMLAttr -}}" rel="stylesheet">
 
-{{ $tocjs := resources.Get "/js/toc.js" -}}
 {{ $ajaxclicksjs := resources.Get "/js/main.js" -}}
 {{ $tool := resources.Get "/js/tool-verificator.js" -}}
-{{- $js := slice $tocjs $ajaxclicksjs $tool | resources.Concat "js/main.js" | minify }}
+{{- $js := slice $ajaxclicksjs $tool | resources.Concat "js/main.js" | minify }}
     <script type='text/javascript' src="{{- $js.Permalink -}}"></script>
 
-  <link rel="prefetch" href="/specification/">
-  <link rel="prefetch" href="/implementations/">
-  <link rel="prefetch" href="/extensions/">
-  <link rel="prefetch" href="/get_involved/">
-  <link rel="prefetch" href="/license/">
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/js/sw.js')
-      .catch(function(error) {
-        console.log('Registration failed with ' + error);
-      });
-    }
-  </script>
+  <link rel="prefetch" href="specification/">
+  <link rel="prefetch" href="implementations/">
+  <link rel="prefetch" href="extensions/">
+  <link rel="prefetch" href="get_involved/">
+  <link rel="prefetch" href="license/">
 </head>
 
 <body>
