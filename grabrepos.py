@@ -29,47 +29,6 @@ def readyaml():
             print(exc)
             exit(-1)
 
-# Split a markdown content by its 2nd level headings and return the array
-def split_by_headings(data):
-    sections = []
-    index = 0
-    while True:
-        index = data.find("\n## ", index)
-        if index == -1:
-            break
-        nextindex = data.find("\n## ", index+1)
-        if nextindex == -1:
-            sections.append(data[index:])
-            break
-        else:
-            sections.append(data[index:nextindex])
-        index = nextindex
-    return sections
-        
-# Filter the given array with markdown 2nd level headings.
-# Keep everything that is mentioned in "keepsections".
-def filter_by_headings(sections, keepsections):
-    newsections = []
-    if len(keepsections)==0: return newsections
-    for section in sections:
-        for keep in keepsections:
-            if section.startswith("\n## "+keep):
-                newsections.append(section.strip())
-    return newsections
-
-def remaining_headings(sections, removesections):
-    newsections = []
-    if len(removesections)==0: return newsections
-    for section in sections:
-        found = False
-        for keep in removesections:
-            if section.startswith("\n## "+keep):
-                found = True
-        if not found:
-            newsections.append(section.strip())
-                
-    return newsections
-
 # Create a destination filename, given the repo name ("core","ota" etc),
 # and the tag name ("master","v2.0").
 def dest_filepath(reponame, refname):
@@ -77,13 +36,7 @@ def dest_filepath(reponame, refname):
     return "spec-"+reponame+"-"+refname.replace(".","_")
 
 # Copy files to "docs/". Filter sections of file first. Add generated header to file.
-def write_file(reponame, targetdir, srcdir, keepsections, filename, data, tagname, date, absurl):
-    sections = split_by_headings(data)
-    sections = filter_by_headings(sections, keepsections)
-
-    if len(sections)<=0:
-        return
-
+def write_file(reponame, targetdir, srcdir, filename, data, tagname, date, absurl):
     # Generate version select box html code
     # Hide page in the left nav panel if not the latest
     header = "---\n"
@@ -96,34 +49,12 @@ def write_file(reponame, targetdir, srcdir, keepsections, filename, data, tagnam
     header += "---\n"
 
     # New file content and filename
-    filecontent = header + "\n".join(sections)
+    filecontent = header + "\n" + data
     filepath = os.path.join(targetdir,dest_filepath(reponame, tagname)+".md")
     
     with open(filepath, "w") as text_file:
         text_file.write(filecontent)
     print("Wrote file: "+filepath)
-
-def write_preface(tagname,reponame,repourl,localpath,keepsections):
-    filepath = os.path.join(localpath,"convention.md")
-    with open(filepath, 'r') as myfile:
-        localdata = myfile.read() + "\n"
-        sections = split_by_headings(localdata)
-        sections = remaining_headings(sections, keepsections)
-        absurl = repourl.replace(".git","")+"/tree/" + tagname
-        header = "---\n"
-        header += "path: "+absurl+"\n"
-        header += "source: convention.md\n"
-        header += "convention: "+reponame+"\n"
-        header += "preface: true\n"
-        header += "---\n"
-        filecontent = header + "\n".join(sections)
-        filepath = os.path.join(targetdir,"preface",dest_filepath(reponame, tagname)+".md")
-        prefacedir = os.path.join(targetdir,"preface")
-        if not os.path.exists(prefacedir):
-            os.makedirs(prefacedir)
-        with open(filepath, "w") as text_file:
-            text_file.write(filecontent)
-            print("Wrote file: "+filepath)
 
 def write_diff_file(targetdir,reponame,ref,nextref):
     outputfilename = dest_filepath(reponame, nextref.name)+"-diff.html"
@@ -146,7 +77,7 @@ def write_diff_file(targetdir,reponame,ref,nextref):
 
 # Clone a repository url (or update repo), checkout all tags.
 # Call copy_files for each checked out working directory
-def checkout_repo(targetdir, reponame, repourl, filepattern, checkoutdir, keepsections, update_repos):
+def checkout_repo(targetdir, reponame, repourl, checkoutdir, update_repos):
     localpath = os.path.join(checkoutdir,reponame)
     if os.path.exists(localpath):
         repo = Repo(localpath)
@@ -157,6 +88,9 @@ def checkout_repo(targetdir, reponame, repourl, filepattern, checkoutdir, keepse
         print("Clone "+reponame+" to "+localpath)
         repo = Repo.clone_from(repourl, localpath)
 
+    if not os.path.exists(targetdir):
+        os.makedirs(targetdir)
+
     # Add "develop" and all tags
     refs = []
     refs.append(repo.heads.develop)
@@ -165,30 +99,25 @@ def checkout_repo(targetdir, reponame, repourl, filepattern, checkoutdir, keepse
     # Get all preface sections from the latest develop version
     repo.head.reference = repo.heads.develop
     repo.head.reset(index=True, working_tree=True)
-    write_preface(repo.head.reference.name,reponame,repourl,localpath,keepsections)
 
     g = Git(localpath)
     # Combine all files of a repo and create one specificaton file out of it
     for ref in refs:
         repo.head.reference = ref
         repo.head.reset(index=True, working_tree=True)
-        data = ""
-        mainfile = ""
-        for filename in fnmatch.filter(os.listdir(localpath), filepattern):
-            filepath = os.path.join(localpath,filename)
-            with open(filepath, 'r') as myfile:
-                localdata = myfile.read() + "\n"
-                # Check if the file has relevant sections
-                sections = split_by_headings(localdata)
-                sections = filter_by_headings(sections, keepsections)
-                if len(sections)<=0:
-                    continue
-                data += localdata
-                mainfile = filename
+        mainfile = "README.md"
+        if os.path.exists(os.path.join(localpath,"convention.md")):
+            mainfile = "convention.md"
+        with open(os.path.join(localpath,mainfile), 'r') as myfile:
+            data = myfile.read() + "\n"
+        # Remove everything before the first minor heading to avoid headers and (on the website) broken images
+        data = data[data.find('##'):]
+        # Add an artificial level 1 heading to fix numbering of topics
+        data = "#\n\n" + data
         tagname = ref.name
         date = ref.commit.committed_datetime
         absurl = repourl.replace(".git","")+"/tree/"+ref.name
-        write_file(reponame, targetdir, localpath, keepsections, mainfile, data, tagname, date, absurl)
+        write_file(reponame, targetdir, localpath, mainfile, data, tagname, date, absurl)
 
     refs = []
     refs.extend(repo.tags)
@@ -229,4 +158,4 @@ if os.path.exists(targetdir):
     os.makedirs(targetdir)
 for entry in controlfile['specifications']:
     if not 'disabled' in entry or not entry['disabled']:
-        checkout_repo(targetdir, entry['name'], entry['repo'], entry['filepattern'],checkoutdir, entry['keepsections'], update_repos)
+        checkout_repo(targetdir, entry['name'], entry['repo'], checkoutdir, update_repos)

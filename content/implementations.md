@@ -103,7 +103,7 @@ Please refer on websites directly to these labels to use always current version.
 
 ## SVG version
 
-[![works with MQTT Homie](/img/works-with-homie.svg "[works with MQTT Homie")](https://homieiot.github.io/)
+[![works with MQTT Homie](img/works-with-homie.svg "[works with MQTT Homie")](https://homieiot.github.io/)
 
 HTML snippet:
 
@@ -121,7 +121,7 @@ HTML snippet:
 
 ## PNG version
 
-[![works with MQTT Homie](/img/works-with-homie.png "works with MQTT Homie")](https://homieiot.github.io/)
+[![works with MQTT Homie](img/works-with-homie.png "works with MQTT Homie")](https://homieiot.github.io/)
 
 HTML snippet:
 
