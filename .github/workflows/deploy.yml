@@ -5,6 +5,9 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
+  repository_dispatch:
+    types: [website-deploy]
+  workflow_dispatch:
 
 jobs:
   build:
