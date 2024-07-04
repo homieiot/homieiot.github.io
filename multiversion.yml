@@ -7,18 +7,13 @@ updaterepos: false
 specifications:
    - name: Core
      repo: https://github.com/homieiot/convention.git
-     filepattern: '*.md'
-     keepsections: ['Topology','Convention','Arrays','Broadcast Channel']
    - name: OTA
      repo: https://github.com/homieiot/convention-ota.git
-     filepattern: 'convention.md'
      disabled: true
    - name: property_types
      repo: https://github.com/homieiot/convention-types.git
-     filepattern: 'convention.md'
      disabled: true
    - name: statistics
      repo: https://github.com/homieiot/convention-stats.git
-     filepattern: 'convention.md'
      disabled: true
 
