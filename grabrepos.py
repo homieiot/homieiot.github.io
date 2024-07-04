@@ -33,11 +33,10 @@ def dest_filepath(reponame, refname):
     return "spec-"+reponame+"-"+refname.replace(".","_")
 
 # Copy files to "docs/". Filter sections of file first. Add generated header to file.
-def write_file(reponame, targetdir, srcdir, filename, data, tagname, date, absurl):
+def write_file(reponame, targetdir, filename, data, tagname, date):
     # Generate version select box html code
     # Hide page in the left nav panel if not the latest
     header = "---\n"
-    header += "path: "+absurl+"\n"
     header += "source: "+filename+"\n"
     header += "version: "+tagname+"\n"
     header += "releasedate: "+date.strftime("%d. %B %Y")+"\n"
@@ -114,7 +113,9 @@ def checkout_repo(targetdir, reponame, repourl, checkoutdir, update_repos):
         tagname = ref.name
         date = ref.commit.committed_datetime
         absurl = repourl.replace(".git","")+"/tree/"+ref.name
-        write_file(reponame, targetdir, localpath, mainfile, data, tagname, date, absurl)
+        write_file(reponame, targetdir, mainfile, data, tagname, date)
+    
+    shutil.copyfile(os.path.join(targetdir,dest_filepath(reponame, "develop")+".md"), os.path.join(targetdir,"_index.md"))
 
     refs = []
     refs.extend(repo.tags)

@@ -22,6 +22,7 @@
     
 <aside class="toc animated faster zoomIn md-sidebar md-sidebar--secondary d-print-none"
     data-md-state="lock">
+    {{ replace .TableOfContents `href="#` (printf `href="%s#` .Permalink) | safeHTML }}
 </aside>
 
 <main class="md-content">
