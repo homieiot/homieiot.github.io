@@ -12,10 +12,7 @@
 # Author: David Graeff <david.graeff@web.de>
 
 import yaml
-import io
 import os
-import re
-import fnmatch
 import shutil
 import difflib
 from git import Repo,Git
@@ -23,7 +20,7 @@ from git import Repo,Git
 def readyaml():
     with open("multiversion.yml", 'r') as stream:
         try:
-            content = yaml.load(stream)
+            content = yaml.load(stream, Loader=yaml.CLoader)
             return content
         except yaml.YAMLError as exc:
             print(exc)
