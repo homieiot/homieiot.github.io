@@ -18,7 +18,7 @@
   "license": "CC-BY-3.0",
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
-    "bootstrap": "4.3.1",
+    "bootstrap": "5.0.0",
     "clean-css-cli": "^4.3.0",
     "node-sass": "^9.0.0"
   }
