@@ -47,7 +47,7 @@ def write_file(reponame, targetdir, filename, data, tagname, date):
     # New file content and filename
     filecontent = header + "\n" + data
     filepath = os.path.join(targetdir,dest_filepath(reponame, tagname)+".md")
-    
+
     with open(filepath, "w") as text_file:
         text_file.write(filecontent)
     print("Wrote file: "+filepath)
@@ -87,10 +87,14 @@ def checkout_repo(targetdir, reponame, repourl, checkoutdir, update_repos):
     if not os.path.exists(targetdir):
         os.makedirs(targetdir)
 
+    # Sort tags in reverse order of commit date rather than git's default
+    # lexicographical order.
+    sorted_tags = sorted(repo.tags, key=lambda t: t.commit.committed_datetime, reverse=True)
+
     # Add "develop" and all tags
     refs = []
     refs.append(repo.heads.develop)
-    refs.extend(repo.tags)
+    refs.extend(sorted_tags)
 
     # Get all preface sections from the latest develop version
     repo.head.reference = repo.heads.develop
@@ -114,8 +118,11 @@ def checkout_repo(targetdir, reponame, repourl, checkoutdir, update_repos):
         date = ref.commit.committed_datetime
         absurl = repourl.replace(".git","")+"/tree/"+ref.name
         write_file(reponame, targetdir, mainfile, data, tagname, date)
-    
-    shutil.copyfile(os.path.join(targetdir,dest_filepath(reponame, "develop")+".md"), os.path.join(targetdir,"_index.md"))
+
+    # Use the most-recently-created tag as the "default" version of the
+    # specification to render when a user clicks on the "specification" tab
+    # and does not use a version-specific URL.
+    shutil.copyfile(os.path.join(targetdir,dest_filepath(reponame, sorted_tags[0].name)+".md"), os.path.join(targetdir,"_index.md"))
 
     refs = []
     refs.extend(repo.tags)
