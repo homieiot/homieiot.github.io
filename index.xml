@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homie on The Homie convention</title>
+    <link>https://homieiot.github.io/</link>
+    <description>Recent content in Homie on The Homie convention</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://homieiot.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/offline.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/offline.html</guid>
+      <description> Page Not Found You are offline and could not find page :/ Go back </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-develop-changes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-develop-changes/</guid>
+      <description>Commit title Date Hash change(definitions): adds top-level &amp;lsquo;definitions&amp;rsquo; section (#325) 2025-04-10 21:38:10 +0200 f23d619 fix(step): add calculations for step rounding (#313) 2024-12-09 07:54:48 +0100 c782375 fix(json): default should be an escaped json string (#308) 2024-11-19 13:04:17 +0100 f029eca change(version): remove &amp;lsquo;higher&amp;rsquo; constraint (#304) 2024-10-27 19:32:53 +0100 db70d60 minor clarification in the base-topic (#303) 2024-10-17 10:22:43 +0200 063301d fix(enum): no duplicates (#302) 2024-10-13 01:27:34 +0200 aee10f3 chor(node/prop): make &amp;rsquo;name&amp;rsquo; optional (#300) 2024-09-07 13:33:16 +0200 7cfd0b5 fix: color encoding and brightness (#298) 2024-09-04 22:17:02 +0200 86f35d9 chore(convention): minor cleanup and consistency updates 2024-07-06 14:23:54 +0200 0d7baf5 Trigger website deployment on convention changes (#293) 2024-07-04 10:25:15 +0200 ce4f54a fix(logging): one level up in doc structure 2024-07-03 14:54:46 +0200 ce5e371 chore(headings): move some headings 2024-06-30 11:05:43 +0200 63f21bd Correct topic pattern for empty string payload (#288) 2024-02-17 18:20:16 +0200 133c6b8 homie5(alerts): replace &amp;lsquo;alert&amp;rsquo; state with alert-topic (#283) 2023-11-15 23:38:52 +0100 eb0b437 fix(target): equality of received commands (#277) 2023-11-13 11:23:55 +0100 3715512 homie5(type): add type field for device and node (#282) 2023-11-05 12:12:29 +0100 11f0378 chore(state): add some more details around state management (#272) 2023-11-05 10:59:14 +0100 b314544 fix(broadcast): broadcasted messages should be non-retained (#280) 2023-11-05 10:48:22 +0100 ed50bc6 feat(unit): add &amp;lsquo;rpm&amp;rsquo; (revolutions per minute) (#279) 2023-11-05 10:47:22 +0100 1331fcc Added information about unpublishing/removing a device (#278) 2023-11-05 10:45:02 +0100 250d31a fix(log): clarify all messages must be non-retained (#276) 2023-07-26 13:52:23 +0200 c8201c8 feat(color): allow to set a preferred format (#275) 2023-07-06 11:07:52 +0200 6eb4639 feat(json-type): add a JSON data type (#273) 2023-06-25 20:01:12 +0200 566a2d6 feat(log): change &amp;ldquo;alert&amp;rdquo; state, add logging (#262) 2023-06-25 15:13:31 +0200 adc710e feat(property): add an optional $target property (#263) 2023-06-25 14:29:22 +0200 611ec27 clarify(enum): clarify that whitesapce is significant (#268) 2023-06-25 10:00:24 +0200 4bb1287 chore(id): simplify ID checks (#261) 2023-06-24 12:08:34 +0200 da23e1f change(description): change arrays to objects (#270) 2023-06-24 12:08:17 +0200 015b328 feat(format): add color format &amp;lsquo;xyz&amp;rsquo; (#274) 2023-06-24 12:07:55 +0200 1c15005 fix(validation): specify float/int validation order (#269) 2023-06-18 20:06:37 +0200 13e241e fix(hierarchy): root device should not have root (#271) 2023-06-18 20:05:06 +0200 d6b4ad8 chore(properties): align the 3 property tables in the spec (#267) 2023-06-16 11:28:17 +0200 35837c2 chore(format): reformat table (flip-axis) for readability (#266) 2023-06-16 09:28:16 +0200 dbff282 fix(example): no description update in &amp;lsquo;ready&amp;rsquo; state (#265) 2023-06-15 09:32:00 +0200 06446c0 fix(format): properly format the integer format template (#264) 2023-06-15 00:23:36 +0200 c1a58ce chore(spec): spelling corrections (#260) 2023-06-15 00:13:04 +0200 9fa98ce fix(base-topic): some occurences of homie/5/ were missing (#259) 2023-03-19 13:58:20 +0100 6afa235 feat(formats): add step size to integer/float formats (#257) 2023-03-17 13:45:02 +0100 953a1e2 feat(units): add airquality units; ppm (co2 / co) 2023-03-12 13:20:46 +0100 da5f1b4 feat(units): add windspeed units; m/s + knots 2023-03-07 11:10:07 +0100 ce7a3ee fix(utf8): more explicit encoding details 2023-03-07 11:01:06 +0100 edf94b1 change(description-doc): relax language about omitting defaults (#258) 2023-03-17 13:42:05 +0100 67e0ad7 feat(units): add recommended units (#254) 2023-03-04 15:29:08 +0100 2fe6f7a change(QoS) clarify QoS settings and switch to 2 (#253) 2023-01-26 10:32:56 +0100 063578d refactor(mqtt) relocate all info wrt retained and qos (#252) 2023-01-26 10:30:50 +0100 c3f03bf fix(strings) use 0x00 instead of 0x00 (#251) 2023-01-19 07:46:58 +0100 158b873 fix(version) device example missing required attribute (#250) 2023-01-18 23:20:50 +0100 d59d163 feat(version) add version to description document 2023-01-18 00:12:25 +0100 4accccd feat(versioning) add improved versioning and compatibility 2023-01-17 23:29:52 +0100 4d10316 fix(property) handling empty-string values (#239) 2023-01-17 23:39:16 +0100 734d6ff change(formats) float-colors, improved numbers, add booleans 2023-01-17 07:46:27 +0100 7e50cb1 feat(units) add kW, kWh and m3 as units 2023-01-17 06:50:42 +0100 0f8439f readability(retained) reorder more logically (#245) 2023-01-17 09:11:35 +0100 1f73c11 fix(device) be more specific about empty attributes (#242) 2023-01-16 23:24:07 +0100 f974349 describe parent-child hierarchy and handling (#240) 2023-01-16 23:23:29 +0100 11dc08a fix(percent) drop the percent type (#243) 2023-01-16 23:21:58 +0100 0155f38 drop node.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-develop-diff/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-develop-diff/</guid>
+      <description>v4.0.0&#xA;develop n3version: v4.0.0n3version: develop 4releasedate: 27. August 20194releasedate: 10. April 2025 nn11## Introduction 12 13​The Homie convention is an open standard framework designed to facilitate the 14communication and integration of Internet of Things (IoT) devices using the 15[MQTT protocol](https://mqtt.org). 16 17In particular, the Homie convention defines a consistent topic structure and 18messaging format that enables devices to represent themselves, their data and 19their supported controls/commands in a uniform manner, enabling automatic 20discovery.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-develop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-develop/</guid>
+      <description>Introduction ​The Homie convention is an open standard framework designed to facilitate the communication and integration of Internet of Things (IoT) devices using the MQTT protocol.&#xA;In particular, the Homie convention defines a consistent topic structure and messaging format that enables devices to represent themselves, their data and their supported controls/commands in a uniform manner, enabling automatic discovery.&#xA;Roles When interacting through a shared MQTT broker, implementations of the Homie convention can take on one or both of the following roles simultaneously:</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v1_5_0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v1_5_0/</guid>
+      <description>Background An instance of a physical piece of hardware (an Arduino, an ESP8266&amp;hellip;) is called a device. A device has device properties, like the current local IP, the Wi-Fi signal, etc. A device can expose multiple nodes. For example, a weather device might expose a temperature node and an humidity node. A node can have multiple node properties. The temperature node might for example expose a temperature property containing the actual temperature, and an unit property.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v2_0_0-changes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v2_0_0-changes/</guid>
+      <description> Commit title Date Hash Add MIT LICENSE - closes #21 2017-04-28 10:06:43 +0200 3bcbb01 :memo: Add link to hodmin cli-client (#19) 2017-04-17 22:15:19 +0200 f137694 :memo: Fix typo in README.md (#20) 2017-04-17 22:14:44 +0200 ec0b666 :memo: Add note that the v2 might still change before final release 2017-02-13 10:12:11 +0100 279f55d :art: Fix backticks inside table 2016-11-16 19:52:15 +0100 bff4047 :sparkles: Add format of $mac 2016-11-16 19:51:26 +0100 c9b402c :sparkles: Say $online must be sent last 2016-11-16 12:33:46 +0100 23f4f8f :sparkles: Add MAC address 2016-11-16 12:25:31 +0100 b4ce39d :bug: Remove old $ota left-over 2016-11-16 12:21:42 +0100 724dfc5 :sparkles: Add firmware checksum 2016-11-16 12:19:50 +0100 284a1f9 :art: Create a stats device property - fix #8 2016-10-26 16:40:44 +0200 2e28318 :fire: Remove $ota - now implementation specific 2016-10-24 16:46:27 +0200 9f8a584 :sparkles: Make $signal specify an interval too - fix #8 2016-10-24 15:58:56 +0200 b5f27f0 :docs: Add reference to homie-python (#9) 2016-10-17 22:37:35 +0200 c181ec0 Center title 2016-10-12 19:46:47 +0200 860b26a Add ID format section and cosmetic tweaks 2016-10-11 13:13:07 +0200 7f5e582 Make banner transparent 2016-10-10 10:23:02 +0200 b2a1931 Replace devices base topic by homie 2016-10-03 09:59:09 +0200 b0ec78f Add broadcast channel 2016-09-07 19:36:51 +0200 cd84f93 Add range properties 2016-08-27 11:17:48 +0200 2d5e7fe Remove useless $nodes 2016-08-19 14:52:04 +0200 3bba8d3 Add $type and $properties to node 2016-08-19 14:48:23 +0200 d92ceb9 Remove old $reset property 2016-08-16 18:47:49 +0200 675f0aa Cosmetic changes and typo fixes 2016-08-16 00:31:00 +0200 d5f4ad1 Allow implementation-specific properties 2016-08-15 00:39:32 +0200 62bc55d Fix typos 2016-08-13 11:31:40 +0200 14f9d81 First v2 changes 2016-08-13 11:26:27 +0200 658f2b3 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v2_0_0-diff/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v2_0_0-diff/</guid>
+      <description>v1.5.0&#xA;v2.0.0 n3version: v1.5.0n3version: v2.0.0 4releasedate: 19. June 20164releasedate: 28. April 2017 n13An instance of a physical piece of hardware (an Arduino, an ESP8266...) is called a **device**. A device has **device properties**, like the current local IP, the Wi-Fi signal, etc. A device can expose multiple **nodes**. For example, a weather device might expose a temperature node and an humidity node. A node can have multiple **node properties**. The temperature node might for example expose a temperature property containing the actual temperature, and an unit property.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v2_0_0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v2_0_0/</guid>
+      <description>Background An instance of a physical piece of hardware (an Arduino, an ESP8266&amp;hellip;) is called a device. A device has device properties, like the current local IP, the Wi-Fi signal, etc. A device can expose multiple nodes. For example, a weather device might expose a temperature node and an humidity node. A node can have multiple node properties. The temperature node might for example expose a degrees property containing the actual temperature, and an unit property.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v2_0_1-changes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v2_0_1-changes/</guid>
+      <description> Commit title Date Hash Add Node JS Implementation 2018-03-24 12:57:05 +1100 b1f7ec0 2.0.1 Added $nodes to a device 2018-03-24 08:27:05 +1100 775ee43 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v2_0_1-diff/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v2_0_1-diff/</guid>
+      <description> v2.0.0&#xA;v2.0.1 n3version: v2.0.0n3version: v2.0.1 4releasedate: 28. April 20174releasedate: 24. March 2018 tt133 &amp;lt;/tr&amp;gt; 134 &amp;lt;tr&amp;gt; 135 &amp;lt;td&amp;gt;$nodes&amp;lt;/td&amp;gt; 136 &amp;lt;td&amp;gt;Device → Controller&amp;lt;/td&amp;gt; 137 &amp;lt;td&amp;gt;Nodes the device exposes, with format &amp;lt;code&amp;gt;id&amp;lt;/code&amp;gt; separated by a &amp;lt;code&amp;gt;,&amp;lt;/code&amp;gt; if there are multiple nodes.&amp;lt;/td&amp;gt; 138 &amp;lt;td&amp;gt;Yes&amp;lt;/td&amp;gt; 139 &amp;lt;td&amp;gt;Yes&amp;lt;/td&amp;gt; </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v2_0_1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v2_0_1/</guid>
+      <description>Background An instance of a physical piece of hardware (an Arduino, an ESP8266&amp;hellip;) is called a device. A device has device properties, like the current local IP, the Wi-Fi signal, etc. A device can expose multiple nodes. For example, a weather device might expose a temperature node and an humidity node. A node can have multiple node properties. The temperature node might for example expose a degrees property containing the actual temperature, and an unit property.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v3_0_0-changes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v3_0_0-changes/</guid>
+      <description>Commit title Date Hash Merge pull request #71 from homieiot/rolling-releases 2018-03-25 08:55:18 +1100 96c3086 Add info regarding rolling releases 2018-03-24 15:18:37 +0100 c5ad0b2 Add NodeJS implementation 2018-03-24 11:25:36 +1100 110b68f Small Readme version fix 2018-03-21 09:00:35 +1100 508f6ae Fix Versioning. 2018-03-16 07:55:10 +1100 09c84e4 Merge pull request #67 from marvinroger/v2 2018-03-12 12:01:13 +1100 0b90e74 Update Version 2018-03-12 12:00:15 +1100 be4d750 Merge branch &amp;lsquo;redesign&amp;rsquo; into v2 2018-03-12 11:59:28 +1100 e25c5dc added micropython-homie 2018-03-12 11:54:43 +1100 00285cb Merge pull request #64 from microhomie/v2 2018-02-17 21:12:45 +1100 0a9e88b Remove WIP state 2018-02-12 10:49:02 +0100 85d6a1f Add MicroPython implementation 2018-02-10 11:56:40 +0100 d7392c0 Merge pull request #63 from nerdfirefighter/redesign 2018-02-03 18:44:59 +1100 b071d29 Typo Fix 2018-02-02 20:46:05 +1100 25b727f Merge pull request #1 from marvinroger/redesign 2018-02-02 20:43:27 +1100 71b15b9 Update Branch 2018-01-24 12:08:45 +1100 755b994 Merge pull request #60 from nerdfirefighter/v2 2018-01-24 11:50:03 +1100 0482588 Update README.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v3_0_0-diff/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v3_0_0-diff/</guid>
+      <description>v2.0.1&#xA;v3.0.0 n3version: v2.0.1n3version: v3.0.0 4releasedate: 24. March 20184releasedate: 25. March 2018 n11## Backgroundn11## Table of Contents n13An instance of a physical piece of hardware (an Arduino, an ESP8266...) is called a **device**. A device has **device properties**, like the current local IP, the Wi-Fi signal, etc. A device can expose multiple **nodes**. For example, a weather device might expose a `temperature` node and an `humidity` node. A node can have multiple **node properties**.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v3_0_0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v3_0_0/</guid>
+      <description>Table of Contents Motivation MQTT restrictions Topic IDs Payload QoS and retained messages Topology Base topic Devices Device attributes Device behavior Device statistics Nodes Node attributes Properties Property attributes Arrays Broadcast channel Motivation The Homie convention strives to be a communication definition on top of MQTT between IoT devices and controlling entities.&#xA;MQTT is a machine-to-machine (M2M)/&amp;ldquo;Internet of Things&amp;rdquo; connectivity protocol. It was designed as an extremely lightweight publish/subscribe messaging transport.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v3_0_1-changes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v3_0_1-changes/</guid>
+      <description> Commit title Date Hash Stateful attribute for properties (#108) 2018-10-27 15:22:20 +0200 730357e Remove regex requirement (#88) 2018-04-29 14:32:39 +0200 081214d Use &amp;ldquo;true&amp;rdquo; instead of &amp;ldquo;on&amp;rdquo; (#89) 2018-04-27 14:51:40 +0200 5cbe5ee Add FAQ, discuss getter topic (#87) 2018-04-27 14:29:27 +0200 fb8d153 Add my ESP32 IDF implementation (#73) 2018-04-23 15:25:24 -0700 7d9f236 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v3_0_1-diff/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v3_0_1-diff/</guid>
+      <description>v3.0.0&#xA;v3.0.1 n3version: v3.0.0n3version: v3.0.1 4releasedate: 25. March 20184releasedate: 27. October 2018 nn30* [FAQ and Rationale](#faq) 31 nn97 98Properties can be **retained**. 99A property is retained by default. A non-retained property would be useful for momentary events (door bell pressed). 100 101A combination of those flags compiles into this list: 102 103* **retained + non-settable**: The node publishes a property state (temperature sensor) 104* **retained + settable**: The node publishes a property state, and can receive commands for the property (by controller or other party) (lamp power) 105* **non-retained + non-settable**: The node publishes momentary events (door bell pressed) 106* **non-retained + settable**: The node publishes momentary events, and can receive commands for the property (by controller or other party) (brew coffee) nn446 &amp;lt;/tr&amp;gt; 447 &amp;lt;tr&amp;gt; 448 &amp;lt;td&amp;gt;$retained&amp;lt;/td&amp;gt; 449 &amp;lt;td&amp;gt;Device → Controller&amp;lt;/td&amp;gt; 450 &amp;lt;td&amp;gt;Specifies whether the property is retained (&amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;) or non-retained (&amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;).</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v3_0_1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v3_0_1/</guid>
+      <description>Table of Contents Motivation MQTT restrictions Topic IDs Payload QoS and retained messages Topology Base topic Devices Device attributes Device behavior Device statistics Nodes Node attributes Properties Property attributes Arrays Broadcast channel FAQ and Rationale Motivation The Homie convention strives to be a communication definition on top of MQTT between IoT devices and controlling entities.&#xA;MQTT is a machine-to-machine (M2M)/&amp;ldquo;Internet of Things&amp;rdquo; connectivity protocol. It was designed as an extremely lightweight publish/subscribe messaging transport.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v4_0_0-changes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v4_0_0-changes/</guid>
+      <description>Commit title Date Hash Remove array brackets in super-car example (#177) 2019-08-27 14:01:18 +0200 12453d8 Corections to meta extension (#173) 2019-07-18 00:07:23 +0200 2c1999e Fixed typos and broken links, removed whitespace in homie_legacy_stat… (#172) 2019-07-17 21:13:33 +0200 608541a Extension Convention (#171) 2019-07-16 22:55:32 +0200 eaf3edc remove references to deprecated arrays (#169) 2019-07-03 19:56:14 +0800 9ac3433 Point Last Will section to $state (#157) 2019-03-07 17:30:43 +0900 a3ea000 Remove timings paragraph. Rename behaviour to lifecycle.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v4_0_0-diff/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v4_0_0-diff/</guid>
+      <description>v3.0.1&#xA;v4.0.0 n2source: README.mdn2source: convention.md 3version: v3.0.13version: v4.0.0 4releasedate: 27. October 20184releasedate: 27. August 2019 n11## Table of Contentsn 12 13* [Motivation](#motivation) 14* [MQTT restrictions](#mqtt-restrictions) 15 * [Topic IDs](#topic-ids) 16 * [Payload](#payload) 17 * [QoS and retained messages](#qos-and-retained-messages) 18* [Topology](#topology) 19 * [Base topic](#base-topic) 20 * [Devices](#devices) 21 * [Device attributes](#device-attributes) 22 * [Device behavior](#device-behavior) 23 * [Device statistics](#device-statistics) 24 * [Nodes](#nodes) 25 * [Node attributes](#node-attributes) 26 * [Properties](#properties) 27 * [Property attributes](#property-attributes) 28 * [Arrays](#arrays) 29 * [Broadcast channel](#broadcast-channel) 30* [FAQ and Rationale](#faq) 31 32 33## Motivation 34 35The Homie convention strives to be a **communication definition on top of MQTT** between IoT devices and controlling entities.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://homieiot.github.io/specification/spec-core-v4_0_0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/specification/spec-core-v4_0_0/</guid>
+      <description>MQTT Restrictions Homie communicates through MQTT and is hence based on the basic principles of MQTT topic publication and subscription.&#xA;Topic IDs An MQTT topic consists of one or more topic levels, separated by the slash character (/). A topic level ID MAY contain lowercase letters from a to z, numbers from 0 to 9 as well as the hyphen character (-).&#xA;A topic level ID MUST NOT start or end with a hyphen (-).</description>
+    </item>
+    <item>
+      <title>Homie Extensions</title>
+      <link>https://homieiot.github.io/extensions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/extensions/</guid>
+      <description>The Homie convention defines a standardized way of how devices and services announce themselves and defines the structure and content of messages and their relation.&#xA;It does not define domain types, like a lightbulb and required properties for a Home Automation domain. It also not defines procedures like Over-The-Air updates and metrics like cpu usage or memory consumption.&#xA;That is what extensions are for.&#xA;License Every extension must be published using a license.</description>
+    </item>
+    <item>
+      <title>How to get involved?</title>
+      <link>https://homieiot.github.io/get_involved/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/get_involved/</guid>
+      <description>Propose feature Open a new GitHub Issue to start a discussion about a new feature. Open a GitHub Pull Request to provide a change to the convention and have it discussed. Raise an Issue Open a Pull-Request Feedback The discussion period for a new feature lasts for a maximum of 3 weeks. Everyone involved can apply for a longer time frame if required. 3 weeks no progress means &amp;ldquo;Rejected&amp;rdquo; automatically.</description>
+    </item>
+    <item>
+      <title>Implementations</title>
+      <link>https://homieiot.github.io/implementations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/implementations/</guid>
+      <description>Device An instance of a physical piece of hardware is called a device. For example, a car, an Arduino/ESP8266 or a coffee machine. It publishes Nodes and Properties to the MQTT broker. Controller A controller does not announce anything to the MQTT broker, but discovers and interacts with Devices. There can be more than one Controller interacting with the different devices on the same broker. Device Find software libraries and full firmware projects for Devices in this section.</description>
+    </item>
+    <item>
+      <title>License</title>
+      <link>https://homieiot.github.io/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/license/</guid>
+      <description>By exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution 4.0 International Public License (&amp;ldquo;Public License&amp;rdquo;). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.</description>
+    </item>
+    <item>
+      <title>Tools</title>
+      <link>https://homieiot.github.io/tools/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homieiot.github.io/tools/</guid>
+      <description> Online verificator for Homie 4 Paste published Homie topics into the text field and let the online verificator tell you what Homie devices, nodes and properties it has recognised. Instructions: Connect your Homie device Use for example &#34;mosquitto_sub -v -t homie/#&#34; to create a list of all published homie topics and their payloads. Paste the list into the textfield below 1&#xA;2 homie/device123/$homie 4.0 homie/device123/$name My device homie/device123/$state ready homie/device123/$extensions homie/device123/$nodes mythermostat homie/device123/mythermostat/$name My thermostat homie/device123/mythermostat/$properties temperature homie/device123/mythermostat/temperature 22 homie/device123/mythermostat/temperature/$name Temperature homie/device123/mythermostat/temperature/$unit °C homie/device123/mythermostat/temperature/$datatype integer Validation result: Not yet validated Validate </description>
+    </item>
+  </channel>
+</rss>
