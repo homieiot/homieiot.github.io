@@ -18,9 +18,3 @@ RUN apk add --no-cache hugo
 # Copy list of Python dependencies and install them.
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
-
-# Prepare the /data volume to be used as the mount point for
-# the local clone of this repository.
-RUN mkdir /data
-VOLUME /data
-WORKDIR /data
