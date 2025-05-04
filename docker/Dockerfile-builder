@@ -3,17 +3,17 @@
 # through the ../build.sh script.
 
 # Build upon an official Python image using Alpine Linux as its base, which
-# tends to result in smaller images and faster builds.
+# tends to result in smaller images and faster builds. As we want our build
+# environment to be as reproducible as possible, we pin both the Python version
+# and the Alpine Linux version to ensure consistent builds.
 FROM python:3.12-alpine3.21
 
 # Update Alpine's package list.
 RUN apk update
 
-# Install git, which is required by the grabrepos.py script.
-RUN apk add --no-cache git
-
-# Install Hugo from Alpine's package repository.
-RUN apk add --no-cache hugo
+# Install OS-level dependencies (Git and Hugo). The versions of these packages
+# are implicitly pinned to the Alpine Linux version used in the FROM statement.
+RUN apk add --no-cache git hugo
 
 # Copy list of Python dependencies and install them.
 COPY ./requirements.txt /requirements.txt
