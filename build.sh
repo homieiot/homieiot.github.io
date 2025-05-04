@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-set -euo pipefail
+set -euo
 
 # As long as no changes are made to the Dockerfile, the built image
 # will be cached and reused in all builds after the first one.
