@@ -32,7 +32,7 @@ It is thereby a crucial aspect on top of the MQTT protocol for *automatic discov
 
 ## Example
 
-Homies topic layout follows the pattern "**homie/device/node/property**".
+Homies topic layout follows the pattern "**homie/5/device/node/property**".
 
 In this example our device has a thermostat functionality where the target
 temperature can be read from and written to. The thermostat function
@@ -41,24 +41,33 @@ is modelled as **node**, the temperature is a **property** of that node.
 The following topics are published as retained messages to the broker:
 
 {{< card >}}
-      homie / device123 / $homie → 3.0
-      homie / device123 / $name → My device
-      homie / device123 / $state → ready
-      homie / device123 / $nodes → mythermostat
-
-      homie / device123 / mythermostat / $name → My thermostat
-      homie / device123 / mythermostat / $properties → temperature
-
-      homie / device123 / mythermostat / temperature → 22 
-      homie / device123 / mythermostat / temperature / $name → Temperature
-      homie / device123 / mythermostat / temperature / $unit → °C
-      homie / device123 / mythermostat / temperature / $datatype → integer
-      homie / device123 / mythermostat / temperature / $settable → true
+      homie/5/device123/$state → ready
+      homie/5/device123/$description → {
+        "id": "device123",
+        "homie": "5.0",
+        "version": "12",
+        "name": "My device",
+        "nodes": {
+          "mythermostat": {
+            "name": "My thermostat",
+            "type": "thermostat",
+            "properties": {
+              "temperature": {
+                "name": "Temperature",
+                "unit": "°C",
+                "datatype": "integer",
+                "settable": true
+              }
+            }
+          }
+        }
+      }
+      homie/5/device123/mythermostat/temperature → 22
 {{< /card >}}
 
 Any Homie compliant controller can now find "My device" and will find out
 about "My thermostat" with "Temperature in °C" and that it needs to publish
-to ".../*temperature*/*set*" to change the temperature.
+to "homie/5/device123/mythermostat/*temperature*/*set*" to change the temperature.
 
 If we got your attention, head over to the <a href="/specification/">specification</a>
 and let all your questions being answered.
