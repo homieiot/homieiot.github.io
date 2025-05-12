@@ -4,34 +4,24 @@ This repository contains the website sources for the [Homie Website](https://hom
 including the online validator javascript tool.
 
 The build is triggered by a change in any of the Homie specification respositories
-and performed by Travis CI. The resulting webpage is uploaded to 
+and performed by GitHub Actions. The resulting webpage is uploaded to
 https://github.com/homieiot/homieiot.github.io/tree/master and is served by GitHub.
 
 The generator in use is [Hugo](https://gohugo.io/).
 
-You can just call the `./build.sh` script within this directory
-and find the page in the output directory `site`.
+## How to build locally
 
-## Manually generate the webpage
+Just call the `./build.sh` script within this repository. The built website
+will be available in the `./public` directory.
 
-You need Hugo in the extended version (with sass/scss support).
+The only dependency required by the `./build.sh` script is [Docker],
+which is used to create a builder image with the actual dependencies
+required to build the website (Git, Hugo, Python and the dependencies
+for the `./grabrepos.py` script).
 
-The git grab utility requires python3. For a non-root environment,
-it is recommended to create a python virtual environment:
+The builder image is then used to build the website.
 
-```sh
-python3 -m venv dependencies
-source dependencies/bin/activate
-```
-
-Install the dependencies `gitpython`, `pyyaml`,
-then run the git grab utility and and hugo last:
-
-```
-pip install -r requirements.txt
-./grabrepos.py
-hugo
-```
+[Docker]: https://www.docker.com
 
 ## Upload a manually generated webpage
 
