@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/specification/spec-core-v1_5_0/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="specification/">
+  <link rel="prefetch" href="implementations/">
+  <link rel="prefetch" href="extensions/">
+  <link rel="prefetch" href="get_involved/">
+  <link rel="prefetch" href="license/">
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main "
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main "
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div id="mainContent">
+
+
+
+    
+
+
+
+    
+
+
+<div class="container pt-5">
+<div class="row">
+<div class="col-12">      
+<h1 class="animated fadeIn" style="text-align: center">Homie: An MQTT Convention for IoT/M2M</h1>
+</div>
+</div>
+</div>
+
+<div class="md-grid">
+    
+<aside class="toc animated faster zoomIn md-sidebar md-sidebar--secondary d-print-none"
+    data-md-state="lock">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="https://homieiot.github.io/specification/spec-core-v1_5_0/#background">Background</a></li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-v1_5_0/#convention">Convention</a>
+      <ul>
+        <li><a href="https://homieiot.github.io/specification/spec-core-v1_5_0/#device-properties">Device properties</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-v1_5_0/#node-properties">Node properties</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+
+<main class="md-content">
+    <tt class="d-print-none">
+        License: <a title="Creative Commons Attribution 4.0 International Public License" href="/license">CCA 4.0</a><br>
+        Version:
+    
+    
+        
+        [<a title="Released 11. May 2025"
+            href="https://homieiot.github.io/specification/spec-core-develop/">develop</a>]
+        
+    
+        
+        [v1.5.0]
+        
+    
+        
+        [<a title="Released 28. April 2017"
+            href="https://homieiot.github.io/specification/spec-core-v2_0_0/">v2.0.0</a>]
+        
+    
+        
+        [<a title="Released 24. March 2018"
+            href="https://homieiot.github.io/specification/spec-core-v2_0_1/">v2.0.1</a>]
+        
+    
+        
+        [<a title="Released 25. March 2018"
+            href="https://homieiot.github.io/specification/spec-core-v3_0_0/">v3.0.0</a>]
+        
+    
+        
+        [<a title="Released 27. October 2018"
+            href="https://homieiot.github.io/specification/spec-core-v3_0_1/">v3.0.1</a>]
+        
+    
+        
+        [<a title="Released 27. August 2019"
+            href="https://homieiot.github.io/specification/spec-core-v4_0_0/">v4.0.0</a>]
+        
+    
+        
+        [<a title="Released 11. May 2025"
+            href="https://homieiot.github.io/specification/spec-core-v5_0_0/">v5.0.0</a>]
+        
+    <br>
+        
+        
+        Release date: 19. June 2016
+    <hr>
+    </tt>
+
+    <details class="d-print-none mb-4">
+        <summary>Frequently asked questions</summary>
+        
+<h3>How do I query/request a property?</h3>
+<p>You don&rsquo;t.
+The MQTT protocol does not implement the request-reply but rather the publish-subscribe messaging pattern.
+The Homie convention follows the publish-subscribe principle by publishing data as retained messages on a regular basis.
+You might want to rethink the design of your application - in most scenarios a regularly updated information is sufficient.</p>
+<p><em>Workaround:</em> You are free to implement your own ideas on top of the basic structure of the Homie convention.
+You could either implement a <code>get</code> getter topic and its logic to trigger a value update, or you may exploit the concept of Homie properties and define a settable property to trigger a value update.</p>
+
+
+    </details>
+
+    <div class="d-none d-print-block">
+        <h2>License</h2>
+        <p>By exercising the Licensed Rights (defined on https://creativecommons.org/licenses/by/4.0/), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution 4.0 International Public License ("Public License"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.</p>
+    </div>
+    
+    <div class="toc d-lg-none d-print-block">
+        <h2>Table of Contents</h2>
+    </div>
+    
+
+    <h1 id="heading"></h1>
+<h2 id="background">Background</h2>
+<p>An instance of a physical piece of hardware (an Arduino, an ESP8266&hellip;) is called a <strong>device</strong>. A device has <strong>device properties</strong>, like the current local IP, the Wi-Fi signal, etc. A device can expose multiple <strong>nodes</strong>. For example, a weather device might expose a temperature node and an humidity node. A node can have multiple <strong>node properties</strong>. The temperature node might for example expose a temperature property containing the actual temperature, and an unit property. Properties can be <strong>settable</strong>. For example, you don&rsquo;t want your <code>temperature</code> property to be settable in case of a temperature sensor: this depends on the environment and it would not make sense to change it. However, you will want the <code>temperature</code> property to be settable in case of a thermostat.</p>
+<h2 id="convention">Convention</h2>
+<p>Homie devices communicate through MQTT.</p>
+<p>To efficiently parse messages, Homie defines a few rules related to topic names. The base topic you will see in the following lines will be <code>devices/</code>. You can customize this base topic if it fits better to your needs.</p>
+<ul>
+<li><code>devices</code> / <strong><code>device ID</code></strong>: this is the base topic name. Each device must have a unique device ID. This ID MAY be composed of lowercase letters from <code>a</code> to <code>z</code>, numbers from <code>0</code> to <code>9</code>, and it MAY contain <code>-</code>, but MUST NOT start or end with a <code>-</code>.</li>
+</ul>
+<h3 id="device-properties">Device properties</h3>
+<ul>
+<li><code>devices</code> / <strong><code>device ID</code></strong> / <code>$</code> <strong><code>device property</code></strong>: a property starting with a <code>$</code> at the third level of the path is related to the device. The property MUST be one of these:</li>
+</ul>
+<table>
+  <tr>
+    <th>Property</th>
+    <th>Direction</th>
+    <th>Description</th>
+    <th>Retained</th>
+  </tr>
+  <tr>
+    <td>$online</td>
+    <td>Device → Controller</td>
+    <td><code>true</code> when the device is online, <code>false</code> when the device is offline (through LWT)</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>$name</td>
+    <td>Device → Controller</td>
+    <td>Friendly name of the device</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>$localip</td>
+    <td>Device → Controller</td>
+    <td>IP of the device on the local network</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>$uptime</td>
+    <td>Device → Controller</td>
+    <td>Time elapsed in seconds since the boot of the device</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>$signal</td>
+    <td>Device → Controller</td>
+    <td>Integer representing the Wi-Fi signal quality in percentage if applicable</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>$fwname</td>
+    <td>Device → Controller</td>
+    <td>Name of the firmware running on the device. This name MAY be composed of lowercase letters from <code>a</code> to <code>z</code>, numbers from <code>0</code> to <code>9</code>, and it MAY contain <code>-</code>, but MUST NOT start or end with a <code>-</code></td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>$fwversion</td>
+    <td>Device → Controller</td>
+    <td>Version of the firmware running on the device</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>$nodes</td>
+    <td>Device → Controller</td>
+    <td>Nodes the device has, with format <code>id:type</code> separated by a <code>,</code> if there are multiple nodes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>$ota</td>
+    <td>Controller → Device</td>
+    <td>Latest OTA version available for the device</td>
+    <td>Yes or No, depending of your implementation</td>
+  </tr>
+  <tr>
+    <td>$ota/+</td>
+    <td>Controller → Device or Device → Controller</td>
+    <td>You can use any subtopics of `$ota` for anything related to your specific OTA implementation.</td>
+    <td>Yes or No, depending of your implementation</td>
+  </tr>
+  <tr>
+    <td>$reset</td>
+    <td>Controller → Device</td>
+    <td><code>true</code> when the controller wants the device to reset its configuration. <code>false</code> otherwise. When the device receives a <code>true</code>, it should replace the retained message with a <code>false</code> before resetting</td>
+    <td>Yes</td>
+  </tr>
+</table>
+<p>For example, a device with an ID of <code>686f6d6965</code> with a temperature and an humidity sensor would send:</p>
+<pre tabindex="0"><code>devices/686f6d6965/$online → true
+devices/686f6d6965/$name → Bedroom temperature sensor
+devices/686f6d6965/$localip → 192.168.0.10
+devices/686f6d6965/$signal → 72
+devices/686f6d6965/$fwname → 1.0.0
+devices/686f6d6965/$fwversion → 1.0.0
+devices/686f6d6965/$nodes → temperature:temperature,humidity:humidity
+</code></pre><p>And it would receive:</p>
+<pre tabindex="0"><code>devices/686f6d6965/$ota ← 1.0.1
+devices/686f6d6965/$reset ← false
+</code></pre><p>At this point, your device would understand there is an OTA update available, as <code>$ota</code> is different from <code>$version</code>.</p>
+<h3 id="node-properties">Node properties</h3>
+<ul>
+<li><code>devices</code> / <strong><code>device ID</code></strong> / <strong><code>node ID</code></strong> / <strong><code>property</code></strong>: <code>node ID</code> is the ID of the node, as defined in the <code>$nodes</code> device property. <code>property</code> is the property of the node that is getting updated.</li>
+</ul>
+<p>For example, our <code>686f6d6965</code> above would send:</p>
+<pre tabindex="0"><code>devices/686f6d6965/temperature/temperature → 12.07
+devices/686f6d6965/humidity/humidity → 79
+</code></pre><ul>
+<li><code>devices</code> / <strong><code>device ID</code></strong> / <strong><code>node ID</code></strong> / <strong><code>property</code></strong> / <code>set</code>: the device can subscribe to this topic if the property is <strong>settable</strong> from the controller, in case of actuators.</li>
+</ul>
+<p>Homie is state-based. You don&rsquo;t tell your smarlight to turn on, but you tell it to put it&rsquo;s <code>on</code> state to <code>true</code>. This especially fits well with MQTT, because of retained message.</p>
+<p>For example, an <code>homielight</code> device exposing a <code>light</code> node would subscribe to <code>devices/homielight/light/on/set</code> and it would receive:</p>
+<pre tabindex="0"><code>devices/homielight/light/on/set ← true
+</code></pre><p>The device would then turn on the light, and update its <code>on</code> state. This provides pessimistic feedback, which is important for home automation.</p>
+<pre tabindex="0"><code>devices/homielight/light/on → true
+</code></pre><p>Any other topic is not part of the Homie convention.</p>
+
+</main>
+
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2025 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>

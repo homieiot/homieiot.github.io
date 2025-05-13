@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/specification/spec-core-v5_0_0-changes/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="specification/">
+  <link rel="prefetch" href="implementations/">
+  <link rel="prefetch" href="extensions/">
+  <link rel="prefetch" href="get_involved/">
+  <link rel="prefetch" href="license/">
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main "
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main "
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div class="container mt-2" id="mainContent">
+<div class="row">
+<div class="col-12">
+    <h1 class="animated fadeIn" style="text-align: center; margin-top:40px; font-size:4em;">
+        
+    </h1>
+    <center class="animated fadeIn mb-4"></center>
+    <table>
+  <thead>
+      <tr>
+          <th>Commit title</th>
+          <th>Date</th>
+          <th>Hash</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>fix(links): https by default (#329)</td>
+          <td>2025-05-11 18:06:49 +0200</td>
+          <td>de48bf4</td>
+      </tr>
+      <tr>
+          <td>change(definitions): adds top-level &lsquo;definitions&rsquo; section (#325)</td>
+          <td>2025-04-10 21:38:10 +0200</td>
+          <td>f23d619</td>
+      </tr>
+      <tr>
+          <td>fix(step): add calculations for step rounding (#313)</td>
+          <td>2024-12-09 07:54:48 +0100</td>
+          <td>c782375</td>
+      </tr>
+      <tr>
+          <td>fix(json): default should be an escaped json string (#308)</td>
+          <td>2024-11-19 13:04:17 +0100</td>
+          <td>f029eca</td>
+      </tr>
+      <tr>
+          <td>change(version): remove &lsquo;higher&rsquo; constraint (#304)</td>
+          <td>2024-10-27 19:32:53 +0100</td>
+          <td>db70d60</td>
+      </tr>
+      <tr>
+          <td>minor clarification in the base-topic (#303)</td>
+          <td>2024-10-17 10:22:43 +0200</td>
+          <td>063301d</td>
+      </tr>
+      <tr>
+          <td>fix(enum): no duplicates (#302)</td>
+          <td>2024-10-13 01:27:34 +0200</td>
+          <td>aee10f3</td>
+      </tr>
+      <tr>
+          <td>chor(node/prop): make &rsquo;name&rsquo; optional (#300)</td>
+          <td>2024-09-07 13:33:16 +0200</td>
+          <td>7cfd0b5</td>
+      </tr>
+      <tr>
+          <td>fix: color encoding and brightness (#298)</td>
+          <td>2024-09-04 22:17:02 +0200</td>
+          <td>86f35d9</td>
+      </tr>
+      <tr>
+          <td>chore(convention): minor cleanup and consistency updates</td>
+          <td>2024-07-06 14:23:54 +0200</td>
+          <td>0d7baf5</td>
+      </tr>
+      <tr>
+          <td>Trigger website deployment on convention changes (#293)</td>
+          <td>2024-07-04 10:25:15 +0200</td>
+          <td>ce4f54a</td>
+      </tr>
+      <tr>
+          <td>fix(logging): one level up in doc structure</td>
+          <td>2024-07-03 14:54:46 +0200</td>
+          <td>ce5e371</td>
+      </tr>
+      <tr>
+          <td>chore(headings): move some headings</td>
+          <td>2024-06-30 11:05:43 +0200</td>
+          <td>63f21bd</td>
+      </tr>
+      <tr>
+          <td>Correct topic pattern for empty string payload (#288)</td>
+          <td>2024-02-17 18:20:16 +0200</td>
+          <td>133c6b8</td>
+      </tr>
+      <tr>
+          <td>homie5(alerts): replace &lsquo;alert&rsquo; state with alert-topic (#283)</td>
+          <td>2023-11-15 23:38:52 +0100</td>
+          <td>eb0b437</td>
+      </tr>
+      <tr>
+          <td>fix(target): equality of received commands (#277)</td>
+          <td>2023-11-13 11:23:55 +0100</td>
+          <td>3715512</td>
+      </tr>
+      <tr>
+          <td>homie5(type): add type field for device and node (#282)</td>
+          <td>2023-11-05 12:12:29 +0100</td>
+          <td>11f0378</td>
+      </tr>
+      <tr>
+          <td>chore(state): add some more details around state management (#272)</td>
+          <td>2023-11-05 10:59:14 +0100</td>
+          <td>b314544</td>
+      </tr>
+      <tr>
+          <td>fix(broadcast): broadcasted messages should be non-retained (#280)</td>
+          <td>2023-11-05 10:48:22 +0100</td>
+          <td>ed50bc6</td>
+      </tr>
+      <tr>
+          <td>feat(unit): add &lsquo;rpm&rsquo; (revolutions per minute) (#279)</td>
+          <td>2023-11-05 10:47:22 +0100</td>
+          <td>1331fcc</td>
+      </tr>
+      <tr>
+          <td>Added information about unpublishing/removing a device (#278)</td>
+          <td>2023-11-05 10:45:02 +0100</td>
+          <td>250d31a</td>
+      </tr>
+      <tr>
+          <td>fix(log): clarify all messages must be non-retained (#276)</td>
+          <td>2023-07-26 13:52:23 +0200</td>
+          <td>c8201c8</td>
+      </tr>
+      <tr>
+          <td>feat(color): allow to set a preferred format (#275)</td>
+          <td>2023-07-06 11:07:52 +0200</td>
+          <td>6eb4639</td>
+      </tr>
+      <tr>
+          <td>feat(json-type): add a JSON data type (#273)</td>
+          <td>2023-06-25 20:01:12 +0200</td>
+          <td>566a2d6</td>
+      </tr>
+      <tr>
+          <td>feat(log): change &ldquo;alert&rdquo; state, add logging (#262)</td>
+          <td>2023-06-25 15:13:31 +0200</td>
+          <td>adc710e</td>
+      </tr>
+      <tr>
+          <td>feat(property): add an optional $target property (#263)</td>
+          <td>2023-06-25 14:29:22 +0200</td>
+          <td>611ec27</td>
+      </tr>
+      <tr>
+          <td>clarify(enum): clarify that whitesapce is significant (#268)</td>
+          <td>2023-06-25 10:00:24 +0200</td>
+          <td>4bb1287</td>
+      </tr>
+      <tr>
+          <td>chore(id): simplify ID checks (#261)</td>
+          <td>2023-06-24 12:08:34 +0200</td>
+          <td>da23e1f</td>
+      </tr>
+      <tr>
+          <td>change(description): change arrays to objects (#270)</td>
+          <td>2023-06-24 12:08:17 +0200</td>
+          <td>015b328</td>
+      </tr>
+      <tr>
+          <td>feat(format): add color format &lsquo;xyz&rsquo; (#274)</td>
+          <td>2023-06-24 12:07:55 +0200</td>
+          <td>1c15005</td>
+      </tr>
+      <tr>
+          <td>fix(validation): specify float/int validation order (#269)</td>
+          <td>2023-06-18 20:06:37 +0200</td>
+          <td>13e241e</td>
+      </tr>
+      <tr>
+          <td>fix(hierarchy): root device should not have root (#271)</td>
+          <td>2023-06-18 20:05:06 +0200</td>
+          <td>d6b4ad8</td>
+      </tr>
+      <tr>
+          <td>chore(properties): align the 3 property tables in the spec (#267)</td>
+          <td>2023-06-16 11:28:17 +0200</td>
+          <td>35837c2</td>
+      </tr>
+      <tr>
+          <td>chore(format): reformat table (flip-axis) for readability (#266)</td>
+          <td>2023-06-16 09:28:16 +0200</td>
+          <td>dbff282</td>
+      </tr>
+      <tr>
+          <td>fix(example): no description update in &lsquo;ready&rsquo; state (#265)</td>
+          <td>2023-06-15 09:32:00 +0200</td>
+          <td>06446c0</td>
+      </tr>
+      <tr>
+          <td>fix(format): properly format the integer format template (#264)</td>
+          <td>2023-06-15 00:23:36 +0200</td>
+          <td>c1a58ce</td>
+      </tr>
+      <tr>
+          <td>chore(spec): spelling corrections (#260)</td>
+          <td>2023-06-15 00:13:04 +0200</td>
+          <td>9fa98ce</td>
+      </tr>
+      <tr>
+          <td>fix(base-topic): some occurences of <code>homie/5/</code> were missing (#259)</td>
+          <td>2023-03-19 13:58:20 +0100</td>
+          <td>6afa235</td>
+      </tr>
+      <tr>
+          <td>feat(formats): add step size to integer/float formats (#257)</td>
+          <td>2023-03-17 13:45:02 +0100</td>
+          <td>953a1e2</td>
+      </tr>
+      <tr>
+          <td>feat(units): add airquality units; ppm (co2 / co)</td>
+          <td>2023-03-12 13:20:46 +0100</td>
+          <td>da5f1b4</td>
+      </tr>
+      <tr>
+          <td>feat(units): add windspeed units; m/s + knots</td>
+          <td>2023-03-07 11:10:07 +0100</td>
+          <td>ce7a3ee</td>
+      </tr>
+      <tr>
+          <td>fix(utf8): more explicit encoding details</td>
+          <td>2023-03-07 11:01:06 +0100</td>
+          <td>edf94b1</td>
+      </tr>
+      <tr>
+          <td>change(description-doc): relax language about omitting defaults (#258)</td>
+          <td>2023-03-17 13:42:05 +0100</td>
+          <td>67e0ad7</td>
+      </tr>
+      <tr>
+          <td>feat(units): add recommended units (#254)</td>
+          <td>2023-03-04 15:29:08 +0100</td>
+          <td>2fe6f7a</td>
+      </tr>
+      <tr>
+          <td>change(QoS) clarify QoS settings and switch to 2 (#253)</td>
+          <td>2023-01-26 10:32:56 +0100</td>
+          <td>063578d</td>
+      </tr>
+      <tr>
+          <td>refactor(mqtt) relocate all info wrt retained and qos (#252)</td>
+          <td>2023-01-26 10:30:50 +0100</td>
+          <td>c3f03bf</td>
+      </tr>
+      <tr>
+          <td>fix(strings) use 0x00 instead of 0x00 (#251)</td>
+          <td>2023-01-19 07:46:58 +0100</td>
+          <td>158b873</td>
+      </tr>
+      <tr>
+          <td>fix(version) device example missing required attribute (#250)</td>
+          <td>2023-01-18 23:20:50 +0100</td>
+          <td>d59d163</td>
+      </tr>
+      <tr>
+          <td>feat(version) add version to description document</td>
+          <td>2023-01-18 00:12:25 +0100</td>
+          <td>4accccd</td>
+      </tr>
+      <tr>
+          <td>feat(versioning) add improved versioning and compatibility</td>
+          <td>2023-01-17 23:29:52 +0100</td>
+          <td>4d10316</td>
+      </tr>
+      <tr>
+          <td>fix(property) handling empty-string values (#239)</td>
+          <td>2023-01-17 23:39:16 +0100</td>
+          <td>734d6ff</td>
+      </tr>
+      <tr>
+          <td>change(formats) float-colors, improved numbers, add booleans</td>
+          <td>2023-01-17 07:46:27 +0100</td>
+          <td>7e50cb1</td>
+      </tr>
+      <tr>
+          <td>feat(units) add kW, kWh and m3 as units</td>
+          <td>2023-01-17 06:50:42 +0100</td>
+          <td>0f8439f</td>
+      </tr>
+      <tr>
+          <td>readability(retained) reorder more logically (#245)</td>
+          <td>2023-01-17 09:11:35 +0100</td>
+          <td>1f73c11</td>
+      </tr>
+      <tr>
+          <td>fix(device) be more specific about empty attributes (#242)</td>
+          <td>2023-01-16 23:24:07 +0100</td>
+          <td>f974349</td>
+      </tr>
+      <tr>
+          <td>describe parent-child hierarchy and handling (#240)</td>
+          <td>2023-01-16 23:23:29 +0100</td>
+          <td>11dc08a</td>
+      </tr>
+      <tr>
+          <td>fix(percent) drop the percent type (#243)</td>
+          <td>2023-01-16 23:21:58 +0100</td>
+          <td>0155f38</td>
+      </tr>
+      <tr>
+          <td>drop node.$type field (#238)</td>
+          <td>2023-01-16 20:12:34 +0100</td>
+          <td>1c39612</td>
+      </tr>
+      <tr>
+          <td>format required for enum and color types</td>
+          <td>2023-01-15 22:06:14 +0100</td>
+          <td>e2e8ce7</td>
+      </tr>
+      <tr>
+          <td>drop separate v5 version</td>
+          <td>2023-01-15 21:18:09 +0100</td>
+          <td>5a34283</td>
+      </tr>
+      <tr>
+          <td>readability; move long payload list to bottom of MQTT chapter</td>
+          <td>2023-01-15 19:40:58 +0100</td>
+          <td>9641bd0</td>
+      </tr>
+      <tr>
+          <td>minor description-size improvements</td>
+          <td>2023-01-15 02:08:15 +0100</td>
+          <td>80f1772</td>
+      </tr>
+      <tr>
+          <td>implement single description topic (JSON)</td>
+          <td>2022-11-27 21:44:27 +0100</td>
+          <td>c97eea9</td>
+      </tr>
+      <tr>
+          <td>added 4.0 as the new 5.0 basis document</td>
+          <td>2022-11-27 20:22:51 +0100</td>
+          <td>1e0ec36</td>
+      </tr>
+      <tr>
+          <td>fix(device) be more specific about empty attributes (#241)</td>
+          <td>2023-01-16 23:22:30 +0100</td>
+          <td>451c995</td>
+      </tr>
+      <tr>
+          <td>chore(*) add design principles (#234)</td>
+          <td>2023-01-15 19:20:56 +0100</td>
+          <td>c0ba283</td>
+      </tr>
+      <tr>
+          <td>clarify $format being required for enum and color (#224)</td>
+          <td>2023-01-15 19:13:51 +0100</td>
+          <td>bb5efc7</td>
+      </tr>
+      <tr>
+          <td>chore(LICENSE): rename to get markdown rendering (#230)</td>
+          <td>2022-10-06 18:36:48 +0200</td>
+          <td>fd95584</td>
+      </tr>
+      <tr>
+          <td>Update logo link</td>
+          <td>2022-10-06 15:58:44 +0200</td>
+          <td>84c1c13</td>
+      </tr>
+      <tr>
+          <td>Fix: Added negative values to the valid range specification for floats</td>
+          <td>2021-01-25 04:17:45 -0500</td>
+          <td>fc643d6</td>
+      </tr>
+      <tr>
+          <td>Add datetime and duration to datatype enum.</td>
+          <td>2020-06-28 12:42:22 +0200</td>
+          <td>1b3efa4</td>
+      </tr>
+      <tr>
+          <td>Update convention.md</td>
+          <td>2020-05-11 07:38:16 -0500</td>
+          <td>dd6ee8e</td>
+      </tr>
+      <tr>
+          <td>Update convention.md</td>
+          <td>2020-05-11 07:31:26 -0500</td>
+          <td>449d952</td>
+      </tr>
+      <tr>
+          <td>Add implementation details and other things (#200)</td>
+          <td>2020-05-06 13:21:50 +0200</td>
+          <td>6d852df</td>
+      </tr>
+      <tr>
+          <td>clarify broadcast topics</td>
+          <td>2020-05-05 12:50:47 -0500</td>
+          <td>d68076d</td>
+      </tr>
+      <tr>
+          <td>added duration property</td>
+          <td>2020-05-05 12:34:17 -0500</td>
+          <td>9905706</td>
+      </tr>
+      <tr>
+          <td>clarify percentage values</td>
+          <td>2020-05-04 11:14:07 -0500</td>
+          <td>8824393</td>
+      </tr>
+      <tr>
+          <td>ready state clarification</td>
+          <td>2020-04-28 13:20:44 -0500</td>
+          <td>2c41d72</td>
+      </tr>
+      <tr>
+          <td>added datetime payload</td>
+          <td>2020-04-28 13:10:21 -0500</td>
+          <td>b813a15</td>
+      </tr>
+      <tr>
+          <td>clarification on allowed characters in topic ID</td>
+          <td>2020-04-26 11:09:58 -0500</td>
+          <td>2c28a5e</td>
+      </tr>
+      <tr>
+          <td>Fix: Grammar fix (#187)</td>
+          <td>2020-01-03 03:26:12 -0600</td>
+          <td>6f3f98a</td>
+      </tr>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2025 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>

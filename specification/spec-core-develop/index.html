@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/specification/spec-core-develop/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="specification/">
+  <link rel="prefetch" href="implementations/">
+  <link rel="prefetch" href="extensions/">
+  <link rel="prefetch" href="get_involved/">
+  <link rel="prefetch" href="license/">
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main "
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main "
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div id="mainContent">
+
+
+
+    
+
+
+
+    
+
+
+<div class="container pt-5">
+<div class="row">
+<div class="col-12">      
+<h1 class="animated fadeIn" style="text-align: center">Homie: An MQTT Convention for IoT/M2M</h1>
+</div>
+</div>
+</div>
+
+<div class="md-grid">
+    
+<aside class="toc animated faster zoomIn md-sidebar md-sidebar--secondary d-print-none"
+    data-md-state="lock">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#introduction">Introduction</a></li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#roles">Roles</a></li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#mqtt-restrictions">MQTT Restrictions</a>
+      <ul>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#topic-ids">Topic IDs</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#qos-and-retained-messages">QoS and retained messages</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#last-will">Last Will</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#empty-string-values">Empty string values</a></li>
+      </ul>
+    </li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#payloads">Payloads</a>
+      <ul>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#string">String</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#integer">Integer</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#float">Float</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#boolean">Boolean</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#enum">Enum</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#color">Color</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#datetime">DateTime</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#duration">Duration</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#json">JSON</a></li>
+      </ul>
+    </li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#domain-and-root-topic">Domain and Root Topic</a></li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#auto-discovery">Auto-Discovery</a></li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#topology-and-structure">Topology and structure</a>
+      <ul>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#devices">Devices</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#nodes">Nodes</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#properties">Properties</a></li>
+      </ul>
+    </li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#alert-topic">Alert topic</a></li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#broadcast-topic">Broadcast Topic</a></li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#logging">Logging</a></li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#extensions">Extensions</a></li>
+    <li><a href="https://homieiot.github.io/specification/spec-core-develop/#implementation-notes">Implementation notes</a>
+      <ul>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#device-initialization">Device initialization</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#device-reconfiguration">Device reconfiguration</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#versioning">Versioning</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#json-considerations">JSON considerations</a></li>
+        <li><a href="https://homieiot.github.io/specification/spec-core-develop/#qos-choices-explained">QoS choices explained</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+
+<main class="md-content">
+    <tt class="d-print-none">
+        License: <a title="Creative Commons Attribution 4.0 International Public License" href="/license">CCA 4.0</a><br>
+        Version:
+    
+    
+        
+        [develop]
+        
+    
+        
+        [<a title="Released 19. June 2016"
+            href="https://homieiot.github.io/specification/spec-core-v1_5_0/">v1.5.0</a>]
+        
+    
+        
+        [<a title="Released 28. April 2017"
+            href="https://homieiot.github.io/specification/spec-core-v2_0_0/">v2.0.0</a>]
+        
+    
+        
+        [<a title="Released 24. March 2018"
+            href="https://homieiot.github.io/specification/spec-core-v2_0_1/">v2.0.1</a>]
+        
+    
+        
+        [<a title="Released 25. March 2018"
+            href="https://homieiot.github.io/specification/spec-core-v3_0_0/">v3.0.0</a>]
+        
+    
+        
+        [<a title="Released 27. October 2018"
+            href="https://homieiot.github.io/specification/spec-core-v3_0_1/">v3.0.1</a>]
+        
+    
+        
+        [<a title="Released 27. August 2019"
+            href="https://homieiot.github.io/specification/spec-core-v4_0_0/">v4.0.0</a>]
+        
+    
+        
+        [<a title="Released 11. May 2025"
+            href="https://homieiot.github.io/specification/spec-core-v5_0_0/">v5.0.0</a>]
+        
+    <br>
+        
+        Changes: [<a href='/specification/spec-core-develop-diff/'>Diff to previous</a>]<br>
+        
+        Release date: 11. May 2025
+    <hr>
+    </tt>
+
+    <details class="d-print-none mb-4">
+        <summary>Frequently asked questions</summary>
+        
+<h3>How do I query/request a property?</h3>
+<p>You don&rsquo;t.
+The MQTT protocol does not implement the request-reply but rather the publish-subscribe messaging pattern.
+The Homie convention follows the publish-subscribe principle by publishing data as retained messages on a regular basis.
+You might want to rethink the design of your application - in most scenarios a regularly updated information is sufficient.</p>
+<p><em>Workaround:</em> You are free to implement your own ideas on top of the basic structure of the Homie convention.
+You could either implement a <code>get</code> getter topic and its logic to trigger a value update, or you may exploit the concept of Homie properties and define a settable property to trigger a value update.</p>
+
+
+    </details>
+
+    <div class="d-none d-print-block">
+        <h2>License</h2>
+        <p>By exercising the Licensed Rights (defined on https://creativecommons.org/licenses/by/4.0/), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution 4.0 International Public License ("Public License"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.</p>
+    </div>
+    
+    <div class="toc d-lg-none d-print-block">
+        <h2>Table of Contents</h2>
+    </div>
+    
+
+    <h1 id="heading"></h1>
+<h2 id="introduction">Introduction</h2>
+<p>​The Homie convention is an open standard framework designed to facilitate the
+communication and integration of Internet of Things (IoT) devices using the
+<a href="https://mqtt.org">MQTT protocol</a>.</p>
+<p>In particular, the Homie convention defines a consistent topic structure and
+messaging format that enables devices to represent themselves, their data and
+their supported controls/commands in a uniform manner, enabling automatic
+discovery.</p>
+<h2 id="roles">Roles</h2>
+<p>When interacting through a shared MQTT broker, implementations of the Homie
+convention can take on one or both of the following roles simultaneously:</p>
+<ul>
+<li><strong>Device</strong>: an implementation that publishes the representation of a physical
+appliance or logical entity, such as a car, a coffee machine or a protocol
+bridge, to an MQTT broker.</li>
+<li><strong>Controller</strong>: an implementation that discovers and interacts with <em>devices</em>
+over MQTT. For example a mobile app, or an if-this-then-that rules engine.</li>
+</ul>
+<p>Note that, for brevity and simplicity, the word &quot;device&quot; is often used
+to denote the combination of an appliance, the computer managing the appliance&rsquo;s
+MQTT representation and the representation itself.</p>
+<h2 id="mqtt-restrictions">MQTT Restrictions</h2>
+<p>Homie communicates through <a href="https://mqtt.org">MQTT</a> and is hence based on the basic principles of MQTT topic publication and subscription.</p>
+<h3 id="topic-ids">Topic IDs</h3>
+<p>An MQTT topic consists of one or more topic levels, separated by the slash character (<code>/</code>).
+A topic level ID MAY ONLY contain lowercase letters from <code>a</code> to <code>z</code>, numbers from <code>0</code> to <code>9</code> as well as the hyphen character (<code>-</code>).</p>
+<p>The special character <code>$</code> is used and reserved for Homie <em>attributes</em>.</p>
+<h3 id="qos-and-retained-messages">QoS and retained messages</h3>
+<p>The recommended QoS level is <strong>Exactly once (QoS 2)</strong> (except for non-retained, see below).</p>
+<ul>
+<li>All messages MUST be sent as <strong>retained</strong>, UNLESS stated otherwise.</li>
+<li>Controllers setting values for device properties publish to the Property <code>set</code> topic with <strong>non-retained</strong> messages only.</li>
+<li>Controllers setting values for <strong>non-retained</strong> device properties should publish to the Property <code>/set</code> topic with a QoS of <strong>At most once (QoS 0)</strong>.</li>
+<li>Devices publishing values for their <strong>non-retained</strong> properties must use <strong>non-retained</strong> messages, with a QoS of <strong>At most once (QoS 0)</strong>.</li>
+</ul>
+<p>For QoS details see <a href="#qos-choices-explained">the explanation</a>.</p>
+<h3 id="last-will">Last Will</h3>
+<p>Homie requires the last will (LWT) to set the <code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>$state</code> attribute to the value <strong><code>lost</code></strong>, see <a href="#device-lifecycle">Device Lifecycle</a>.
+MQTT only allows one last will message per connection, but since a device can have children, the LWT message MUST be set on the
+root device (the device at the root of the parent-child tree).</p>
+<h3 id="empty-string-values">Empty string values</h3>
+<p>MQTT will treat an empty string payload as a &ldquo;delete&rdquo; instruction for the topic, therefor an
+empty string value is represented by a 1-character string containing a single byte value 0 (Hex: <code>0x00</code>, Dec: <code>0</code>).</p>
+<p>The empty string (passed as an MQTT payload) can only occur in 3 places;</p>
+<ul>
+<li><code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>[node ID]</code> / <code>[property ID]</code>; reported property values (for string types)</li>
+<li><code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>[node ID]</code> / <code>[property ID]</code> / <code>set</code>; the topic to set properties (of string types)</li>
+<li><code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>[node ID]</code> / <code>[property ID]</code> / <code>$target</code>; the target property value (for string types)</li>
+</ul>
+<p>This convention specifies no way to represent an actual value of a 1-character string with a single byte 0. If a device
+needs this, then it should provide an escape mechanism on the application level.</p>
+<h2 id="payloads">Payloads</h2>
+<ul>
+<li>Every MQTT message payload MUST be sent as a UTF-8 encoded string</li>
+<li>The message MUST NOT include the UTF-8 <a href="https://en.wikipedia.org/wiki/Byte_order_mark">BOM</a></li>
+<li>The value published as payload MUST be valid for the respective property/attribute type as per the list below</li>
+</ul>
+<h3 id="string">String</h3>
+<ul>
+<li>String types are limited to 268,435,456 characters</li>
+<li>An <a href="#empty-string-values">empty string</a> (&quot;&quot;) is a valid payload</li>
+</ul>
+<h3 id="integer">Integer</h3>
+<ul>
+<li>Integer types are string literal representations of 64-bit signed whole numbers</li>
+<li>Integers range from -9,223,372,036,854,775,808 (-2<sup>63</sup>) to 9,223,372,036,854,775,807 (2<sup>63</sup>-1)</li>
+<li>The payload may only contain whole numbers and the negation character &ldquo;-&rdquo;. No other characters including spaces (&quot; &ldquo;) are permitted</li>
+<li>A string with just a negation sign (&rdquo;-&quot;) is not a valid payload</li>
+<li>An <a href="#empty-string-values">empty string</a> (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h3 id="float">Float</h3>
+<ul>
+<li>Float types are string literal representations of 64-bit signed floating point numbers</li>
+<li>Floats range from +/-(2^-1074) to +/-((2 - 2^-52) * 2^1023)</li>
+<li>The payload may only contain whole numbers, the negation character &ldquo;-&rdquo;, the exponent character &ldquo;e&rdquo; or &ldquo;E&rdquo; and the decimal separator &ldquo;.&rdquo;, no other characters, including spaces (&quot; &ldquo;) are permitted</li>
+<li>The dot character (&rdquo;.&quot;) is the decimal separator (used if necessary) and may only have a single instance present in the payload</li>
+<li>Representations of numeric concepts such as &ldquo;NaN&rdquo; (Not a Number) and &ldquo;Infinity&rdquo; are not a valid payload</li>
+<li>A string with just a negation sign (&quot;-&quot;) is not a valid payload</li>
+<li>An <a href="#empty-string-values">empty string</a> (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h3 id="boolean">Boolean</h3>
+<ul>
+<li>Booleans must be converted to the string literals &ldquo;true&rdquo; or &ldquo;false&rdquo;</li>
+<li>Representation is case sensitive, e.g. &ldquo;TRUE&rdquo; or &ldquo;FALSE&rdquo; are not valid payloads.</li>
+<li>An <a href="#empty-string-values">empty string</a> (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h3 id="enum">Enum</h3>
+<ul>
+<li>Enum payloads must be one of the values specified in the format definition of the property</li>
+<li>Enum payloads are case sensitive, e.g. &ldquo;Car&rdquo; will not match a format definition of &ldquo;car&rdquo;</li>
+<li>Leading- and trailing-whitespace is significant, e.g. &ldquo;Car&rdquo; will not match &quot; Car&quot;.</li>
+<li>An <a href="#empty-string-values">empty string</a> (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h3 id="color">Color</h3>
+<ul>
+<li>Color payload validity varies depending on the property format definition of either &ldquo;rgb&rdquo;, &ldquo;hsv&rdquo;, or &ldquo;xyz&rdquo;</li>
+<li>All payload types contain comma-separated data of differing restricted ranges. The first being the type, followed by numbers. The numbers must conform to the <a href="#float">float</a> format</li>
+<li>The encoded string may only contain the type, the <a href="#float">float</a> numbers and the comma character &ldquo;,&rdquo;, no other characters are permitted, including spaces (&quot; &ldquo;)</li>
+<li>Payloads for type &ldquo;rgb&rdquo; contain 3 comma-separated values of <a href="#float">floats</a> (<code>r</code>, <code>g</code>, <code>b</code>) with a valid range between 0 and 255 (inclusive). e.g. <code>&quot;rgb,100,100,100&quot;</code></li>
+<li>Payloads for type &ldquo;hsv&rdquo; contain 3 comma-separated values of <a href="#float">floats</a>. The first number (<code>h</code>) has a range of 0 to 360 (inclusive), and the second and third numbers (<code>s</code> and <code>v</code>) have a range of 0 to 100 (inclusive).  e.g. <code>&quot;hsv,300,50,75&quot;</code></li>
+<li>Payloads for type &ldquo;xyz&rdquo; contain 2 comma separated values of <a href="#float">floats</a> (<code>x</code>, <code>y</code>) with a valid range between 0 and 1 (inclusive). The &ldquo;z&rdquo; value can be calculated via <code>z=1-x-y</code> and is therefore not transmitted. (see <a href="https://en.wikipedia.org/wiki/CIE_1931_color_space">CIE_1931_color_space</a>). e.g. <code>&quot;xyz,0.25,0.34&quot;</code></li>
+<li><em>Note</em>: The <code>rgb</code> and <code>hsv</code> formats encode both color and brightness, whereas <code>xyz</code> only encodes the color, so;
+<ul>
+<li>when brightness encoding is required: do not use <code>xyz</code>, or optionally add another property for the brightness (such that setting <code>hsv</code> and <code>rgb</code> values changes both the color property and the brightness one if required)</li>
+<li>if color only is encoded: ignore the <code>v</code> value in <code>hsv</code>, and use the relative colors of <code>rgb</code>
+eg. <code>color_only_r = 255 * r / max(r, g, b)</code>, etc.</li>
+</ul>
+</li>
+<li>An <a href="#empty-string-values">empty string</a> (&rdquo;&quot;) is not a valid payload</li>
+</ul>
+<h3 id="datetime">DateTime</h3>
+<ul>
+<li>DateTime payloads must use the ISO <a href="https://en.wikipedia.org/wiki/ISO_8601">8601 format</a>.</li>
+<li>An <a href="#empty-string-values">empty string</a> (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h3 id="duration">Duration</h3>
+<ul>
+<li>Duration payloads must use the <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 duration format</a></li>
+<li>The format is <code>PTxHxMxS</code>, where:
+<code>P</code>: Indicates a period/duration (required).
+<code>T</code>: Indicates a time (required).
+<code>xH</code>: Hours, where <code>x</code> represents the number of hours (optional).
+<code>xM</code>: Minutes, where <code>x</code> represents the number of minutes (optional).
+<code>xS</code>: Seconds, where <code>x</code> represents the number of seconds (optional).</li>
+<li>Examples: <code>PT12H5M46S</code> (12 hours, 5 minutes, 46 seconds), <code>PT5M</code> (5 minutes)</li>
+<li>An <a href="#empty-string-values">empty string</a> (&quot;&quot;) is not a valid payload</li>
+</ul>
+<h3 id="json">JSON</h3>
+<ul>
+<li>Contains a JSON string for transporting complex data formats that cannot be exposed as single value attributes.</li>
+<li>The payload MUST be either a JSON-Array or JSON-Object type, for other types the standard Homie types should be used.</li>
+</ul>
+<h2 id="domain-and-root-topic">Domain and Root Topic</h2>
+<p>The root topic in this convention is <code>&quot;homie/5/&quot;</code>. It consists of 2 segments, the first being the homie-domain,
+and the second indicating the major version number of this convention.
+The homie-domain must be a single segment and defaults to <code>&quot;homie&quot;</code>. If it does not suit your needs (in case of,
+e.g., a public broker or because of branding), you can change the domain part. The second segment, containing the version, may not be customized. This allows controllers to subscribe to only the devices they are compatible with.</p>
+<h2 id="auto-discovery">Auto-Discovery</h2>
+<p>Homie 5 controllers must by default perform auto-discovery on the wildcard topic <code>&quot;+/5/+/$state&quot;</code>.
+Controllers are free to restrict discovery to a specific homie-domain, configurable by the user.
+A zero length payload published on the <code>$state</code> topic indicates a device removal, see <a href="#device-lifecycle">device lifecycle</a>.</p>
+<h2 id="topology-and-structure">Topology and structure</h2>
+<p><strong>Devices:</strong>
+Within the convention devices can be modelled to have children. For example, bridge
+devices; a zwave bridge device (the parent) exposes many child devices (the
+zwave devices). There is no depth limit set on additionally nested children.</p>
+<p><strong>Nodes:</strong>
+A <em>device</em> can expose multiple <em>nodes</em>.
+Nodes are independent or logically separable parts of a device.
+For example, a car might expose a <code>wheels</code> node, an <code>engine</code> node, and a <code>lights</code> node.</p>
+<p><strong>Properties:</strong>
+A <em>node</em> can have multiple <em>properties</em>.
+Properties represent basic characteristics of the node, often given as numbers or finite states.
+For example, the <code>wheels</code> node might expose an <code>angle</code> property.
+The <code>engine</code> node might expose a <code>speed</code>, <code>direction</code>, and <code>temperature</code> property.
+The <code>lights</code> node might expose an <code>intensity</code> and a <code>color</code> property.</p>
+<p><strong>Attributes:</strong>
+<em>Devices, nodes and properties</em> have specific <em>attributes</em> characterizing them.
+Attributes are represented by a topic identifier starting with <code>$</code>.
+The precise definition of attributes is important for the automatic discovery of devices following the Homie convention.</p>
+<p>Examples: A device might have an <code>IP</code> attribute, a node will have a <code>name</code> attribute, and a property will have a <code>unit</code> attribute.</p>
+<h3 id="devices">Devices</h3>
+<ul>
+<li><code>homie</code> / <code>5</code> / <strong><code>[device ID]</code></strong>: this is the base topic of a device.
+Each device must have a unique device ID that adheres to the <a href="#topic-ids">ID format</a>.</li>
+</ul>
+<h4 id="device-attributes">Device Attributes</h4>
+<p>The following topic structure will be used to expose the device attributes:</p>
+<ul>
+<li><code>homie</code> / <code>5</code> / <code>[device ID]</code> / <strong><code>[$device-attribute]</code></strong>:</li>
+</ul>
+<p>Devices have the following attributes:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Attribute</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>$state</code></td>
+          <td>yes</td>
+          <td>Reflects the current state of the device. See <a href="#device-lifecycle">Device Lifecycle</a></td>
+      </tr>
+      <tr>
+          <td><code>$description</code></td>
+          <td>yes</td>
+          <td>The description document (JSON), describing the device, nodes, and properties of this device. <strong>Important</strong>: this value may only change when the device <code>$state</code> is either <code>init</code>, <code>disconnected</code>, or <code>lost</code>.</td>
+      </tr>
+      <tr>
+          <td><code>$log</code></td>
+          <td>no</td>
+          <td>A topic that allows devices to log messages. See <a href="#logging">Logging</a></td>
+      </tr>
+  </tbody>
+</table>
+<p>The JSON description document is a JSON object with the following fields;</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Nullable</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>homie</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td>no</td>
+          <td>The implemented Homie convention version, without the &ldquo;patch&rdquo; level. So the format is <code>&quot;5.x&quot;</code>, where the <code>'x'</code> is the minor version.</td>
+      </tr>
+      <tr>
+          <td><code>version</code></td>
+          <td>integer</td>
+          <td>yes</td>
+          <td></td>
+          <td>no</td>
+          <td>The version of the description document. Whenever the document changes, a new version must be assigned. This does not need to be sequential, eg. a timestamp or a random number could be used.</td>
+      </tr>
+      <tr>
+          <td><code>nodes</code></td>
+          <td>object</td>
+          <td>no</td>
+          <td><code>{}</code></td>
+          <td>no</td>
+          <td>The <a href="#nodes">Nodes</a> the device exposes. An object containing the <a href="#nodes">Nodes</a>, indexed by their <a href="#topic-ids">ID</a>. Defaults to an empty object.</td>
+      </tr>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>no</td>
+          <td>[device-id]</td>
+          <td>no</td>
+          <td>Friendly name of the device. Defaults to the <a href="#topic-ids">ID</a> of the device.</td>
+      </tr>
+      <tr>
+          <td><code>type</code></td>
+          <td>string</td>
+          <td>no</td>
+          <td></td>
+          <td>no</td>
+          <td>Type of Device. Please ensure proper namespacing to prevent naming collisions.</td>
+      </tr>
+      <tr>
+          <td><code>children</code></td>
+          <td>array-strings</td>
+          <td>no</td>
+          <td><code>[]</code></td>
+          <td>no</td>
+          <td>Array of <a href="#topic-ids">ID</a>&rsquo;s of child devices. Defaults to an empty array.</td>
+      </tr>
+      <tr>
+          <td><code>root</code></td>
+          <td>string</td>
+          <td>yes/no</td>
+          <td></td>
+          <td>no</td>
+          <td><a href="#topic-ids">ID</a> of the root parent device. <strong>Required</strong> if the device is NOT the root device, MUST be omitted otherwise.</td>
+      </tr>
+      <tr>
+          <td><code>parent</code></td>
+          <td>string</td>
+          <td>yes/no</td>
+          <td>same as <code>root</code></td>
+          <td>no</td>
+          <td><a href="#topic-ids">ID</a> of the parent device. <strong>Required</strong> if the parent is NOT the root device. Defaults to the value of the <code>root</code> property.</td>
+      </tr>
+      <tr>
+          <td><code>extensions</code></td>
+          <td>array-strings</td>
+          <td>no</td>
+          <td><code>[]</code></td>
+          <td>no</td>
+          <td>Array of supported extensions. Defaults to an empty array.</td>
+      </tr>
+  </tbody>
+</table>
+<p>For example, a device with an ID of <code>super-car</code> that comprises of a <code>wheels</code>, <code>engine</code>, and a <code>lights</code> node would send:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$state</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="s">&#34;init&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">$description</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="n">JSON</span><span class="w"> </span><span class="n">document</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;homie&#34;</span><span class="p">:</span> <span class="s2">&#34;5.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Supercar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;nodes&#34;</span><span class="p">:</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;wheels&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="err">...</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;engine&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="err">...</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;lights&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="err">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span></code></pre></div><h4 id="device-hierarchy">Device hierarchy</h4>
+<p>Devices can be organized in parent-child relationships. These are expressed via the device
+attributes <code>root</code>, <code>parent</code>, and <code>children</code>. In any parent-child tree, there is only one
+&ldquo;root&rdquo; device, which is the top-level device that has no parent, but only children.</p>
+<p>Example: a ZWave bridge (<code>id = &quot;bridge&quot;</code>), which exposes a ZWave device with a dual-relay (<code>id = &quot;dualrelay&quot;</code>),
+which respectively control Light1 (<code>id = &quot;light1&quot;</code>) and Light2 (<code>id = &quot;light2&quot;</code>). So there are 4 devices in total.
+Then these are the attribute values:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>id</th>
+          <th>children</th>
+          <th>root</th>
+          <th>parent</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Zwave bridge</td>
+          <td>&ldquo;bridge&rdquo;</td>
+          <td>[&ldquo;dualrelay&rdquo;]</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Zwave relay</td>
+          <td>&ldquo;dualrelay&rdquo;</td>
+          <td>[&ldquo;light1&rdquo;, &ldquo;light2&rdquo;]</td>
+          <td>&ldquo;bridge&rdquo;</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>First light</td>
+          <td>&ldquo;light1&rdquo;</td>
+          <td></td>
+          <td>&ldquo;bridge&rdquo;</td>
+          <td>&ldquo;dualrelay&rdquo;</td>
+      </tr>
+      <tr>
+          <td>Second light</td>
+          <td>&ldquo;light2&rdquo;</td>
+          <td></td>
+          <td>&ldquo;bridge&rdquo;</td>
+          <td>&ldquo;dualrelay&rdquo;</td>
+      </tr>
+  </tbody>
+</table>
+<p>To monitor the state of child devices in this tree 2 topic subscriptions are needed. The <code>$state</code> attribute of the device itself, as well as the <code>$state</code> attribute of its root device.
+Because if the root device loses its connection to the MQTT server, the last will (LWT), will set its <code>$state</code> attribute to <code>&quot;lost&quot;</code>, but it will not update the child-device states. Hence the need for 2 topic subscriptions.</p>
+<p>The <code>state</code> of any device should be determined as follows:</p>
+<table>
+  <thead>
+      <tr>
+          <th>has a <code>root</code> set</th>
+          <th><code>root</code> state</th>
+          <th>device state</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>no</td>
+          <td>n.a.</td>
+          <td>device state is the <code>$state</code> attribute of the device itself</td>
+      </tr>
+      <tr>
+          <td>yes</td>
+          <td>not <code>&quot;lost&quot;</code></td>
+          <td>device state is the <code>$state</code> attribute of the device itself</td>
+      </tr>
+      <tr>
+          <td>yes</td>
+          <td><code>&quot;lost&quot;</code></td>
+          <td>device state is <code>&quot;lost&quot;</code> (<code>$state</code> attribute of the root device)</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="device-lifecycle">Device Lifecycle</h4>
+<p>The <code>$state</code> device attribute represents the current state of the device. A device exists once a valid value is set in the <code>$state</code> attribute. It doesn&rsquo;t mean the device is complete and valid (yet), but it does mean it exists.</p>
+<p>There are 5 possible state values:</p>
+<ul>
+<li><strong><code>init</code></strong>: this is the state the device is in when it is connected to the MQTT broker, but has not yet sent all Homie messages and is not yet ready to operate.
+This state is optional and may be sent if the device takes a long time to initialize, but wishes to announce to consumers that it is coming online.
+A device may fall back into this state to do some reconfiguration.</li>
+<li><strong><code>ready</code></strong>: this is the state the device is in when it is connected to the MQTT broker and has sent all Homie messages describing the device attributes, nodes, properties, and their values. The device has subscribed to all appropriate <code>/set</code> topics and is ready to receive messages.</li>
+<li><strong><code>disconnected</code></strong>: this is the state the device is in when it is cleanly disconnected from the MQTT broker.
+You must send this message before cleanly disconnecting.</li>
+<li><strong><code>sleeping</code></strong>: this is the state the device is in when the device is sleeping.
+You have to send this message before sleeping.</li>
+<li><strong><code>lost</code></strong>: this is the state the device is in when the device has been &ldquo;badly&rdquo; disconnected. <strong>Important</strong>: If a root-device <code>$state</code> is <code>&quot;lost&quot;</code> then the state of <strong>every child device in its tree</strong> is also <code>&quot;lost&quot;</code>.
+You must define this message as the last will (LWT) for root devices.</li>
+</ul>
+<p>In order to permanently remove a device the following steps should be performed in order:</p>
+<ol>
+<li>remove the retained <code>$state</code> attribute from the broker by publishing a zero length payload message to its topic. The device will cease to exist.</li>
+<li>any other retained attributes or property values should be cleared via the same method afterwards.</li>
+</ol>
+<h3 id="nodes">Nodes</h3>
+<ul>
+<li><code>homie</code> / <code>5</code> / <code>[device ID]</code> / <strong><code>[node ID]</code></strong>: this is the base topic of a node.
+Each node must have a unique node ID on a per-device basis which adheres to the <a href="#topic-ids">ID format</a>.</li>
+</ul>
+<h4 id="node-attributes">Node Attributes</h4>
+<p>There are no node attributes in MQTT topics for this level.</p>
+<p>The Node object itself is described in the <code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>$description</code> JSON document. The Node object has the following fields:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Nullable</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>no</td>
+          <td>[node-id]</td>
+          <td>no</td>
+          <td>Friendly name of the Node. Defaults to the <a href="#topic-ids">ID</a> of the node.</td>
+      </tr>
+      <tr>
+          <td><code>type</code></td>
+          <td>string</td>
+          <td>no</td>
+          <td></td>
+          <td>no</td>
+          <td>Type of Node. Please ensure proper namespacing to prevent naming collisions.</td>
+      </tr>
+      <tr>
+          <td><code>properties</code></td>
+          <td>object</td>
+          <td>no</td>
+          <td><code>{}</code></td>
+          <td>no</td>
+          <td>The <a href="#properties">Properties</a> the Node exposes. An object containing the <a href="#properties">Properties</a>, indexed by their <a href="#topic-ids">ID</a>. Defaults to an empty object.</td>
+      </tr>
+  </tbody>
+</table>
+<p>For example, our <code>engine</code> node would look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">      <span class="err">...</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;engine&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Car engine&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;speed&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="err">...</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;direction&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="err">...</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="err">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="err">...</span>
+</span></span></code></pre></div><h3 id="properties">Properties</h3>
+<ul>
+<li><code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>[node ID]</code> / <strong><code>[property ID]</code></strong>: this is the base topic of a property.
+Each property must have a unique property ID on a per-node basis which adheres to the <a href="#topic-ids">ID format</a>.</li>
+</ul>
+<h4 id="property-attributes">Property Attributes</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Attribute</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td>yes</td>
+          <td>A property value (e.g. a sensor reading) is directly published to the property topic, e.g.: <code>homie/5/super-car/engine/temperature → &quot;21.5&quot;</code></td>
+      </tr>
+      <tr>
+          <td><code>$target</code></td>
+          <td>no</td>
+          <td>Describes an intended state change. The <code>$target</code> attribute must either be used for every value update (including the initial one), or it must never be used.</td>
+      </tr>
+  </tbody>
+</table>
+<p>The Property object itself is described in the <code>homie</code> / <code>5</code> / <code>device ID</code> / <code>$description</code> JSON document. The Property object has the following fields:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Nullable</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>no</td>
+          <td>[property-id]</td>
+          <td>no</td>
+          <td>Friendly name of the Property. Defaults to the <a href="#topic-ids">ID</a> of the property.</td>
+      </tr>
+      <tr>
+          <td><code>datatype</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td>no</td>
+          <td>The data type. See <a href="#payload">Payloads</a>. Any of the following values: <code>&quot;integer&quot;, &quot;float&quot;, &quot;boolean&quot;, &quot;string&quot;, &quot;enum&quot;, &quot;color&quot;, &quot;datetime&quot;, &quot;duration&quot;, &quot;json&quot;</code>.</td>
+      </tr>
+      <tr>
+          <td><code>format</code></td>
+          <td>string</td>
+          <td>see <a href="#formats">formats</a></td>
+          <td>see <a href="#formats">formats</a></td>
+          <td>no</td>
+          <td>Specifies restrictions or options for the given data type.</td>
+      </tr>
+      <tr>
+          <td><code>settable</code></td>
+          <td>boolean</td>
+          <td>no</td>
+          <td><code>false</code></td>
+          <td>no</td>
+          <td>Whether the Property is settable.</td>
+      </tr>
+      <tr>
+          <td><code>retained</code></td>
+          <td>boolean</td>
+          <td>no</td>
+          <td><code>true</code></td>
+          <td>no</td>
+          <td>Whether the Property is retained.</td>
+      </tr>
+      <tr>
+          <td><code>unit</code></td>
+          <td>string</td>
+          <td>no</td>
+          <td></td>
+          <td>no</td>
+          <td>Unit of this property. See <a href="#units">units</a>.</td>
+      </tr>
+  </tbody>
+</table>
+<p>For example, our <code>temperature</code> property would look like this in the device/node description document:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">      <span class="err">...</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;temperature&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Engine temperature&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;unit&#34;</span><span class="p">:</span> <span class="s2">&#34;°C&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;datatype&#34;</span><span class="p">:</span> <span class="s2">&#34;float&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;-20:120&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="err">...</span>
+</span></span></code></pre></div><p>And the following MQTT topic with the reported property value:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="kd">super</span><span class="o">-</span><span class="n">car</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">temperature</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="s">&#34;21.5&#34;</span><span class="w">
+</span></span></span></code></pre></div><h4 id="settable-and-retained-properties">Settable and retained properties</h4>
+<p>Properties can be <strong>settable</strong> and/or <strong>retained</strong>. For example, you don&rsquo;t want your <code>temperature</code>
+property to be settable in case of a temperature sensor (like the car example), but it should be
+settable in the case of a thermostat setpoint.</p>
+<p>A property is retained by default. A non-retained property would be useful for momentary events
+(e.g. doorbell pressed). See also <a href="#qos-and-retained-messages">QoS settings</a>.</p>
+<p>A combination of the <strong>settable</strong> and <strong>retained</strong> flags compiles into this list:</p>
+<table>
+  <thead>
+      <tr>
+          <th>retained</th>
+          <th>settable</th>
+          <th>description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>yes</td>
+          <td>yes</td>
+          <td>The node publishes a property state and can receive commands for the property (by a controller or other party) (lamp power)</td>
+      </tr>
+      <tr>
+          <td>yes</td>
+          <td>no</td>
+          <td>(<strong>default</strong>) The node publishes a property state (temperature sensor)</td>
+      </tr>
+      <tr>
+          <td>no</td>
+          <td>yes</td>
+          <td>The node publishes momentary events and can receive commands for the property from a controller (brew coffee)</td>
+      </tr>
+      <tr>
+          <td>no</td>
+          <td>no</td>
+          <td>The node publishes momentary events (doorbell pressed)</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="formats">Formats</h4>
+<p>The format attribute specifies restrictions or options for the given data type. User interfaces can derive hints from
+the formats for displaying values.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>float</td>
+          <td>no</td>
+          <td><code>:</code></td>
+          <td><code>[min]:[max][:step]</code> where min and max are the respective minimum and maximum (inclusive) allowed values, both represented in the format for <a href="#float">float types</a>. Eg. <code>10.123:15.123</code>. If the minimum and/or maximum are missing from the format, then they are open-ended, so <code>0:</code> allows a value &gt;= 0.<br/>The optional <code>step</code> determines the step size, eg. <code>2:6:2</code> will allow values <code>2</code>, <code>4</code>, and <code>6</code>. It must be greater than 0. See notes below this table on calculations.</td>
+      </tr>
+      <tr>
+          <td>integer</td>
+          <td>no</td>
+          <td><code>:</code></td>
+          <td><code>[min]:[max][:step]</code> where min and max are the respective minimum and maximum (inclusive) allowed values, both represented in the format for <a href="#integer">integer types</a>. Eg. <code>5:35</code>. If the minimum and/or maximum are missing from the format, then they are open-ended, so <code>:10</code> allows a value &lt;= 10. <br/>The optional <code>step</code> determines the step size, eg. <code>2:6:2</code> will allow values <code>2</code>, <code>4</code>, and <code>6</code>. It must be greater than 0. See notes below this table on calculations.</td>
+      </tr>
+      <tr>
+          <td>enum</td>
+          <td>yes</td>
+          <td></td>
+          <td>A comma-separated list of non-quoted values. Eg. <code>value1,value2,value3</code>. Leading- and trailing whitespace is significant. Individual values can not be an empty string, hence at least 1 value must be specified in the format. Duplicates are not allowed.</td>
+      </tr>
+      <tr>
+          <td>color</td>
+          <td>yes</td>
+          <td></td>
+          <td>A comma-separated list of color formats supported; <code>rgb</code>, <code>hsv</code>, and/or <code>xyz</code>. The formats should be listed in order of preference (most preferred first, least preferred last). See the <a href="#color">color type</a> for the resulting value formats. E.g. a device supporting RGB and HSV, where RGB is preferred, would have its format set to <code>&quot;rgb,hsv&quot;</code>.</td>
+      </tr>
+      <tr>
+          <td>boolean</td>
+          <td>no</td>
+          <td><code>false,true</code></td>
+          <td>Identical to an enum with 2 entries. The first represents the <code>false</code> value and the second is the <code>true</code> value. Eg. <code>close,open</code> or <code>off,on</code>. If provided, then both entries must be specified. <strong>Important</strong>:  the format does NOT specify valid payloads, they are descriptions of the valid payloads <code>false</code> and <code>true</code>.</td>
+      </tr>
+      <tr>
+          <td>json</td>
+          <td>no</td>
+          <td><code>{\&quot;anyOf\&quot;: [{\&quot;type\&quot;: \&quot;array\&quot;},{\&quot;type\&quot;: \&quot;object\&quot;}]}</code></td>
+          <td>A <a href="https://json-schema.org/">JSONschema</a> definition, which is added as a string (escaped), NOT as a nested json-object. See <a href="#json-considerations">JSON considerations</a>, for some ideas wrt compatibility. If a client fails to parse/compile the JSONschema, then it should ignore the given schema and fall back to the default schema.</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Note on numeric formats and step-sizes</strong>:</p>
+<p>The base for calculating a proper value based on <code>step</code> should be <code>min</code>, <code>max</code>, or the current property value (in that order). The implementation should round property values to the nearest step (which can be outside the min/max range). The min/max validation must be done after rounding. In case of integers, the input MUST already be a valid integer, before rounding to a step.</p>
+<p>There is a caveat when rounding towards a step: if the value to be rounded, is less than the base then the intermediate values might round differently since proper mathematical rounding is done &ldquo;away from 0&rdquo;. A positive 1.5 rounds to 2 (so up), and negative -1.5 rounds to -2 (so down), but both round &ldquo;away from 0&rdquo;. Example showing the unexpected effect:</p>
+<table>
+  <thead>
+      <tr>
+          <th>input</th>
+          <th>format</th>
+          <th>result</th>
+          <th>explanation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>5</code></td>
+          <td><code>&quot;0:10:2&quot;</code></td>
+          <td><code>6</code></td>
+          <td>base = 0; result = round((5-base)/stepsize) * stepsize + base = 6</td>
+      </tr>
+      <tr>
+          <td><code>5</code></td>
+          <td><code>&quot;:10:2&quot;</code></td>
+          <td><code>4</code></td>
+          <td>base = 10; result = round((5-base)/stepsize) * stepsize + base = 4</td>
+      </tr>
+  </tbody>
+</table>
+<p>To mitigate this do not use <code>round(x)</code>, but use <code>floor(x + 0.5)</code> instead. Such that rounding always goes up:</p>
+<table>
+  <thead>
+      <tr>
+          <th>input</th>
+          <th>format</th>
+          <th>result</th>
+          <th>explanation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>5</code></td>
+          <td><code>&quot;0:10:2&quot;</code></td>
+          <td><code>6</code></td>
+          <td>base = 0; result = floor((5-base)/stepsize + 0.5) * stepsize + base = 6</td>
+      </tr>
+      <tr>
+          <td><code>5</code></td>
+          <td><code>&quot;:10:2&quot;</code></td>
+          <td><code>6</code></td>
+          <td>base = 10; result = floor((5-base)/stepsize + 0.5) * stepsize + base = 6</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="units">Units</h4>
+<p>Recommended unit strings:</p>
+<ul>
+<li><code>°C</code>: Degree Celsius (see &lsquo;Degree&rsquo; for encoding)</li>
+<li><code>°F</code>: Degree Fahrenheit (see &lsquo;Degree&rsquo; for encoding)</li>
+<li><code>°</code>: Degree
+<ul>
+<li>Character &lsquo;°&rsquo; is <a href="https://www.compart.com/en/unicode/U+00B0">Unicode: <code>U+00B0</code></a>, Hex: <code>0xc2 0xb0</code>, Dec: <code>194 176</code></li>
+</ul>
+</li>
+<li><code>L</code>: Liter</li>
+<li><code>gal</code>: Gallon</li>
+<li><code>V</code>: Volts</li>
+<li><code>W</code>: Watt</li>
+<li><code>kW</code>: Kilowatt</li>
+<li><code>kWh</code>: Kilowatt-hour</li>
+<li><code>A</code>: Ampere</li>
+<li><code>Hz</code>: Hertz</li>
+<li><code>rpm</code>: Revolutions per minute</li>
+<li><code>%</code>: Percent</li>
+<li><code>m</code>: Meter</li>
+<li><code>m³</code>: Cubic meter
+<ul>
+<li>Character &lsquo;³&rsquo; is <a href="https://www.compart.com/en/unicode/U+00B3">Unicode: <code>U+00B3</code></a>, Hex: <code>0xc2 0xb3</code>, Dec: <code>194 179</code></li>
+</ul>
+</li>
+<li><code>ft</code>: Feet</li>
+<li><code>m/s</code>: Meters per Second</li>
+<li><code>kn</code>: Knots</li>
+<li><code>Pa</code>: Pascal</li>
+<li><code>psi</code>: PSI</li>
+<li><code>ppm</code>: Parts Per Million</li>
+<li><code>s</code>: Seconds</li>
+<li><code>min</code>: Minutes</li>
+<li><code>h</code>: Hours</li>
+<li><code>lx</code>: Lux</li>
+<li><code>K</code>: Kelvin</li>
+<li><code>MK⁻¹</code>: Mired
+<ul>
+<li>Character &lsquo;⁻&rsquo; is <a href="https://www.compart.com/en/unicode/U+207B">Unicode: <code>U+207B</code></a>, Hex: <code>0xe2 0x81 0xbb</code>, Dec: <code>226 129 187</code></li>
+<li>Character &lsquo;¹&rsquo; is <a href="https://www.compart.com/en/unicode/U+00B9">Unicode: <code>U+00B9</code></a>, Hex: <code>0xc2 0xb9</code>, Dec: <code>194 185</code></li>
+</ul>
+</li>
+<li><code>#</code>: Count or Amount</li>
+</ul>
+<p>The non-ASCII characters are specified as Unicode codepoints and the UTF-8 byte sequence that represents them. Since the same characters can be created in many visually similar ways it is important to stick to the exact byte sequences to enable proper interoperability.</p>
+<p>You are not limited to the recommended values, although they are the only well known ones that will have to be recognized by any Homie consumer.</p>
+<h4 id="target-attribute">Target attribute</h4>
+<p>The <code>$target</code> attribute for properties allows a device to communicate an intended state change of a property. This serves 2 main
+purposes;</p>
+<ol>
+<li>closing the control loop for a controller setting a value (if the property is settable).</li>
+<li>feedback in case a change is not instantaneous (e.g. a light that slowly dimms over a longer period, or a
+motorized valve that takes several minutes to fully open)</li>
+</ol>
+<p>If implemented, then a device must first update the <code>$target</code> attribute, then start the transition (with
+optional state-value updates during the transition), and when done update the property value to match the
+<code>$target</code> value (functional equivalent, not necessarily a byte-by-byte equality).</p>
+<p>If a new target is received (and accepted) from a controller by publishing to the property&rsquo;s <code>set</code> topic, then the exact value received must be published to the <code>$target</code> topic (byte-by-byte equality). To allow for closing the control loop.</p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>a controller can only assume that the command it send to the <code>set</code> topic was received and accepted. Not necessarily that it will ever reach the target state, since if another controller updates the property again, it might never reach the target state.</li>
+<li>The same goes for possible conversions (colors), rounding (number formats), etc. it will be very hard to check functional equivalence, since the value published may have a different format. So a controller should NOT implement a retry loop checking the final value. At best they should implement retries until the value set is being accepted.</li>
+<li>Homie devices representing remote hardware (typically when bridging) should NOT set the <code>$target</code> attribute upon receiving a change from the hardware device. This is only allowed if the hardware explicitly distinguishes between current value and target value. This is to prevent a loop; e.g. a homie controller sets 100% as target, software instructs hardware to change, intermediate updates received from hardware; 20%, 40%, etc, should NOT overwrite the <code>$target</code> value, since that still is 100.</li>
+</ul>
+<h4 id="property-command-topic">Property command topic</h4>
+<ul>
+<li><code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>[node ID]</code> / <code>[property ID]</code> / <strong><code>set</code></strong>: The device must subscribe to this topic if the property is <strong>settable</strong> (in the case of actuators for example).</li>
+</ul>
+<p>A Homie controller publishes to the <code>set</code> command topic with non-retained messages only. See <a href="#qos-and-retained-messages">retained messages</a>.</p>
+<p>The assigned and processed payload must be reflected by the Homie device in the property topic <code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>[node ID]</code> / <code>[property ID]</code> or target attribute <code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>[node ID]</code> / <code>[property ID]</code> / <code>$target</code> as soon as possible.
+This property state update not only informs other devices about the change but closes the control loop for the commanding controller, important for deterministic interaction with the client device.</p>
+<p>To give an example: A <code>kitchen-light</code> device exposing the <code>light</code> node with a settable <code>power</code> property subscribes to the topic <code>homie/5/kitchen-light/light/power/set</code> for commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">power</span><span class="o">/</span><span class="n">set</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="s">&#34;true&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>In response, the device will turn on the light and upon success update its <code>power</code> property state accordingly:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">power</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="s">&#34;true&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>If the <code>light</code> were a dimmable light with a <code>brightness</code> property (0-100%), and it would be set to slowly dim over 5 seconds, then the <code>$target</code> attribute can be used (assuming once per second updates);</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">brightness</span><span class="o">/</span><span class="n">set</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">100</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">brightness</span><span class="o">/</span><span class="n">$target</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">100</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">brightness</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">20</span><span class="w">  </span><span class="p">(</span><span class="n">after</span><span class="w"> </span><span class="n">1</span><span class="w"> </span><span class="n">second</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">brightness</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">40</span><span class="w">  </span><span class="p">(</span><span class="n">after</span><span class="w"> </span><span class="n">2</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">brightness</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">60</span><span class="w">  </span><span class="p">(</span><span class="n">after</span><span class="w"> </span><span class="n">3</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">brightness</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">80</span><span class="w">  </span><span class="p">(</span><span class="n">after</span><span class="w"> </span><span class="n">4</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">kitchen</span><span class="o">-</span><span class="n">light</span><span class="o">/</span><span class="n">light</span><span class="o">/</span><span class="n">brightness</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">100</span><span class="w">  </span><span class="p">(</span><span class="n">after</span><span class="w"> </span><span class="n">5</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></div><h2 id="alert-topic">Alert topic</h2>
+<p>Devices can raise alerts. Alerts are user facing messages that have an ID, they can be set and removed.
+The alert topic is defined as;</p>
+<ul>
+<li><code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>$alert</code> / <code>[alert ID]</code> → &ldquo;alert message&rdquo;</li>
+</ul>
+<p>A device can raise a message on a specific ID. Once the alert is no longer usefull or has been resolved, it can be removed by deleting the topic. Alerts must be send as retained messages. The alert ID must have a valid <a href="#topic-ids">ID format</a>, where topic ID&rsquo;s starting with <code>$</code> are reserved for Homie usage.</p>
+<p>Examples;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">/</span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">mydevid</span><span class="o">/</span><span class="n">$alert</span><span class="o">/</span><span class="n">childlost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;Sensor xyz in livingroom hasn&#39;t reported updates for 3 hours&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">/</span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">mydevid</span><span class="o">/</span><span class="n">$alert</span><span class="o">/</span><span class="n">battery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;Battery is low, at 8%&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>In the examples above, once the situation is resolved (the sensor comes back to live, or the batteries are replaced), the device will delete the topics again, indicating the alerts have been handled.</p>
+<h2 id="broadcast-topic">Broadcast Topic</h2>
+<p>Homie defines a broadcast topic, so a controller can broadcast a message to all Homie devices:</p>
+<ul>
+<li><code>homie</code> / <code>5</code> / <code>$broadcast</code> / <strong><code>[subtopic]</code></strong>: where <code>subtopic</code> can be any topic with single or multiple levels. Each segement must adhere to the <a href="#topic-ids">ID format</a>.</li>
+</ul>
+<p>The messages SHOULD be non-retained.</p>
+<p>For example, you might want to broadcast an <code>alert</code> event with the alert reason as the payload.
+Devices are then free to react or not.
+In our case, every buzzer of your home automation system would start buzzing.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">$broadcast</span><span class="o">/</span><span class="n">alert</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="s">&#34;Intruder detected&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">$broadcast</span><span class="o">/</span><span class="n">security</span><span class="o">/</span><span class="n">alert</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="s">&#34;Intruder detected&#34;</span><span class="w">
+</span></span></span></code></pre></div><h2 id="logging">Logging</h2>
+<p>Since devices may be resource constraint they might not have logging capabilities. Homie provides a specific
+topic where devices can send log messages. The topic is defined as;</p>
+<ul>
+<li><code>homie</code> / <code>5</code> / <code>[device ID]</code> / <code>$log</code> / <code>[level]</code></li>
+</ul>
+<p>The topic-value is the logged message, no sub-topics are allowed.
+All log messages send should be non-retained.
+The <code>level</code> is set according to the following table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>level</th>
+          <th>description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>debug</code></td>
+          <td>detailed information for troubleshooting purposes</td>
+      </tr>
+      <tr>
+          <td><code>info</code></td>
+          <td>informational message, device is working as expected</td>
+      </tr>
+      <tr>
+          <td><code>warn</code></td>
+          <td>something potentially harmful happened</td>
+      </tr>
+      <tr>
+          <td><code>error</code></td>
+          <td>an error happened, the device will continue to operate but functionality might be impaired</td>
+      </tr>
+      <tr>
+          <td><code>fatal</code></td>
+          <td>a non-recoverable error occured, operation of the device is likely suspended/stopped</td>
+      </tr>
+  </tbody>
+</table>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">device</span><span class="o">/</span><span class="n">$log</span><span class="o">/</span><span class="n">warn</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="s">&#34;battery low&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">homie</span><span class="o">/</span><span class="n">5</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">device</span><span class="o">/</span><span class="n">$log</span><span class="o">/</span><span class="n">error</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="s">&#34;sensor value is out of range&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>Note that MQTT is not meant to be a logging solution, and hence it should be used with care. The implementation should
+try and limit the traffic on the MQTT bus. If devices implement messages and levels that can be &ldquo;noisy&rdquo;, then the
+device should provide a configuration option to turn them off, to limit the bandwidth consumed.</p>
+<h2 id="extensions">Extensions</h2>
+<p>This convention only covers the discoverability of devices and their capabilities.
+The aim is to have standardized MQTT topics for all kinds of complex scenarios.
+A Homie device may therefore support extensions, defined in separate documents.
+Every extension is identified by a unique ID.</p>
+<p>The ID consists of the reverse domain name and a freely chosen suffix.
+The proper term <code>homie</code> is reserved and must not be used as a suffix or as part of the domain name.</p>
+<p>For example, an organization <code>example.org</code> wanting to add a feature <code>our-feature</code> would choose the extension ID <code>org.example.our-feature</code>.</p>
+<p>Every extension must be published using a license.
+The license can be chosen freely, even proprietary licenses are possible.
+The recommended license is the <a href="https://homieiot.github.io/license">CCA 4.0</a> since this is the license Homie itself uses.</p>
+<h2 id="implementation-notes">Implementation notes</h2>
+<h3 id="device-initialization">Device initialization</h3>
+<p>Some devices require knowledge of their settable retained properties to function properly.
+The homie convention does not specify how to initialize/recover them e.g. after a power cycle.
+A few common approaches are:</p>
+<ul>
+<li>A device can simply load default values from some configuration file.</li>
+<li>A device can restore its previous state from some local storage. This is the recommended way.</li>
+<li>A device may try to restore its state using MQTT. This can be done by subscribing to the respective channels.
+The controller could set all properties of a device once it becomes <code>ready</code>.
+An alternative way is to recover the state from other MQTT channels that are external to the Homie specification.</li>
+<li>If a property is not critical for correctly functioning, there is no need to recover it.</li>
+</ul>
+<h3 id="device-reconfiguration">Device reconfiguration</h3>
+<p>If a device wishes to modify any of its nodes or properties, it can</p>
+<ul>
+<li>disconnect and reconnect with other values, or</li>
+<li>set <code>$state=init</code> and then modify any of the attributes.</li>
+</ul>
+<p>Devices can remove old properties and nodes by deleting the respective MQTT topics by publishing an empty message
+to those topics (an actual empty string on MQTT level, so NOT the escaped <code>0x00</code> byte, see also <a href="#empty-string-values">empty string values</a>).</p>
+<p>When adding many child devices, implementations should take care of not publishing too many parent-updates, since every controller would have to parse the description again and again.</p>
+<h4 id="adding-children">Adding children</h4>
+<p>The recommended way to add child device is as follows:</p>
+<ol>
+<li>first publish any child-devices, as any other device
+<ol>
+<li>set child-device state to <code>&quot;init&quot;</code></li>
+<li>publish child-device details (including parent details in <code>root</code> and <code>parent</code> fields)</li>
+<li>set child-device state to <code>&quot;ready&quot;</code></li>
+</ol>
+</li>
+<li>update the parent device, as any other change
+<ol>
+<li>set parent state to <code>&quot;init&quot;</code></li>
+<li>update parent description (add any child IDs to its <code>children</code> array)</li>
+<li>set parent state to <code>&quot;ready&quot;</code></li>
+</ol>
+</li>
+</ol>
+<p>Be aware that due to MQTT message ordering the consistency at any stage in this process cannot be guaranteed.</p>
+<h4 id="removing-children">Removing children</h4>
+<p>The recommended way to remove child device is as follows:</p>
+<ol>
+<li>update the parent device
+<ol>
+<li>set parent state to <code>&quot;init&quot;</code></li>
+<li>update parent description (remove any child IDs from its <code>children</code> array)</li>
+<li>set parent state to <code>&quot;ready&quot;</code></li>
+</ol>
+</li>
+<li>clear any child-device(s) topics, starting with the <code>$state</code> topic</li>
+</ol>
+<p>Be aware that due to MQTT message ordering the consistency at any stage in this process cannot be guaranteed.</p>
+<h3 id="versioning">Versioning</h3>
+<p>Some considerations related to versioning in this specification;</p>
+<ul>
+<li>compatibility is assumed to be major version only, so version 5 for this spec.</li>
+<li>the base topic includes the major version. This allows controllers to only subscribe to devices they are
+compatible with.</li>
+</ul>
+<h4 id="backward-compatibility">Backward compatibility</h4>
+<ul>
+<li>backward compatibility: a v5 controller controlling a v5 device with a smaller minor version. Eg. a v5.3
+controller sending commands to a v5.0 device.</li>
+<li>Controllers should be aware of unsupported features in older major or minor versions they subscribe to because the spec for that version is known.</li>
+</ul>
+<h4 id="forward-compatibility">Forward compatibility</h4>
+<ul>
+<li>forward compatibility: a v5 controller controlling a v5 device with a higher minor version. Eg. a v5.0
+controller sending commands to a v5.2 device.</li>
+<li>Controllers should ignore unknown fields, properties, attributes, etc. within an object (device, node, or property), but keep the object itself.</li>
+<li>Controllers should ignore the entire object (device, node, or property) if in a known field, property, or attribute an illegal value is encountered. For example;
+<ul>
+<li>illegal characters in a topic or name</li>
+<li>unknown data type</li>
+<li>unknown/illegal format</li>
+<li>required element missing</li>
+</ul>
+</li>
+</ul>
+<h3 id="json-considerations">JSON considerations</h3>
+<p>Validation of JSON payloads is hard. The most common approach to validate JSON data is to use <a href="https://json-schema.org/">JSONschema</a>.
+Unfortunately JSONschema is not a standard, it is a long list of mostly incompatible drafts of a potential standard. And as such one
+has to take into account the potential differences in implementations. This is about the JSONschema specifics itself as well as its reliance on RegEx engines for string validations, which are also known to be riddled with incompatibilities (typically language/platform specific).</p>
+<p>The most popular JSONschema versions over time tend to be <a href="https://json-schema.org/specification-links.html#draft-4"><code>draft 4</code></a>, <a href="https://json-schema.org/specification-links.html#draft-7"><code>draft 7</code></a> and the latest (at the time of writing) <a href="https://json-schema.org/specification-links.html#2020-12"><code>2020-12</code></a>.</p>
+<p>General recommendations;</p>
+<ul>
+<li>If possible use a library that implements the latest JSONschema version available</li>
+<li>When writing schema&rsquo;s make sure they are compatible with the popular versions mentioned above</li>
+<li>Try to avoid RegEx&rsquo;es, if you have to use them, then;
+<ul>
+<li>restrict them to character classes and modifiers (<code>&quot;+&quot;, &quot;-&quot;, &quot;*&quot;, &quot;?&quot;</code>)</li>
+<li>do not use back-tracking and OR (<code>&quot;|&quot;</code>) constructs (the OR construct can typically be handled on the JSONschema level using an <code>anyOf</code> construct)</li>
+</ul>
+</li>
+<li>If a device fails to parse the JSONschema, or a RegEx, then by default it should skip validation and assume the payload is valid.</li>
+</ul>
+<h3 id="qos-choices-explained">QoS choices explained</h3>
+<p>The nature of the Homie convention makes it safe about duplicate messages, so QoS levels for reliability <strong>At least once (QoS 1)</strong>
+and <strong>Exactly once (QoS 2)</strong> should both be fine. The recommended level is <strong>Exactly once (QoS 2)</strong>, since a resend on QoS 1 might have a different order, and hence is slightly less reliable, in case another device sends a new message that lands in between the &lsquo;send&rsquo; and &lsquo;resend&rsquo; of the first message. However, the probability of that happening is most likely negligible.</p>
+<p>Keep in mind that if you change the QoS level to <strong>At least once (QoS 1)</strong>, then it should be done so for the entire Homie network.
+Because the MQTT order will not hold if the QoS levels of messages are different. That said; anyone who accepts the lesser reliability of
+<strong>At least once (QoS 1)</strong>, will most likely also not care about the potential ordering issue of mixed QoS levels.</p>
+<p>For <strong>non-retained</strong> properties the QoS level is <strong>At most once (QoS 0)</strong> to ensure that events don&rsquo;t arrive late or multiple times. Because the events and commands are time-sensitive. With <strong>At most once (QoS 0)</strong> messages will not be queued by the broker for delivery if the subscriber (a device or controller) is currently disconnected. Which effectively translates to &ldquo;either you get it now, or you don&rsquo;t get it at all&rdquo;.</p>
+
+</main>
+
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2025 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>
