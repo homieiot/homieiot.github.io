@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/img/homie-logo.png">
+  <link rel="canonical" href="https://homieiot.github.io/specification/spec-core-develop-diff/">
+  <title>The Homie convention</title>
+  <link href="https://homieiot.github.io/scss/all.min.css" rel="stylesheet">
+
+
+    <script type='text/javascript' src="https://homieiot.github.io/js/main.min.js"></script>
+
+  <link rel="prefetch" href="specification/">
+  <link rel="prefetch" href="implementations/">
+  <link rel="prefetch" href="extensions/">
+  <link rel="prefetch" href="get_involved/">
+  <link rel="prefetch" href="license/">
+</head>
+
+<body>
+    <div class="progress d-print-none"></div>
+    <header class="text-center" style="margin-top:20px">
+    <a href="https://github.com/homieiot/convention" title="homieiot/convention" class="md-source d-print-none" data-md-source="github">
+      <div class="md-source__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 416 448" id="__github">
+          <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+                8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+                18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+                19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+                18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+                304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+                2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+                38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+                37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+                82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+                1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+                0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+                30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+                46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+                99.5z"></path>
+        </svg>
+      </div>
+      <div class="md-source__repository">
+        homieiot/convention
+        <div id="repofacts" class="md-source__facts"></div>
+      </div>
+    </a>
+    <script>
+      const el = document.getElementById("repofacts");
+      var stargazers_count = sessionStorage.getItem('stargazers_count');
+      var forks_count = sessionStorage.getItem('forks_count');
+      if (stargazers_count !== null) {
+        el.innerText = stargazers_count + " Stars · " + forks_count + " Forks"
+      } else {
+        const url = "https://api.github.com/repos/homieiot\/convention"
+        fetch(url).then(response => response.json()).then(data => {
+          if (!(data instanceof Object))
+            throw new TypeError
+          sessionStorage.setItem('stargazers_count', data.stargazers_count);
+          sessionStorage.setItem('forks_count', data.forks_count);
+          el.innerText = data.stargazers_count + " Stars · " + data.forks_count + " Forks"
+        })
+      }
+    </script>
+
+    <nav id="mainmenu" class="btn-group d-print-none" role="group" aria-label="Basic example">
+      <a href="https://homieiot.github.io/" role="button" class="btn btn-main "
+        title="">Overview</a>
+      <a href="https://homieiot.github.io/specification/" role="button" class="btn btn-main "
+        title="">Specification</a>
+      <a href="https://homieiot.github.io/extensions/" role="button" class="btn btn-main "
+        title="">Extensions</a>
+      <a href="https://homieiot.github.io/implementations/" role="button" class="btn btn-main "
+        title="">Implementations</a>
+      <a href="https://homieiot.github.io/get_involved/" role="button" class="btn btn-main "
+        title="">Get involved</a>
+      <a href="https://homieiot.github.io/tools/" role="button" class="btn btn-main "
+        title="">Tools</a>
+    </nav>
+  </header>
+  
+<div class="container mt-2" id="mainContent">
+<div class="row">
+<div class="col-12">
+    <h1 class="animated fadeIn" style="text-align: center; margin-top:40px; font-size:4em;">
+        Changes
+    </h1>
+    <center class="animated fadeIn mb-4">Changes from
+        <a href='/specification/spec-core-v5_0_0/'>v5.0.0</a> to
+        <a href='/specification/spec-core-develop/'>develop</a></center>
+
+    <h2>Commits</h2>
+
+    
+    
+    <table>
+  <thead>
+      <tr>
+          <th>Commit title</th>
+          <th>Date</th>
+          <th>Hash</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Add context7 ownership file (#339)</td>
+          <td>2026-02-12 11:04:34 +0100</td>
+          <td>7edc221</td>
+      </tr>
+      <tr>
+          <td>chore(minor): several minor spelling and consistency fixes (#336)</td>
+          <td>2025-12-28 20:37:43 +0100</td>
+          <td>87f877a</td>
+      </tr>
+  </tbody>
+</table>
+
+    
+
+    <h2>Differences</h2>
+
+    
+    <table class="diff" id="difflib_chg_to6__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">v5.0.0</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">develop</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__0"><a href="#difflib_chg_to6__1">n</a></td><td class="diff_header" id="from6_3">3</td><td ><span class="diff_sub">version: v5.0.0</span></td><td class="diff_next"><a href="#difflib_chg_to6__1">n</a></td><td class="diff_header" id="to6_3">3</td><td ><span class="diff_add">version: develop</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from6_4">4</td><td >releasedate: 1<span class="diff_chg">1</span>. <span class="diff_chg">M</span>ay 202<span class="diff_chg">5</span></td><td class="diff_next"></td><td class="diff_header" id="to6_4">4</td><td >releasedate: 1<span class="diff_chg">2</span>. <span class="diff_chg">Febru</span>a<span class="diff_add">r</span>y 202<span class="diff_chg">6</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__1"><a href="#difflib_chg_to6__2">n</a></td><td class="diff_header" id="from6_67">67</td><td >MQTT will treat an empty string payload as a "delete" instruction for the topic, therefor an</td><td class="diff_next"><a href="#difflib_chg_to6__2">n</a></td><td class="diff_header" id="to6_67">67</td><td >MQTT will treat an empty string payload as a "delete" instruction for the topic, therefor<span class="diff_add">e</span> an</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__2"><a href="#difflib_chg_to6__3">n</a></td><td class="diff_header" id="from6_168">168</td><td >A zero length payload published on the `$state` topic indicates a device removal, see [<span class="diff_chg">d</span>evice <span class="diff_chg">l</span>ifecycle](#device-lifecycle).</td><td class="diff_next"><a href="#difflib_chg_to6__3">n</a></td><td class="diff_header" id="to6_168">168</td><td >A zero length payload published on the `$state` topic indicates a device removal, see [<span class="diff_chg">D</span>evice <span class="diff_chg">L</span>ifecycle](#device-lifecycle).</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__3"><a href="#difflib_chg_to6__4">n</a></td><td class="diff_header" id="from6_170">170</td><td >## Topology and <span class="diff_chg">s</span>tructure</td><td class="diff_next"><a href="#difflib_chg_to6__4">n</a></td><td class="diff_header" id="to6_170">170</td><td >## Topology and <span class="diff_chg">S</span>tructure</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__4"><a href="#difflib_chg_to6__5">n</a></td><td class="diff_header" id="from6_340">340</td><td >The Property object itself is described in the `homie` / `5` / `device ID` / `$description` JSON document. The Property object has the following fields:</td><td class="diff_next"><a href="#difflib_chg_to6__5">n</a></td><td class="diff_header" id="to6_340">340</td><td >The Property object itself is described in the `homie` / `5` / `<span class="diff_add">[</span>device ID<span class="diff_add">]</span>` / `$description` JSON document. The Property object has the following fields:</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__5"><a href="#difflib_chg_to6__6">n</a></td><td class="diff_header" id="from6_399">399</td><td >| boolean      | no       | `false,true` | Identical to an enum with 2 entries. The first represents the `false` value and the second is the `true` value. Eg. `close,open` or `off,on`. If provided, then both entries must be specified. **Important**: <span class="diff_chg"> the</span> format does NOT specify valid payloads, they are descriptions of the valid payloads `false` and `true`. |</td><td class="diff_next"><a href="#difflib_chg_to6__6">n</a></td><td class="diff_header" id="to6_399">399</td><td >| boolean      | no       | `false,true` | Identical to an enum with 2 entries. The first represents the `false` value and the second is the `true` value. Eg. `close,open` or `off,on`. If provided, then both entries must be specified. **Important**: <span class="diff_chg">the</span> format does NOT specify valid payloads, they are descriptions of the valid payloads `false` and `true`. |</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__6"><a href="#difflib_chg_to6__7">n</a></td><td class="diff_header" id="from6_468">468</td><td >2. feedback in case a change is not instantaneous (e.g. a light that slowly dim<span class="diff_sub">m</span>s over a longer period, or a</td><td class="diff_next"><a href="#difflib_chg_to6__7">n</a></td><td class="diff_header" id="to6_468">468</td><td >2. feedback in case a change is not instantaneous (e.g. a light that slowly dims over a longer period, or a</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__7"><a href="#difflib_chg_to6__8">n</a></td><td class="diff_header" id="from6_479">479</td><td >- a controller can only assume that the command it sen<span class="diff_chg">d to the</span> `set` topic was received and accepted. Not necessarily that it will ever reach the target state, since if another controller updates the property again, it might never reach the target state.</td><td class="diff_next"><a href="#difflib_chg_to6__8">n</a></td><td class="diff_header" id="to6_479">479</td><td >- a controller can only assume that the command it sen<span class="diff_chg">t to the</span> `set` topic was received and accepted. Not necessarily that it will ever reach the target state, since if another controller updates the property again, it might never reach the target state.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__8"><a href="#difflib_chg_to6__9">n</a></td><td class="diff_header" id="from6_517">517</td><td >## Alert <span class="diff_chg">t</span>opic</td><td class="diff_next"><a href="#difflib_chg_to6__9">n</a></td><td class="diff_header" id="to6_517">517</td><td >## Alert <span class="diff_chg">T</span>opic</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__9"><a href="#difflib_chg_to6__10">n</a></td><td class="diff_header" id="from6_524">524</td><td >A device can raise a message on a specific ID. Once the alert is no longer useful<span class="diff_chg">l or has</span> been resolved, it can be removed by deleting the topic. Alerts must be sen<span class="diff_chg">d as retained</span> messages. The alert ID must have a valid [ID format](#topic-ids), where topic ID's starting with `$` are reserved for Homie usage.</td><td class="diff_next"><a href="#difflib_chg_to6__10">n</a></td><td class="diff_header" id="to6_524">524</td><td >A device can raise a message on a specific ID. Once the alert is no longer useful<span class="diff_chg"> or has</span> been resolved, it can be removed by deleting the topic. Alerts must be sen<span class="diff_chg">t as retained</span> messages. The alert ID must have a valid [ID format](#topic-ids), where topic ID's starting with `$` are reserved for Homie usage.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__10"><a href="#difflib_chg_to6__11">n</a></td><td class="diff_header" id="from6_528">528</td><td ><span class="diff_sub">/</span>homie/5/mydevid/$alert/childlost = "Sensor xyz in livingroom hasn't reported updates for 3 hours"</td><td class="diff_next"><a href="#difflib_chg_to6__11">n</a></td><td class="diff_header" id="to6_528">528</td><td >homie/5/mydevid/$alert/childlost = "Sensor xyz in livingroom hasn't reported updates for 3 hours"</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from6_529">529</td><td ><span class="diff_sub">/</span>homie/5/mydevid/$alert/battery = "Battery is low, at 8%"</td><td class="diff_next"></td><td class="diff_header" id="to6_529">529</td><td >homie/5/mydevid/$alert/battery = "Battery is low, at 8%"</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__11"><a href="#difflib_chg_to6__12">n</a></td><td class="diff_header" id="from6_538">538</td><td >* `homie` / `5` / `$broadcast` / **`[subtopic]`**: where `subtopic` can be any topic with single or multiple levels. Each seg<span class="diff_sub">e</span>ment must adhere to the [ID format](#topic-ids).</td><td class="diff_next"><a href="#difflib_chg_to6__12">n</a></td><td class="diff_header" id="to6_538">538</td><td >* `homie` / `5` / `$broadcast` / **`[subtopic]`**: where `subtopic` can be any topic with single or multiple levels. Each segment must adhere to the [ID format](#topic-ids).</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__12"><a href="#difflib_chg_to6__13">n</a></td><td class="diff_header" id="from6_559">559</td><td >All log messages sen<span class="diff_chg">d</span> should be non-retained.</td><td class="diff_next"><a href="#difflib_chg_to6__13">n</a></td><td class="diff_header" id="to6_559">559</td><td >All log messages sen<span class="diff_chg">t</span> should be non-retained.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to6__13"><a href="#difflib_chg_to6__top">t</a></td><td class="diff_header" id="from6_568">568</td><td >`fatal` | a non-recoverable error occured, operation of the device is likely suspended/stopped</td><td class="diff_next"><a href="#difflib_chg_to6__top">t</a></td><td class="diff_header" id="to6_568">568</td><td >`fatal` | a non-recoverable error occur<span class="diff_add">r</span>ed, operation of the device is likely suspended/stopped</td></tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+
+
+  
+  <footer class="page-footer font-small blue pt-4">
+      <div class="footer-copyright text-center py-3">© 2018-2026 -
+      Made by IoT enthusiasts for IoT enthusiasts.
+      </div>
+  </footer>
+  
+</body>
+
+</html>
